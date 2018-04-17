@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+    
+<mapper namespace="api.dao.FilesDAO">
+
+    <!--查询图片-->
+    <select id="getFiles"  parameterType="Files"  resultType="Files">
+        select
+        a.picture_id as pictureId,
+        a.typy as typy,
+        a.user as user,
+        a.url as url
+        from files a
+        <where>
+            <if test = "pictureId != null and pictureId != ''">
+                a.picture_id  = #{pictureId}
+            </if>
+            <if test = "typy != null and typy != ''">
+                and a.typy  = #{typy}
+            </if>
+            <if test = "user != null and user != ''">
+                and a.user  = #{user}
+            </if>
+        </where>
+    </select>
+
+    <!--添加图片-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="picture_id" parameterType="Files">
+      insert into files(typy,user,url)
+       values(#{typy},#{user},#{url})
+    </insert>
+
+    <!--修改图片-->
+    <update id="update" useGeneratedKeys="true" keyProperty="picture_id" parameterType="Files">
+        update files set url = #{url} where picture_id = #{pictureId} and user = #{user} and typy = #{typy}
+    </update>
+
+
+    <!--删除商户的图片-->
+    <delete id="delete" parameterType="Files">
+        delete from files where picture_id = #{pictureId} and user = #{user}
+    </delete>
+
+</mapper> 

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+    
+<mapper namespace="api.dao.ShopDAO">
+
+    <!--根据商铺名查询商户-->
+    <select id="queryShopByName"  parameterType="Shop"  resultType="Shop">
+        select * from shop a where a.shop_name = #{shopName}
+    </select>
+
+    <!--检查该学生下面是否有商户，以及商户的状态-->
+    <resultMap id="ShopBasic" type="Student">
+        <id column="studendid" property="id"/>
+        <result column="name" property="name"/>
+        <result column="college" property="college"/>
+        <result column="classes" property="classes"/>
+        <association property="Shop" javaType="Shop">
+            <id column="shopId" property="shopId"/>
+            <result column="shopName" property="shopName"/>
+            <result column="description" property="description"/>
+            <result column="status" property="status"/>
+            <result column="standId" property="standId"/>
+            <association property="Stand" javaType="Stand">
+                <id column="id" property="id"/>
+                <result column="standName" property="standName"/>
+                <result column="location" property="location"/>
+            </association>
+            <association property="Files" javaType="Files">
+                <id column="pictureId" property="pictureId"/>
+                <result column="url" property="url" />
+            </association>
+        </association>
+    </resultMap>
+
+    <!--检查该学生下面是否有商户，以及商户的状态-->
+    <select id="queryShopIsexistByStudent" parameterType="Shop"   resultMap="ShopBasic">
+            SELECT
+            e.id as studendid,e.name,e.college,e.classes,a.shop_id as shopId,a.shop_name as shopName,a.description,a.status,a.stand_id as standId,b.id,b.stand_name as standName,b.location,c.picture_id as pictureId,c.url
+            FROM
+                shop a
+            LEFT JOIN stand b ON a.stand_id = b.id
+            LEFT JOIN files c ON a.student_id = c.user and c.typy = '2'
+            LEFT JOIN student e on a.student_id =e.id
+            WHERE
+                e.id = #{StudendID}
+    </select>
+
+    <!--添加商铺-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="shop_id" parameterType="Shop">
+      insert into shop(shop_name,student_id,stand_id,description,status,create_time)
+       values(#{shopName},#{studentId},#{standId},#{description},#{status},#{createTime})
+    </insert>
+
+    <!-- 修改商铺 -->
+    <update id="update" useGeneratedKeys="true" keyProperty="id" parameterType="Shop">
+        update shop
+        <set>
+            <if test="shopName != null and shopName != ''">
+                shop_name = #{shopName},
+            </if>
+            <if test="studentId != null and studentId != ''">
+                student_id = #{studentId},
+            </if>
+            <if test="standId != null and standId != ''">
+                stand_id = #{standId},
+            </if>
+            <if test="description != null and description != ''">
+                description = #{description},
+            </if>
+            <if test="status != null and status != ''">
+                status = #{status},
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        where shop_id = #{shopId}
+    </update>
+
+    <!--删除商户-->
+    <delete id="delete" parameterType="int">
+        delete from shop shop_id = #{shopId}
+    </delete>
+
+</mapper> 

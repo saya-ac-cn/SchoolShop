@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+    
+<mapper namespace="api.dao.StudentDAO">
+
+    <!--根据学号查询用户-->
+    <select id="queryBasicById"  parameterType="Student"  resultType="Student">
+        select * from student a where a.id = #{id}
+    </select>
+
+    <!--添加用户-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Student">
+      insert into student(id,name,password,college,classes,apartment,email,mobile,question,answer,status,create_time)
+       values(#{id},#{name},#{password},#{college},#{classes},#{apartment},#{email},#{mobile},#{question},#{answer},#{status},#{createTime})
+    </insert>
+
+    <!-- 修改用户信息 -->
+    <update id="update" useGeneratedKeys="true" keyProperty="id" parameterType="Student">
+        update student
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="college != null and college != ''">
+                college = #{college},
+            </if>
+            <if test="classes != null and classes != ''">
+                classes = #{classes},
+            </if>
+            <if test="apartment != null and apartment != ''">
+                apartment = #{apartment},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
+            </if>
+            <if test="mobile != null and mobile != ''">
+                mobile = #{mobile},
+            </if>
+            <if test="question != null and question != ''">
+                question = #{question},
+            </if>
+            <if test="answer != null and answer != ''">
+                answer = #{answer},
+            </if>
+            <if test="status != null and status != ''">
+                status = #{status},
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--删除用户-->
+    <delete id="delete" parameterType="int">
+        delete from student where id = #{id}
+    </delete>
+
+</mapper> 
