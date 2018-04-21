@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+    
+<mapper namespace="api.dao.OrderDAO">
+
+    <!--判断某一商品在订单明细表中是否存在-->
+    <select id="existOrderByGoods"  resultType="java.lang.Integer">
+       SELECT
+            count(*)
+        FROM
+            `order` a
+        LEFT JOIN `order_detail` b ON b.order_id = a.id
+        WHERE
+            b.goods_id = #{goodsId}
+        AND a.`status` = 2
+    </select>
+
+    <!--获取子订单详情-->
+    <select id="getOrderDetail" parameterType="OrderDetail"  resultType="OrderDetail">
+        SELECT
+            id,
+            order_id as orderId,
+            shop_id as shopId,
+            goods_id as goodsId,
+            current_price as currentPrice,
+            quantity,
+            total_price as totalPrice,
+            create_time as createTime,
+            update_time as updateTime
+        FROM
+            `order_detail`
+        <where>
+            <if test = "id != null and id != ''">
+                id  = #{id}
+            </if>
+            <if test = "orderId != null and orderId != ''">
+                and order_id  = #{orderId}
+            </if>
+            <if test = "shopId != null and shopId != ''">
+                and shop_id = #{shopId}
+            </if>
+            <if test = "goodsId != null and goodsId != ''">
+                and goods_id = #{goodsId}
+            </if>
+        </where>
+    </select>
+
+    <!--查询用户相关的订单-->
+    <select id="getOrderReport" parameterType="OrderReport" resultType="OrderReport">
+        SELECT
+            d.id AS orderId,
+            a.`status`,
+            d.current_price as currentPrice,
+            d.quantity,
+            d.total_price as totalPrice,
+            d.create_time as createTime,
+            e.`name`,
+            b.username,
+            c.address,
+            c.mobil
+        FROM
+            `order` a
+        LEFT JOIN USER b ON a.user_id = b.id
+        LEFT JOIN address c ON a.user_addres = c.id
+        LEFT JOIN `order_detail` d ON d.order_id = a.id
+        LEFT JOIN goods e ON d.goods_id = e.id
+        <where>
+            <if test = "shopId != null and shopId != ''">
+                d.shop_id  = #{shopId}
+            </if>
+            <if test="startTime != null and startTime != ''and endTime != null and endTime != ''">
+                and date_format(d.create_time,'%Y-%m-%d') between date_format(#{startTime},'%Y-%m-%d')  and date_format(#{endTime},'%Y-%m-%d')
+            </if>
+        </where>
+    </select>
+
+    <!--查询用户的账户情况-->
+    <select id="getWallet" resultType="Wallet">
+        select a.id,a.wallet,a.update_time as updateTime  from wallet a where a.id = #{userID}
+    </select>
+
+    <!--变更账户资金-->
+    <update id="updateWallet" useGeneratedKeys="true" keyProperty="id" parameterType="Wallet">
+         update wallet set wallet = #{wallet} ,update_time = #{updateTime} where id = #{id}
+    </update>
+    
+    <delete id="deleteOrderItem" parameterType="OrderDetail">
+         delete from `order_detail`  where id = #{id} and  shop_id = #{shopId}
+    </delete>
+
+</mapper> 

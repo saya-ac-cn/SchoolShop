@@ -50,19 +50,19 @@ var navs = [{
         {
             "title" : "上架新品",
             "icon" : "&#xe631;",
-            "href" : "",
+            "href" : "/shop/addGoods.html",
             "spread" : false
         },
         {
             "title" : "修改商品",
             "icon" : "&#xe631;",
-            "href" : "",
+            "href" : "/shop/modifyGoods.html",
             "spread" : false
         } ,
         {
             "title" : "下架商品",
             "icon" : "&#xe631;",
-            "href" : "",
+            "href" : "/shop/deleteGoods.html",
             "spread" : false
         }
     ]
@@ -75,13 +75,13 @@ var navs = [{
         {
             "title" : "订单统计",
             "icon" : "&#xe631;",
-            "href" : "",
+            "href" : "/shop/orderReport.html",
             "spread" : false
         },
         {
             "title" : "管理订单",
             "icon" : "&#xe631;",
-            "href" : "",
+            "href" : "/shop/orderMana.html",
             "spread" : false
         }
     ]

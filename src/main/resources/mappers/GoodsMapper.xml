@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+    
+<mapper namespace="api.dao.GoodsDAO">
+
+    <!--查询商品-->
+    <select id="queryToPaging"  parameterType="Goods"  resultType="Goods">
+        select
+        a.id,
+        a.shop_id as shopId,
+        a.name,
+        a.subtitle,
+        a.main_images as mainImages,
+        a.detail,
+        a.price,
+        a.stock,
+        a.status,
+        a.create_time as createTime,
+        a.update_time as updateTime
+        from goods a
+        <where>
+            <if test = "id != null and id != ''">
+                a.id  = #{id}
+            </if>
+            <if test = "shopId != null and shopId != ''">
+                and a.shop_id  = #{shopId}
+            </if>
+            <if test = "name != null and name != ''">
+                and a.name like concat("%",#{name},"%")
+            </if>
+            <if test="startTime != null and startTime != ''and endTime != null and endTime != ''">
+                and date_format(a.create_time,'%Y-%m-%d') between date_format(#{startTime},'%Y-%m-%d')  and date_format(#{endTime},'%Y-%m-%d')
+            </if>
+        </where>
+    </select>
+
+    <!--添加商品-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Goods">
+         INSERT INTO `goods` (
+            `shop_id`,
+            `name`,
+            `subtitle`,
+            `main_images`,
+            `detail`,
+            `price`,
+            `stock`,
+            `status`,
+            `create_time`
+        )
+        VALUES
+            (
+                #{shopId},
+                #{name},
+                #{subtitle},
+                #{mainImages},
+                #{detail},
+                #{price},
+                #{stock},
+                #{status},
+                #{createTime}
+            )
+    </insert>
+
+    <!--修改商品-->
+    <update id="update" useGeneratedKeys="true" keyProperty="id" parameterType="Goods">
+        update goods
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="subtitle != null and subtitle != ''">
+                subtitle = #{subtitle},
+            </if>
+            <if test="mainImages != null and mainImages != ''">
+                main_images = #{mainImages},
+            </if>
+            <if test="detail != null and detail != ''">
+                detail = #{detail},
+            </if>
+            <if test="price != null and price != ''">
+                price = #{price},
+            </if>
+            <if test="stock != null and stock != ''">
+                stock = #{stock},
+            </if>
+            <if test="status != null and status != ''">
+                status = #{status},
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        where id = #{id} and shop_id  = #{shopId}
+    </update>
+
+
+
+</mapper> 

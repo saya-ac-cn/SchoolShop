@@ -84,4 +84,60 @@ public class Shop {
         return Viewname;
     }
 
+    /**
+     * 添加商品
+     * @return
+     */
+    @RequestMapping(value = "/addGoods.html")
+    public String addGoods()
+    {
+        String Viewname = "shop/addGoods";
+        return Viewname;
+    }
+
+    /**
+     * 修改商品
+     * @return
+     */
+    @RequestMapping(value = "/modifyGoods.html")
+    public String goodsModify()
+    {
+        String Viewname = "shop/modifyGoods";
+        return Viewname;
+    }
+
+    /**
+     * 下架商品
+     * @return
+     */
+    @RequestMapping(value = "/deleteGoods.html")
+    public String deleteGoods()
+    {
+        String Viewname = "shop/deleteGoods";
+        return Viewname;
+    }
+
+    /**
+     * 订单统计
+     * @return
+     */
+    @RequestMapping(value = "/orderReport.html")
+    public String orderReport()
+    {
+        String Viewname = "shop/orderReport";
+        return Viewname;
+    }
+
+    /**
+     * 管理订单
+     * @return
+     */
+    @RequestMapping(value = "/orderMana.html")
+    public String orderMana()
+    {
+        String Viewname = "shop/orderMana";
+        return Viewname;
+    }
+
+
 }

@@ -1,11 +1,15 @@
 package api.service;
 
+import api.entity.GoodsEntity;
+import api.entity.OrderReport;
 import api.entity.ShopEntity;
 import api.entity.StudentEntity;
+import api.tools.LayuiTable;
 import api.tools.Result;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * 商户管理中心业务层接口
@@ -53,13 +57,6 @@ public interface IShopService {
      */
     public Result<Integer> shopRegister(ShopEntity vo) throws Exception;
 
-    /**
-     * 修改商户信息
-     * @param vo
-     * @return
-     * @throws Exception
-     */
-    public Result<Integer> shopUpdateInfo(ShopEntity vo) throws Exception;
 
     /**
      * 上传商品图片
@@ -130,5 +127,55 @@ public interface IShopService {
      * @throws Exception
      */
     public Result<Object> updateShopInfo(ShopEntity vo) throws Exception;
+
+    /**
+     * 添加商品
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> insertGoods(GoodsEntity vo) throws  Exception;
+
+    /**
+     * 商品分页
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public LayuiTable<List> goodsPaging(GoodsEntity vo) throws Exception;
+
+    /**
+     * 修改商品
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> updateGoods(GoodsEntity vo) throws Exception;
+
+    /**
+     * 下架商品
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> deleteGoods(GoodsEntity vo) throws Exception;
+
+    /**
+     * 获取订单报表
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public LayuiTable<List> orderReportPagin(OrderReport vo) throws Exception;
+
+    /**
+     * 撤销订单
+     * @param itermOrderId 子订单号
+     * @param ststus 该订单的状态
+     * param user 用户的账号
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> deleteOrder(Integer itermOrderId,String ststus,String user) throws Exception;
 
 }

@@ -1,6 +1,8 @@
 package api.service.impl;
 
+import api.dao.FilesDAO;
 import api.dao.StudentDAO;
+import api.entity.FilesEntity;
 import api.entity.StudentEntity;
 import api.handle.MyException;
 import api.service.IPublicService;
@@ -8,6 +10,7 @@ import api.tools.DesUtil;
 import api.tools.Result;
 import api.tools.ResultEnum;
 import api.tools.ResultUtil;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +30,10 @@ public class PublicServiceImpl implements IPublicService {
     @Resource
     @Qualifier("studentDAO")
     private StudentDAO studentDAO;
+
+    @Resource
+    @Qualifier("filesDAO")
+    private FilesDAO filesDAO;
 
     /**
      * 判断商户管理员是否存在
@@ -119,6 +126,12 @@ public class PublicServiceImpl implements IPublicService {
                 if(((list.get(0))).getPassword().equals(Password))
                 {
                     request.getSession().setAttribute("ShopID", vo.getId());//为之注入用户名
+                    request.getSession().setAttribute("ShopAdmin", list.get(0).getName());//为之注入用户名
+                    List<FilesEntity> img = filesDAO.getFiles(new FilesEntity("2",vo.getId()),new RowBounds());
+                    if(img.size()>0)
+                    {
+                        request.getSession().setAttribute("img", img.get(0).getUrl());//为之注入头像
+                    }
                     return ResultUtil.success();//返回登录成功
                 }
                 else{

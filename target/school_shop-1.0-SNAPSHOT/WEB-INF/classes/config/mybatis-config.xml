@@ -15,6 +15,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="Shop" type="api.entity.ShopEntity"/>
 		<typeAlias alias="Files" type="api.entity.FilesEntity"/>
 		<typeAlias alias="Stand" type="api.entity.StandEntity"/>
+		<typeAlias alias="Goods" type="api.entity.GoodsEntity"/>
+		<typeAlias alias="Order" type="api.entity.OrderEntity"/>
+		<typeAlias alias="OrderDetail" type="api.entity.OrderDetailEntity"/>
+		<typeAlias alias="User" type="api.entity.UserEntity"/>
+		<typeAlias alias="OrderReport" type="api.entity.OrderReport"/>
+		<typeAlias alias="Wallet" type="api.entity.WalletEntity"/>
 	</typeAliases>
 
 

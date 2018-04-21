@@ -22,7 +22,6 @@ public class ShopEntity extends BaseEntity {
      * 商铺入驻、修改验证场景
      * 商铺名不为空且在50个字符内
      * 管理员id不为空
-     * 摊位号不为空
      * 摊位描述
      * @return
      */
@@ -33,10 +32,6 @@ public class ShopEntity extends BaseEntity {
             return false;
         }
         if(this.getStudentId() == null)
-        {
-            return false;
-        }
-        if(this.getStandId() == null )
         {
             return false;
         }

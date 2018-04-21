@@ -26,6 +26,11 @@ layui.config({
         $(this).parent("li").siblings().removeClass("layui-nav-itemed");
     })
 
+    $(".diy a").on("click", function () {
+        addTab($(this));
+        $(this).parent("li").siblings().removeClass("layui-nav-itemed");
+    })
+
     //公告层
     function showNotice() {
         layer.open({

@@ -30,5 +30,19 @@ public class PublicView {
         return view;
     }
 
+    @RequestMapping(value = {"/shopLogout.html"})
+    public String shopLogout()
+    {
+        RequestAttributes ra = RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = ((ServletRequestAttributes)ra).getRequest();
+        request.getSession().removeAttribute("ShopID");
+        request.getSession().removeAttribute("ShopAdmin");
+        request.getSession().removeAttribute("img");
+        String view = "redirect:/shopLogin.html";
+        return view;
+    }
+
+
+
 
 }

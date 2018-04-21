@@ -1,14 +1,11 @@
 package api.service.impl;
 
-import api.dao.FilesDAO;
-import api.dao.ShopDAO;
-import api.dao.StudentDAO;
-import api.entity.FilesEntity;
-import api.entity.ShopEntity;
-import api.entity.StudentEntity;
+import api.dao.*;
+import api.entity.*;
 import api.handle.MyException;
 import api.service.IShopService;
 import api.tools.*;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -39,6 +36,18 @@ public class ShopServiceImpl implements IShopService {
     @Resource
     @Qualifier("filesDAO")
     private FilesDAO filesDAO;
+
+    @Resource
+    @Qualifier("goodsDAO")
+    private GoodsDAO goodsDAO;
+
+    @Resource
+    @Qualifier("orderDAO")
+    private OrderDAO orderDAO;
+
+    @Resource
+    @Qualifier("userDAO")
+    private UserDAO userDAO;
 
 
     /**
@@ -199,6 +208,9 @@ public class ShopServiceImpl implements IShopService {
      */
     public Result<Integer> shopRegister(ShopEntity vo) throws Exception {
         Integer flog = -1;//返回标志
+        RequestAttributes ra = RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = ((ServletRequestAttributes)ra).getRequest();
+        vo.setStudentId((Integer) request.getSession().getAttribute("ShopID"));//在session中取出商户管理员的信息
         if(vo.insertScenes() == false)
         {
             return ResultUtil.error(3,"用户输入的数据不符合要求");
@@ -208,14 +220,11 @@ public class ShopServiceImpl implements IShopService {
             List<ShopEntity> list = shopDAO.queryShopByName(vo);
             if(list.size() > 0)
             {
-                throw new MyException(ResultEnum.UNKONW_ERROR);//该商户已注册过
+                return ResultUtil.error(1,"该商户已注册过");
             }
             else
             {
-                RequestAttributes ra = RequestContextHolder.getRequestAttributes();
-                HttpServletRequest request = ((ServletRequestAttributes)ra).getRequest();
-                vo.setStudentId((Integer) request.getSession().getAttribute("ShopID"));//在session中取出商户管理员的信息
-                vo.setStatus("3");//统一置为审核中
+                vo.setStatus("2");//统一置为审核中
                 Date currentTime = new Date();
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String datetime=formatter.format(currentTime);
@@ -226,7 +235,7 @@ public class ShopServiceImpl implements IShopService {
                 }
                 else
                 {
-                    throw new MyException(ResultEnum.RollBACK);//注册失败
+                    return ResultUtil.error(999,"注册失败");
                 }
             }
         }
@@ -311,15 +320,6 @@ public class ShopServiceImpl implements IShopService {
         return ResultUtil.error(-1,"删除失败");
     }
 
-    /**
-     * 修改商户信息
-     * @param vo
-     * @return
-     * @throws Exception
-     */
-    public Result<Integer> shopUpdateInfo(ShopEntity vo) throws Exception {
-        return null;
-    }
 
     /**
      * 上传图片（头像、商户logo、商品图片的基类）
@@ -470,12 +470,11 @@ public class ShopServiceImpl implements IShopService {
 
     /**
      * 修改商户信息
-     *
      * @param vo
      * @return
      * @throws Exception
      */
-    public Result<Object> updateShopInfo(ShopEntity vo) throws Exception {
+    public Result<Object> updateShopInfo(ShopEntity vo) throws Exception{
         RequestAttributes ra = RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = ((ServletRequestAttributes)ra).getRequest();
         Integer studentId = (Integer) request.getSession().getAttribute("ShopID");
@@ -520,6 +519,299 @@ public class ShopServiceImpl implements IShopService {
         {
             //该账户下，没有商户
             return ResultUtil.error(-1,"没有找到该商户");
+        }
+    }
+
+
+    /**
+     * 添加商品
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> insertGoods(GoodsEntity vo) throws Exception {
+        List<StudentEntity> list = shopDAO.queryShopIsexistByStudent(api.tools.Service.utilGetShopID());
+        if (list.size() > 0) {
+            ShopEntity shop = list.get(0).getShop();
+            if (shop.getStatus().equals("1")) {
+                //账户信息正常，可以添加
+                vo.setShopId(shop.getShopId());
+                vo.setStatus("1");//
+                vo.setCreateTime(api.tools.Service.utilsTime());
+                if (vo.insertScenes()) {
+                    if (goodsDAO.insert(vo) > 0) {
+                        return ResultUtil.success();
+                    } else {
+                        return ResultUtil.error(999, "添加失败");
+                    }
+                } else {
+                    return ResultUtil.error(1, "您填写的商品信息不符合要求");
+                }
+            }
+            if (shop.getStatus().equals("2")) {
+                //审核中
+                return ResultUtil.error(2, "正在审核中的商户不允许添加商品");
+            } else {
+                //冻结中
+                return ResultUtil.error(3, "冻结中的商户不允许添加商品");
+            }
+        } else {
+            //该账户下，没有商户
+            return ResultUtil.error(-1, "没有找到该商户");
+        }
+    }
+
+    /**
+     * 商品分页
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public LayuiTable<List> goodsPaging(GoodsEntity vo) throws Exception {
+        List<StudentEntity> shoplist = shopDAO.queryShopIsexistByStudent(api.tools.Service.utilGetShopID());
+        if (shoplist.size() > 0) {
+            if (StringUtils.isNotBlank(vo.getStartTime())) {
+                vo.setStartTime(vo.getStartTime());
+            }
+            if (StringUtils.isNotBlank(vo.getEndTime())) {
+                vo.setEndTime(vo.getEndTime());
+            }
+            vo.setShopId(shoplist.get(0).getShop().getShopId());
+            RowBounds rowBounds = new RowBounds();
+            List<GoodsEntity> list = goodsDAO.queryToPaging(vo,rowBounds);
+            if(list.size() > 0)
+            {
+                LayuiTable<List> out = new LayuiTable();
+                out.setCount(list.size());
+                Paging paging =new Paging();
+                //每页显示的商品数量
+                if(vo.getRows() == null || vo.getRows() == 0)
+                {
+                    vo.setRows(10);
+                }
+                paging.setPageSize(vo.getRows());//每页显示记录的数量
+                paging.setDateSum(list.size());//总记录数
+                paging.setTotalPage();
+                paging.setPageNow(vo.getPages());//设置当前的页码
+                rowBounds = new RowBounds((paging.getPageNow()-1)*paging.getPageSize(),paging.getPageSize());
+                list = goodsDAO.queryToPaging(vo,rowBounds);;//获取满足条件的记录集合
+                paging.setGrid(list);
+                out.setCode(0);
+                out.setMsg("查询成功");
+                out.setData(list);
+                return out;
+            }else
+            {
+                throw new MyException(ResultEnum.NOT_EXIST);
+            }
+        }
+        else
+        {
+            throw new MyException(ResultEnum.NOT_EXIST);
+        }
+    }
+
+    /**
+     * 修改商品
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> updateGoods(GoodsEntity vo) throws Exception {
+        List<StudentEntity> list = shopDAO.queryShopIsexistByStudent(api.tools.Service.utilGetShopID());
+        if (list.size() > 0) {
+            ShopEntity shop = list.get(0).getShop();
+            if (shop.getStatus().equals("1")) {
+                //账户信息正常，可以修改
+                vo.setShopId(shop.getShopId());
+                vo.setUpdateTime(api.tools.Service.utilsTime());
+                if (vo.updateScenes()) {
+                    if (goodsDAO.update(vo) > 0) {
+                        return ResultUtil.success();
+                    } else {
+                        return ResultUtil.error(999, "修改失败");
+                    }
+                } else {
+                    return ResultUtil.error(1, "您填写的商品信息不符合要求");
+                }
+            }
+            if (shop.getStatus().equals("2")) {
+                //审核中
+                return ResultUtil.error(2, "正在审核中的商户不允许修改商品");
+            } else {
+                //冻结中
+                return ResultUtil.error(3, "冻结中的商户不允许修改商品");
+            }
+        } else {
+            //该账户下，没有商户
+            return ResultUtil.error(-1, "没有找到该商户");
+        }
+    }
+
+    /**
+     * 下架商品
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> deleteGoods(GoodsEntity vo) throws Exception {
+        List<StudentEntity> list = shopDAO.queryShopIsexistByStudent(api.tools.Service.utilGetShopID());
+        if (list.size() > 0) {
+            ShopEntity shop = list.get(0).getShop();
+            if (shop.getStatus().equals("1")) {
+                //账户信息正常，可以删除
+                //查询该商品是否可以删除
+                if(vo.getStatus().trim().equals("2")== true && orderDAO.existOrderByGoods(vo.getId()) > 0)
+                {
+                    //该商品正处于交易中不能删除
+                    return ResultUtil.error(1000, "该商品正处于交易中不能删除");
+                }
+                vo.setShopId(shop.getShopId());
+                vo.setUpdateTime(api.tools.Service.utilsTime());
+                if (vo.deleteScenes()) {
+                    if (goodsDAO.update(vo) > 0) {
+                        return ResultUtil.success();
+                    } else {
+                        return ResultUtil.error(999, "下架失败");
+                    }
+                } else {
+                    return ResultUtil.error(1, "您填写的商品信息不符合要求");
+                }
+            }
+            if (shop.getStatus().equals("2")) {
+                //审核中
+                return ResultUtil.error(2, "正在审核中的商户不允许修改商品");
+            } else {
+                //冻结中
+                return ResultUtil.error(3, "冻结中的商户不允许修改商品");
+            }
+        } else {
+            //该账户下，没有商户
+            return ResultUtil.error(-1, "没有找到该商户");
+        }
+    }
+
+
+    /**
+     * 获取订单报表
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public LayuiTable<List> orderReportPagin(OrderReport vo) throws Exception {
+        List<StudentEntity> shoplist = shopDAO.queryShopIsexistByStudent(api.tools.Service.utilGetShopID());
+        if (shoplist.size() > 0) {
+            if (StringUtils.isNotBlank(vo.getStartTime())) {
+                vo.setStartTime(vo.getStartTime());
+            }
+            if (StringUtils.isNotBlank(vo.getEndTime())) {
+                vo.setEndTime(vo.getEndTime());
+            }
+            vo.setShopId(shoplist.get(0).getShop().getShopId());
+            RowBounds rowBounds = new RowBounds();
+            List<OrderReport> list = orderDAO.getOrderReport(vo,rowBounds);
+            if(list.size() > 0)
+            {
+                LayuiTable<List> out = new LayuiTable();
+                out.setCount(list.size());
+                Paging paging =new Paging();
+                //每页显示的记录数量
+                if(vo.getRows() == null || vo.getRows() == 0)
+                {
+                    vo.setRows(10);
+                }
+                paging.setPageSize(vo.getRows());//每页显示记录的数量
+                paging.setDateSum(list.size());//总记录数
+                paging.setTotalPage();
+                paging.setPageNow(vo.getPages());//设置当前的页码
+                rowBounds = new RowBounds((paging.getPageNow()-1)*paging.getPageSize(),paging.getPageSize());
+                list = orderDAO.getOrderReport(vo,rowBounds);;//获取满足条件的记录集合
+                paging.setGrid(list);
+                out.setCode(0);
+                out.setMsg("查询成功");
+                out.setData(list);
+                return out;
+            }else
+            {
+                throw new MyException(ResultEnum.NOT_EXIST);
+            }
+        }
+        else
+        {
+            throw new MyException(ResultEnum.NOT_EXIST);
+        }
+    }
+
+
+    /**
+     * 撤销订单
+     * @param itermOrderId 子订单号
+     * @param ststus 该订单的状态
+     * param user 用户的账号
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> deleteOrder(Integer itermOrderId, String ststus,String user) throws Exception {
+        List<StudentEntity> list = shopDAO.queryShopIsexistByStudent(api.tools.Service.utilGetShopID());
+        if (list.size() > 0) {
+            ShopEntity shop = list.get(0).getShop();
+            if (shop.getStatus().equals("1")) {
+                //账户信息正常，可以修改
+                OrderDetailEntity orderDetail = orderDAO.getOrderDetail(new OrderDetailEntity(itermOrderId,null,null,shop.getShopId()));
+                if(orderDetail != null)
+                {
+                    if(ststus.trim().equals("1"))
+                    {
+                        //已支付，需要退款
+                        //商户的钱包
+                        WalletEntity shopWallet = orderDAO.getWallet(api.tools.Service.utilGetShopID());
+                        //用户的钱包
+                        Integer userId = userDAO.getUser(user.trim()).getId();
+                        WalletEntity userWallet = orderDAO.getWallet(userId);
+                        if(shopWallet.getWallet() > orderDetail.getTotalPrice())
+                        {
+                            //执行扣减
+                            shopWallet.setWallet(shopWallet.getWallet()-orderDetail.getTotalPrice());
+                            shopWallet.setUpdateTime(api.tools.Service.utilsTime());
+                            userWallet.setWallet(userWallet.getWallet()+orderDetail.getTotalPrice());
+                            userWallet.setUpdateTime(api.tools.Service.utilsTime());
+                            orderDAO.updateWallet(shopWallet);
+                            orderDAO.updateWallet(userWallet);
+                        }
+                        else
+                        {
+                            return ResultUtil.error(6, "账户金额不足，无法撤销");
+                        }
+                    }
+                    //无需退款直接删除记录
+                    if(orderDAO.deleteOrderItem(orderDetail)>0)
+                    {
+                        return ResultUtil.success();
+                    }
+                    else
+                    {
+                        return ResultUtil.error(5, "删除订单失败");
+                    }
+                }else
+                {
+                    return ResultUtil.error(4, "没有找到该订单");
+                }
+            }
+            if (shop.getStatus().equals("2")) {
+                //审核中
+                return ResultUtil.error(2, "正在审核中的商户不允许撤销订单");
+            } else {
+                //冻结中
+                return ResultUtil.error(3, "冻结中的商户不允许撤销订单");
+            }
+        } else {
+            //该账户下，没有商户
+            return ResultUtil.error(-1, "没有找到该商户");
         }
     }
 }
