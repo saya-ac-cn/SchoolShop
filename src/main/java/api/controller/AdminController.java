@@ -1,6 +1,7 @@
 package api.controller;
 
 import api.entity.AdminEntity;
+import api.entity.NewsEntity;
 import api.entity.ShopEntity;
 import api.entity.StandEntity;
 import api.service.impl.AdminServiceImpl;
@@ -108,6 +109,66 @@ public class AdminController {
     public Result<Integer> updateStand(StandEntity vo) throws Exception
     {
         return adminServiceImpl.updateStand(vo);
+    }
+
+    /**
+     * 修改商户的摊位、状态
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    @PutMapping(value = "/shop/review.yht")
+    public Result<Integer> manaShop(ShopEntity vo) throws Exception
+    {
+        return adminServiceImpl.manaShop(vo);
+    }
+
+    /**
+     * 发布动态
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/news/add.yht")
+    public Result<Integer> addNews(NewsEntity vo) throws Exception
+    {
+        return adminServiceImpl.addNews(vo);
+    }
+
+    /**
+     * 修改动态
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    @PutMapping(value = "/news/update.yht")
+    public Result<Integer> updateNews(NewsEntity vo) throws Exception
+    {
+        return adminServiceImpl.updateNews(vo);
+    }
+
+    /**
+     * 获取动态
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/news/query.yht")
+    public  LayuiTable<List> getNews(NewsEntity vo) throws Exception
+    {
+        return adminServiceImpl.getNews(vo);
+    }
+
+    /**
+     * 删除动态
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    @DeleteMapping(value = "/news/delete.yht")
+    public Result<Integer> getNews(@RequestParam(value = "id") Integer id) throws Exception
+    {
+        return adminServiceImpl.deleteNews(id);
     }
 
 }

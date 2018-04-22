@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+    
+<mapper namespace="api.dao.StandDAO">
+
+    <!--获取所有的动态-->
+    <select id="getAll"  parameterType="News"  resultType="News">
+       SELECT
+        id,
+        title,
+        content,
+        author,
+        create_time as createTime,
+        update_time as updateTime
+        from news
+        <where>
+            <if test = "id != null and id != ''">
+                id  = #{id}
+            </if>
+            <if test = "title != null and title != ''">
+                and title  = #{title}
+            </if>
+            <if test="startTime != null and startTime != ''and endTime != null and endTime != ''">
+                and date_format(create_time,'%Y-%m-%d') between date_format(#{startTime},'%Y-%m-%d')  and date_format(#{endTime},'%Y-%m-%d')
+            </if>
+        </where>
+        ORDER BY id DESC
+    </select>
+
+    <!-- 发布动态 -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="News">
+        INSERT INTO `news` (
+            `title`,
+            `content`,
+            `author`,
+            `create_time`
+        )
+        VALUES
+            (
+                #{title},
+                #{content},
+                 #{author},
+                #{createTime}
+            );
+    </insert>
+
+    <!--修改动态-->
+    <update id="update" useGeneratedKeys="true" keyProperty="id" parameterType="News">
+        UPDATE `news`
+        <set>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="content != null and content != ''">
+                content = #{content},
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                update_time = #{updateTime}
+            </if>
+        </set>
+        WHERE
+            `id` = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        DELETE FROM `news`   WHERE  `id` = #{id}
+    </delete>
+
+</mapper> 

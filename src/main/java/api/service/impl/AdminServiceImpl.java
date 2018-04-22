@@ -1,10 +1,7 @@
 package api.service.impl;
 
 import api.dao.*;
-import api.entity.AdminEntity;
-import api.entity.FilesEntity;
-import api.entity.ShopEntity;
-import api.entity.StandEntity;
+import api.entity.*;
 import api.handle.MyException;
 import api.service.IAdminService;
 import api.tools.*;
@@ -42,6 +39,10 @@ public class AdminServiceImpl implements IAdminService {
     @Resource
     @Qualifier("messageDAO")
     private MessageDAO messageDAO;
+
+    @Resource
+    @Qualifier("newsDAO")
+    private NewsDAO newsDAO;
 
     /**
      * 获取管理员的详情
@@ -260,6 +261,7 @@ public class AdminServiceImpl implements IAdminService {
      */
     public Result<Integer> insertStand(StandEntity vo) throws Exception {
         vo.setStatus("1");//置为正常
+        vo.setChoise("1");//置为未选
         vo.setCreateTime(api.tools.Service.utilsTime());
         if(standDAO.insert(vo)>0)
         {
@@ -287,6 +289,162 @@ public class AdminServiceImpl implements IAdminService {
         else
         {
             throw new MyException(ResultEnum.ERROP);
+        }
+    }
+
+
+    /**
+     * 发送消息
+     *
+     * @param vo
+     */
+    public void sendMessage(MessageEntity vo) {
+        messageDAO.sendMessage(vo);
+    }
+
+    /**
+     * 分派摊位/修改状态
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> manaShop(ShopEntity vo) throws Exception {
+        vo.setUpdateTime(api.tools.Service.utilsTime());
+        if (vo.getStand() != null && vo.getStatus().trim().equals("1"))
+        {
+           if(shopDAO.update(vo) > 0)
+           {
+               //发送账户通过的消息
+               MessageEntity message = new MessageEntity(api.tools.Service.utilGetAdminID(), vo.getStudentId(), "系统消息", "您的商户已经审核通过，请尽情使用吧。", api.tools.Service.utilsTime());
+               this.sendMessage(message);
+               return ResultUtil.success();
+           }
+        }
+        if (vo.getStand() != null && vo.getStatus().trim().equals("2"))
+        {
+            //发送账户冻结的消息
+            if(shopDAO.update(vo) > 0)
+            {
+                //发送账户通过的消息
+                MessageEntity message = new MessageEntity(api.tools.Service.utilGetAdminID(), vo.getStudentId(), "系统消息", "您的商户已经被冻结，请重新修改资料，然后保存提交。", api.tools.Service.utilsTime());
+                this.sendMessage(message);
+                return ResultUtil.success();
+            }
+        }
+        else
+        {
+            //第一步查询原来它选择了摊位没
+            ShopEntity shop = shopDAO.queryShopByID(vo.getShopId());
+            if(shop.getStandId() != null)
+            {
+                //已选择的，首先清除之前的，再选择
+                standDAO.update(new StandEntity(shop.getStandId(),"1"));//直接置为未选择
+            }
+            standDAO.update(new StandEntity(vo.getStandId(),"0"));//直接置为选择
+            //发送摊位选择的通知
+            if(shopDAO.update(vo) > 0)
+            {
+                //发送账户通过的消息
+                MessageEntity message = new MessageEntity(api.tools.Service.utilGetAdminID(), vo.getStudentId(), "系统消息", "我们已经为您分派了商铺摊位，现在，您可以继续使用了。", api.tools.Service.utilsTime());
+                this.sendMessage(message);
+                return ResultUtil.success();
+            }
+        }
+        return ResultUtil.error(-1,"操作失败");
+    }
+
+    /**
+     * 发布动态
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> addNews(NewsEntity vo) throws Exception {
+        vo.setAuthor(api.tools.Service.utilGetAdminID());
+        vo.setCreateTime(api.tools.Service.utilsTime());
+        if(newsDAO.insert(vo) > 0)
+        {
+            return ResultUtil.success();
+        }
+        else
+        {
+            throw new MyException(ResultEnum.ERROP);
+        }
+    }
+
+    /**
+     * 修改动态
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> updateNews(NewsEntity vo) throws Exception {
+        vo.setUpdateTime(api.tools.Service.utilsTime());
+        if(newsDAO.update(vo) > 0)
+        {
+            return ResultUtil.success();
+        }
+        else
+        {
+            throw new MyException(ResultEnum.ERROP);
+        }
+    }
+
+    /**
+     * 删除动态
+     *
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> deleteNews(Integer id) throws Exception {
+        if(newsDAO.delete(id) > 0)
+        {
+            return ResultUtil.success();
+        }
+        else
+        {
+            throw new MyException(ResultEnum.ERROP);
+        }
+    }
+
+    /**
+     * 取出动态
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public LayuiTable<List> getNews(NewsEntity vo) throws Exception {
+        RowBounds rowBounds = new RowBounds();
+        List<NewsEntity> list = newsDAO.getAll(vo,rowBounds);
+        if(list.size() > 0)
+        {
+            LayuiTable<List> out = new LayuiTable();
+            out.setCount(list.size());
+            Paging paging =new Paging();
+            //每页显示的记录数量
+            if(vo.getRows() == null || vo.getRows() == 0)
+            {
+                vo.setRows(10);
+            }
+            paging.setPageSize(vo.getRows());//每页显示记录的数量
+            paging.setDateSum(list.size());//总记录数
+            paging.setTotalPage();
+            paging.setPageNow(vo.getPages());//设置当前的页码
+            rowBounds = new RowBounds((paging.getPageNow()-1)*paging.getPageSize(),paging.getPageSize());
+            list = newsDAO.getAll(vo,rowBounds);;//获取满足条件的记录集合
+            paging.setGrid(list);
+            out.setCode(0);
+            out.setMsg("查询成功");
+            out.setData(list);
+            return out;
+        }else
+        {
+            throw new MyException(ResultEnum.NOT_EXIST);
         }
     }
 }

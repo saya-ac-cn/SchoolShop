@@ -1,8 +1,6 @@
 package api.service;
 
-import api.entity.AdminEntity;
-import api.entity.ShopEntity;
-import api.entity.StandEntity;
+import api.entity.*;
 import api.tools.LayuiTable;
 import api.tools.Result;
 import org.springframework.web.multipart.MultipartFile;
@@ -80,6 +78,52 @@ public interface IAdminService {
      * @throws Exception
      */
     public Result<Integer> updateStand(StandEntity vo) throws Exception;
+
+    /**
+     * 发送消息
+     * @param vo
+     */
+    public void sendMessage(MessageEntity vo);
+
+    /**
+     * 分派摊位/修改状态
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> manaShop(ShopEntity vo) throws Exception;
+
+    /**
+     * 发布动态
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> addNews(NewsEntity vo) throws Exception;
+
+    /**
+     * 修改动态
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> updateNews(NewsEntity vo) throws Exception;
+
+    /**
+     * 删除动态
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> deleteNews(Integer id) throws Exception;
+
+    /**
+     * 取出动态
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public LayuiTable<List> getNews(NewsEntity vo) throws Exception;
 
 
 }

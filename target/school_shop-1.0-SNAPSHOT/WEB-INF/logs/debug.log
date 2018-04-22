@@ -1753,3 +1753,576 @@ org.springframework.web.HttpRequestMethodNotSupportedException: Request method '
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
 2018-04-22 18:23:53  [ http-nio-8080-exec-24:390642 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 21:23:50  [ main:11187449 ] - [ INFO ]  Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 18:17:26 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 21:23:53  [ main:11190059 ] - [ INFO ]  Closing Root WebApplicationContext: startup date [Sun Apr 22 18:17:23 CST 2018]; root of context hierarchy
+2018-04-22 21:24:03  [ main:11200428 ] - [ INFO ]  {dataSource-1} closed
+2018-04-22 21:25:15  [ RMI TCP Connection(3)-127.0.0.1:0 ] - [ INFO ]  Root WebApplicationContext: initialization started
+2018-04-22 21:25:15  [ RMI TCP Connection(3)-127.0.0.1:171 ] - [ INFO ]  Refreshing Root WebApplicationContext: startup date [Sun Apr 22 21:25:15 CST 2018]; root of context hierarchy
+2018-04-22 21:25:16  [ RMI TCP Connection(3)-127.0.0.1:321 ] - [ INFO ]  Loading XML bean definitions from class path resource [config/applicationContext.xml]
+2018-04-22 21:25:17  [ RMI TCP Connection(3)-127.0.0.1:1963 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\AdminDAO.class]
+2018-04-22 21:25:17  [ RMI TCP Connection(3)-127.0.0.1:1964 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\FilesDAO.class]
+2018-04-22 21:25:17  [ RMI TCP Connection(3)-127.0.0.1:1965 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\GoodsDAO.class]
+2018-04-22 21:25:17  [ RMI TCP Connection(3)-127.0.0.1:1965 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\MessageDAO.class]
+2018-04-22 21:25:17  [ RMI TCP Connection(3)-127.0.0.1:1968 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\OrderDAO.class]
+2018-04-22 21:25:17  [ RMI TCP Connection(3)-127.0.0.1:1969 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\ShopDAO.class]
+2018-04-22 21:25:17  [ RMI TCP Connection(3)-127.0.0.1:1971 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\StandDAO.class]
+2018-04-22 21:25:17  [ RMI TCP Connection(3)-127.0.0.1:1972 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\StudentDAO.class]
+2018-04-22 21:25:17  [ RMI TCP Connection(3)-127.0.0.1:1973 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\UserDAO.class]
+2018-04-22 21:25:17  [ RMI TCP Connection(3)-127.0.0.1:2004 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'adminDAO' and 'api.dao.AdminDAO' mapperInterface
+2018-04-22 21:25:17  [ RMI TCP Connection(3)-127.0.0.1:2005 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'filesDAO' and 'api.dao.FilesDAO' mapperInterface
+2018-04-22 21:25:17  [ RMI TCP Connection(3)-127.0.0.1:2006 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'goodsDAO' and 'api.dao.GoodsDAO' mapperInterface
+2018-04-22 21:25:17  [ RMI TCP Connection(3)-127.0.0.1:2006 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'messageDAO' and 'api.dao.MessageDAO' mapperInterface
+2018-04-22 21:25:17  [ RMI TCP Connection(3)-127.0.0.1:2006 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'orderDAO' and 'api.dao.OrderDAO' mapperInterface
+2018-04-22 21:25:17  [ RMI TCP Connection(3)-127.0.0.1:2006 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'shopDAO' and 'api.dao.ShopDAO' mapperInterface
+2018-04-22 21:25:17  [ RMI TCP Connection(3)-127.0.0.1:2006 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'standDAO' and 'api.dao.StandDAO' mapperInterface
+2018-04-22 21:25:17  [ RMI TCP Connection(3)-127.0.0.1:2006 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'studentDAO' and 'api.dao.StudentDAO' mapperInterface
+2018-04-22 21:25:17  [ RMI TCP Connection(3)-127.0.0.1:2006 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'userDAO' and 'api.dao.UserDAO' mapperInterface
+2018-04-22 21:25:20  [ RMI TCP Connection(3)-127.0.0.1:4289 ] - [ INFO ]  {dataSource-1} inited
+2018-04-22 21:25:22  [ RMI TCP Connection(3)-127.0.0.1:6930 ] - [ INFO ]  Root WebApplicationContext: initialization completed in 6929 ms
+2018-04-22 21:25:23  [ RMI TCP Connection(3)-127.0.0.1:7361 ] - [ INFO ]  FrameworkServlet 'dispatcher': initialization started
+2018-04-22 21:25:23  [ RMI TCP Connection(3)-127.0.0.1:7367 ] - [ INFO ]  Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 21:25:23 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 21:25:23  [ RMI TCP Connection(3)-127.0.0.1:7371 ] - [ INFO ]  Loading XML bean definitions from class path resource [config/dispatcher-servlet.xml]
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8598 ] - [ INFO ]  Mapped "{[/api/admin/stand/insert.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.insertStand(api.entity.StandEntity) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8600 ] - [ INFO ]  Mapped "{[/api/admin/info.yht],methods=[GET]}" onto public api.tools.Result<java.lang.Object> api.controller.AdminController.getStudentInfo() throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8600 ] - [ INFO ]  Mapped "{[/api/admin/shop/all.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.AdminController.displayAllShop(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8600 ] - [ INFO ]  Mapped "{[/api/admin/admin/info.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.updateAdminInfo(api.entity.AdminEntity) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8601 ] - [ INFO ]  Mapped "{[/api/admin/stand/update.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.updateStand(api.entity.StandEntity) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8601 ] - [ INFO ]  Mapped "{[/api/admin/upload.yht],methods=[POST]}" onto public api.tools.Result<java.lang.String> api.controller.AdminController.uploadPicture(javax.servlet.http.HttpServletRequest,org.springframework.web.multipart.MultipartFile) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8602 ] - [ INFO ]  Mapped "{[/api/admin/stand/all.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.AdminController.displayAllStandPagin(api.entity.StandEntity) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8610 ] - [ INFO ]  Mapped "{[/api/public/export],methods=[GET]}" onto public void api.controller.PublicController.export(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8610 ] - [ INFO ]  Mapped "{[/api/public/studentRegister.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentRegister(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8611 ] - [ INFO ]  Mapped "{[/api/public/studentLogin.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentLogin(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8612 ] - [ INFO ]  Mapped "{[/api/public/adminLogin.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentLogin(api.entity.AdminEntity) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8612 ] - [ INFO ]  Mapped "{[/api/public/studentExist.yht],methods=[GET]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentExist(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8642 ] - [ INFO ]  Mapped "{[/api/shop/info.yht],methods=[GET]}" onto public api.tools.Result<api.entity.StudentEntity> api.controller.ShopController.getStudentInfo() throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8643 ] - [ INFO ]  Mapped "{[/api/shop/admin/info.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.updateAdminInfo(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8643 ] - [ INFO ]  Mapped "{[/api/shop/upload.yht],methods=[POST]}" onto public api.tools.Result<java.lang.String> api.controller.ShopController.uploadPicture(java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.multipart.MultipartFile) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8644 ] - [ INFO ]  Mapped "{[/api/shop/goods/delete.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.deleteGoods(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8645 ] - [ INFO ]  Mapped "{[/api/shop/goods/pagin.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.ShopController.goodsPagin(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8645 ] - [ INFO ]  Mapped "{[/api/shop/goods/add.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.insertGoods(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8646 ] - [ INFO ]  Mapped "{[/api/shop/viewPicture/{page}],methods=[GET]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.viewPicture(java.lang.Integer,java.lang.Integer) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8647 ] - [ INFO ]  Mapped "{[/api/shop/shop/register.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.shopRegister(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8647 ] - [ INFO ]  Mapped "{[/api/shop/picture/delete/{id}],methods=[DELETE]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.deletePicture(java.lang.Integer,javax.servlet.http.HttpServletRequest) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8648 ] - [ INFO ]  Mapped "{[/api/shop/goods/update.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.updateGoods(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8649 ] - [ INFO ]  Mapped "{[/api/shop/order/delete.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.deleteOrder(java.lang.Integer,java.lang.String,java.lang.String) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8649 ] - [ INFO ]  Mapped "{[/api/shop/admin/password.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.updateAdminPass(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8650 ] - [ INFO ]  Mapped "{[/api/shop/shopinfo/info.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.updateShopInfo(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8651 ] - [ INFO ]  Mapped "{[/api/shop/order/report.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.ShopController.orderReportPagin(api.entity.OrderReport) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8652 ] - [ INFO ]  Mapped "{[/api/shop/admin/mibao.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.updateAdminMibao(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8653 ] - [ INFO ]  Mapped "{[/api/shop/shopinfo.yht],methods=[GET]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.displayShopInfo(javax.servlet.http.HttpServletRequest) throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8660 ] - [ INFO ]  Mapped "{[/admin/reviewShop.html]}" onto public java.lang.String view.Admin.reviewShop()
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8660 ] - [ INFO ]  Mapped "{[/admin/manaStand.html]}" onto public java.lang.String view.Admin.manaStand()
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8661 ] - [ INFO ]  Mapped "{[/admin/info.html]}" onto public java.lang.String view.Admin.actionInfo()
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8661 ] - [ INFO ]  Mapped "{[/admin/ || /admin/index.html || /admin/home.html]}" onto public java.lang.String view.Admin.actionHome()
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8664 ] - [ INFO ]  Mapped "{[/shopLogout.html]}" onto public java.lang.String view.PublicView.shopLogout()
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8665 ] - [ INFO ]  Mapped "{[/adminLogin.html]}" onto public java.lang.String view.PublicView.viewAdminLogin()
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8665 ] - [ INFO ]  Mapped "{[/adminLogout.html]}" onto public java.lang.String view.PublicView.adminLogout()
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8665 ] - [ INFO ]  Mapped "{[/ || /shopLogin.html]}" onto public java.lang.String view.PublicView.viewShopLogin()
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8676 ] - [ INFO ]  Mapped "{[/shop/orderMana.html]}" onto public java.lang.String view.Shop.orderMana()
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8676 ] - [ INFO ]  Mapped "{[/shop/orderReport.html]}" onto public java.lang.String view.Shop.orderReport()
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8677 ] - [ INFO ]  Mapped "{[/shop/setting.html]}" onto public java.lang.String view.Shop.actionSetting()
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8677 ] - [ INFO ]  Mapped "{[/shop/userInfo.html]}" onto public java.lang.String view.Shop.actionUserInfo()
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8677 ] - [ INFO ]  Mapped "{[/shop/addGoods.html]}" onto public java.lang.String view.Shop.addGoods()
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8678 ] - [ INFO ]  Mapped "{[/shop/modifyGoods.html]}" onto public java.lang.String view.Shop.goodsModify()
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8678 ] - [ INFO ]  Mapped "{[/shop/ || /shop/index.html || /shop/home.html]}" onto public java.lang.String view.Shop.actionHome()
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8679 ] - [ INFO ]  Mapped "{[/shop/deleteGoods.html]}" onto public java.lang.String view.Shop.deleteGoods()
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8679 ] - [ INFO ]  Mapped "{[/shop/pictureMana.html]}" onto public java.lang.String view.Shop.actionPicturnMana()
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8679 ] - [ INFO ]  Mapped "{[/shop/shopinfo.html]}" onto public java.lang.String view.Shop.actionViewShopInfo() throws java.lang.Exception
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8825 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 21:25:23 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:8969 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 21:25:23 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:9010 ] - [ INFO ]  Detected @ExceptionHandler methods in exceptionHandle
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:9255 ] - [ INFO ]  Mapped URL path [/assets/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+2018-04-22 21:25:24  [ RMI TCP Connection(3)-127.0.0.1:9262 ] - [ INFO ]  Mapped URL path [/picture/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+2018-04-22 21:25:25  [ RMI TCP Connection(3)-127.0.0.1:9663 ] - [ INFO ]  FrameworkServlet 'dispatcher': initialization completed in 2301 ms
+2018-04-22 21:57:23  [ main:1928132 ] - [ INFO ]  Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 21:25:23 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 21:57:23  [ main:1928161 ] - [ INFO ]  Closing Root WebApplicationContext: startup date [Sun Apr 22 21:25:15 CST 2018]; root of context hierarchy
+2018-04-22 21:57:24  [ main:1928923 ] - [ INFO ]  {dataSource-1} closed
+2018-04-22 21:58:22  [ RMI TCP Connection(3)-127.0.0.1:0 ] - [ INFO ]  Root WebApplicationContext: initialization started
+2018-04-22 21:58:22  [ RMI TCP Connection(3)-127.0.0.1:97 ] - [ INFO ]  Refreshing Root WebApplicationContext: startup date [Sun Apr 22 21:58:22 CST 2018]; root of context hierarchy
+2018-04-22 21:58:23  [ RMI TCP Connection(3)-127.0.0.1:252 ] - [ INFO ]  Loading XML bean definitions from class path resource [config/applicationContext.xml]
+2018-04-22 21:58:23  [ RMI TCP Connection(3)-127.0.0.1:1042 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\AdminDAO.class]
+2018-04-22 21:58:23  [ RMI TCP Connection(3)-127.0.0.1:1043 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\FilesDAO.class]
+2018-04-22 21:58:23  [ RMI TCP Connection(3)-127.0.0.1:1043 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\GoodsDAO.class]
+2018-04-22 21:58:23  [ RMI TCP Connection(3)-127.0.0.1:1044 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\MessageDAO.class]
+2018-04-22 21:58:23  [ RMI TCP Connection(3)-127.0.0.1:1044 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\OrderDAO.class]
+2018-04-22 21:58:23  [ RMI TCP Connection(3)-127.0.0.1:1045 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\ShopDAO.class]
+2018-04-22 21:58:23  [ RMI TCP Connection(3)-127.0.0.1:1045 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\StandDAO.class]
+2018-04-22 21:58:23  [ RMI TCP Connection(3)-127.0.0.1:1046 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\StudentDAO.class]
+2018-04-22 21:58:23  [ RMI TCP Connection(3)-127.0.0.1:1046 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\UserDAO.class]
+2018-04-22 21:58:23  [ RMI TCP Connection(3)-127.0.0.1:1054 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'adminDAO' and 'api.dao.AdminDAO' mapperInterface
+2018-04-22 21:58:23  [ RMI TCP Connection(3)-127.0.0.1:1055 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'filesDAO' and 'api.dao.FilesDAO' mapperInterface
+2018-04-22 21:58:23  [ RMI TCP Connection(3)-127.0.0.1:1056 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'goodsDAO' and 'api.dao.GoodsDAO' mapperInterface
+2018-04-22 21:58:23  [ RMI TCP Connection(3)-127.0.0.1:1056 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'messageDAO' and 'api.dao.MessageDAO' mapperInterface
+2018-04-22 21:58:23  [ RMI TCP Connection(3)-127.0.0.1:1056 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'orderDAO' and 'api.dao.OrderDAO' mapperInterface
+2018-04-22 21:58:23  [ RMI TCP Connection(3)-127.0.0.1:1056 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'shopDAO' and 'api.dao.ShopDAO' mapperInterface
+2018-04-22 21:58:23  [ RMI TCP Connection(3)-127.0.0.1:1056 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'standDAO' and 'api.dao.StandDAO' mapperInterface
+2018-04-22 21:58:23  [ RMI TCP Connection(3)-127.0.0.1:1056 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'studentDAO' and 'api.dao.StudentDAO' mapperInterface
+2018-04-22 21:58:23  [ RMI TCP Connection(3)-127.0.0.1:1056 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'userDAO' and 'api.dao.UserDAO' mapperInterface
+2018-04-22 21:58:25  [ RMI TCP Connection(3)-127.0.0.1:2357 ] - [ INFO ]  {dataSource-1} inited
+2018-04-22 21:58:26  [ RMI TCP Connection(3)-127.0.0.1:3451 ] - [ INFO ]  Root WebApplicationContext: initialization completed in 3450 ms
+2018-04-22 21:58:26  [ RMI TCP Connection(3)-127.0.0.1:3665 ] - [ INFO ]  FrameworkServlet 'dispatcher': initialization started
+2018-04-22 21:58:26  [ RMI TCP Connection(3)-127.0.0.1:3672 ] - [ INFO ]  Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 21:58:26 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 21:58:26  [ RMI TCP Connection(3)-127.0.0.1:3673 ] - [ INFO ]  Loading XML bean definitions from class path resource [config/dispatcher-servlet.xml]
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4425 ] - [ INFO ]  Mapped "{[/api/admin/admin/info.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.updateAdminInfo(api.entity.AdminEntity) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4427 ] - [ INFO ]  Mapped "{[/api/admin/shop/all.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.AdminController.displayAllShop(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4427 ] - [ INFO ]  Mapped "{[/api/admin/shop/review.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.manaShop(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4427 ] - [ INFO ]  Mapped "{[/api/admin/stand/update.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.updateStand(api.entity.StandEntity) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4428 ] - [ INFO ]  Mapped "{[/api/admin/stand/insert.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.insertStand(api.entity.StandEntity) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4428 ] - [ INFO ]  Mapped "{[/api/admin/upload.yht],methods=[POST]}" onto public api.tools.Result<java.lang.String> api.controller.AdminController.uploadPicture(javax.servlet.http.HttpServletRequest,org.springframework.web.multipart.MultipartFile) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4429 ] - [ INFO ]  Mapped "{[/api/admin/info.yht],methods=[GET]}" onto public api.tools.Result<java.lang.Object> api.controller.AdminController.getStudentInfo() throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4429 ] - [ INFO ]  Mapped "{[/api/admin/stand/all.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.AdminController.displayAllStandPagin(api.entity.StandEntity) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4434 ] - [ INFO ]  Mapped "{[/api/public/export],methods=[GET]}" onto public void api.controller.PublicController.export(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4435 ] - [ INFO ]  Mapped "{[/api/public/studentLogin.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentLogin(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4435 ] - [ INFO ]  Mapped "{[/api/public/adminLogin.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentLogin(api.entity.AdminEntity) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4436 ] - [ INFO ]  Mapped "{[/api/public/studentRegister.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentRegister(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4437 ] - [ INFO ]  Mapped "{[/api/public/studentExist.yht],methods=[GET]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentExist(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4478 ] - [ INFO ]  Mapped "{[/api/shop/admin/info.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.updateAdminInfo(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4478 ] - [ INFO ]  Mapped "{[/api/shop/upload.yht],methods=[POST]}" onto public api.tools.Result<java.lang.String> api.controller.ShopController.uploadPicture(java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.multipart.MultipartFile) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4479 ] - [ INFO ]  Mapped "{[/api/shop/info.yht],methods=[GET]}" onto public api.tools.Result<api.entity.StudentEntity> api.controller.ShopController.getStudentInfo() throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4481 ] - [ INFO ]  Mapped "{[/api/shop/goods/add.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.insertGoods(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4482 ] - [ INFO ]  Mapped "{[/api/shop/shopinfo/info.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.updateShopInfo(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4482 ] - [ INFO ]  Mapped "{[/api/shop/picture/delete/{id}],methods=[DELETE]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.deletePicture(java.lang.Integer,javax.servlet.http.HttpServletRequest) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4483 ] - [ INFO ]  Mapped "{[/api/shop/shop/register.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.shopRegister(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4483 ] - [ INFO ]  Mapped "{[/api/shop/goods/pagin.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.ShopController.goodsPagin(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4484 ] - [ INFO ]  Mapped "{[/api/shop/order/delete.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.deleteOrder(java.lang.Integer,java.lang.String,java.lang.String) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4484 ] - [ INFO ]  Mapped "{[/api/shop/shopinfo.yht],methods=[GET]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.displayShopInfo(javax.servlet.http.HttpServletRequest) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4485 ] - [ INFO ]  Mapped "{[/api/shop/order/report.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.ShopController.orderReportPagin(api.entity.OrderReport) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4485 ] - [ INFO ]  Mapped "{[/api/shop/goods/update.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.updateGoods(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4486 ] - [ INFO ]  Mapped "{[/api/shop/viewPicture/{page}],methods=[GET]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.viewPicture(java.lang.Integer,java.lang.Integer) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4487 ] - [ INFO ]  Mapped "{[/api/shop/admin/password.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.updateAdminPass(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4488 ] - [ INFO ]  Mapped "{[/api/shop/goods/delete.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.deleteGoods(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4488 ] - [ INFO ]  Mapped "{[/api/shop/admin/mibao.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.updateAdminMibao(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4494 ] - [ INFO ]  Mapped "{[/admin/ || /admin/index.html || /admin/home.html]}" onto public java.lang.String view.Admin.actionHome()
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4494 ] - [ INFO ]  Mapped "{[/admin/reviewShop.html]}" onto public java.lang.String view.Admin.reviewShop()
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4495 ] - [ INFO ]  Mapped "{[/admin/info.html]}" onto public java.lang.String view.Admin.actionInfo()
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4495 ] - [ INFO ]  Mapped "{[/admin/manaStand.html]}" onto public java.lang.String view.Admin.manaStand()
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4497 ] - [ INFO ]  Mapped "{[/shopLogout.html]}" onto public java.lang.String view.PublicView.shopLogout()
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4498 ] - [ INFO ]  Mapped "{[/adminLogin.html]}" onto public java.lang.String view.PublicView.viewAdminLogin()
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4498 ] - [ INFO ]  Mapped "{[/ || /shopLogin.html]}" onto public java.lang.String view.PublicView.viewShopLogin()
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4498 ] - [ INFO ]  Mapped "{[/adminLogout.html]}" onto public java.lang.String view.PublicView.adminLogout()
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4507 ] - [ INFO ]  Mapped "{[/shop/addGoods.html]}" onto public java.lang.String view.Shop.addGoods()
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4507 ] - [ INFO ]  Mapped "{[/shop/orderReport.html]}" onto public java.lang.String view.Shop.orderReport()
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4507 ] - [ INFO ]  Mapped "{[/shop/orderMana.html]}" onto public java.lang.String view.Shop.orderMana()
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4508 ] - [ INFO ]  Mapped "{[/shop/modifyGoods.html]}" onto public java.lang.String view.Shop.goodsModify()
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4508 ] - [ INFO ]  Mapped "{[/shop/deleteGoods.html]}" onto public java.lang.String view.Shop.deleteGoods()
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4509 ] - [ INFO ]  Mapped "{[/shop/ || /shop/index.html || /shop/home.html]}" onto public java.lang.String view.Shop.actionHome()
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4509 ] - [ INFO ]  Mapped "{[/shop/userInfo.html]}" onto public java.lang.String view.Shop.actionUserInfo()
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4509 ] - [ INFO ]  Mapped "{[/shop/setting.html]}" onto public java.lang.String view.Shop.actionSetting()
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4512 ] - [ INFO ]  Mapped "{[/shop/shopinfo.html]}" onto public java.lang.String view.Shop.actionViewShopInfo() throws java.lang.Exception
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4512 ] - [ INFO ]  Mapped "{[/shop/pictureMana.html]}" onto public java.lang.String view.Shop.actionPicturnMana()
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4636 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 21:58:26 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4804 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 21:58:26 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:4846 ] - [ INFO ]  Detected @ExceptionHandler methods in exceptionHandle
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:5036 ] - [ INFO ]  Mapped URL path [/assets/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+2018-04-22 21:58:27  [ RMI TCP Connection(3)-127.0.0.1:5040 ] - [ INFO ]  Mapped URL path [/picture/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+2018-04-22 21:58:28  [ RMI TCP Connection(3)-127.0.0.1:5398 ] - [ INFO ]  FrameworkServlet 'dispatcher': initialization completed in 1732 ms
+2018-04-22 21:59:35  [ main:72994 ] - [ INFO ]  Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 21:58:26 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 21:59:35  [ main:73008 ] - [ INFO ]  Closing Root WebApplicationContext: startup date [Sun Apr 22 21:58:22 CST 2018]; root of context hierarchy
+2018-04-22 21:59:35  [ main:73018 ] - [ INFO ]  {dataSource-1} closed
+2018-04-22 22:00:09  [ RMI TCP Connection(3)-127.0.0.1:0 ] - [ INFO ]  Root WebApplicationContext: initialization started
+2018-04-22 22:00:09  [ RMI TCP Connection(3)-127.0.0.1:224 ] - [ INFO ]  Refreshing Root WebApplicationContext: startup date [Sun Apr 22 22:00:09 CST 2018]; root of context hierarchy
+2018-04-22 22:00:09  [ RMI TCP Connection(3)-127.0.0.1:423 ] - [ INFO ]  Loading XML bean definitions from class path resource [config/applicationContext.xml]
+2018-04-22 22:00:10  [ RMI TCP Connection(3)-127.0.0.1:890 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\AdminDAO.class]
+2018-04-22 22:00:10  [ RMI TCP Connection(3)-127.0.0.1:891 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\FilesDAO.class]
+2018-04-22 22:00:10  [ RMI TCP Connection(3)-127.0.0.1:891 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\GoodsDAO.class]
+2018-04-22 22:00:10  [ RMI TCP Connection(3)-127.0.0.1:892 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\MessageDAO.class]
+2018-04-22 22:00:10  [ RMI TCP Connection(3)-127.0.0.1:892 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\OrderDAO.class]
+2018-04-22 22:00:10  [ RMI TCP Connection(3)-127.0.0.1:893 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\ShopDAO.class]
+2018-04-22 22:00:10  [ RMI TCP Connection(3)-127.0.0.1:893 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\StandDAO.class]
+2018-04-22 22:00:10  [ RMI TCP Connection(3)-127.0.0.1:894 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\StudentDAO.class]
+2018-04-22 22:00:10  [ RMI TCP Connection(3)-127.0.0.1:894 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\UserDAO.class]
+2018-04-22 22:00:10  [ RMI TCP Connection(3)-127.0.0.1:902 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'adminDAO' and 'api.dao.AdminDAO' mapperInterface
+2018-04-22 22:00:10  [ RMI TCP Connection(3)-127.0.0.1:903 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'filesDAO' and 'api.dao.FilesDAO' mapperInterface
+2018-04-22 22:00:10  [ RMI TCP Connection(3)-127.0.0.1:903 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'goodsDAO' and 'api.dao.GoodsDAO' mapperInterface
+2018-04-22 22:00:10  [ RMI TCP Connection(3)-127.0.0.1:904 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'messageDAO' and 'api.dao.MessageDAO' mapperInterface
+2018-04-22 22:00:10  [ RMI TCP Connection(3)-127.0.0.1:904 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'orderDAO' and 'api.dao.OrderDAO' mapperInterface
+2018-04-22 22:00:10  [ RMI TCP Connection(3)-127.0.0.1:904 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'shopDAO' and 'api.dao.ShopDAO' mapperInterface
+2018-04-22 22:00:10  [ RMI TCP Connection(3)-127.0.0.1:904 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'standDAO' and 'api.dao.StandDAO' mapperInterface
+2018-04-22 22:00:10  [ RMI TCP Connection(3)-127.0.0.1:904 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'studentDAO' and 'api.dao.StudentDAO' mapperInterface
+2018-04-22 22:00:10  [ RMI TCP Connection(3)-127.0.0.1:904 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'userDAO' and 'api.dao.UserDAO' mapperInterface
+2018-04-22 22:00:11  [ RMI TCP Connection(3)-127.0.0.1:2198 ] - [ INFO ]  {dataSource-1} inited
+2018-04-22 22:00:12  [ RMI TCP Connection(3)-127.0.0.1:3040 ] - [ INFO ]  Root WebApplicationContext: initialization completed in 3040 ms
+2018-04-22 22:00:12  [ RMI TCP Connection(3)-127.0.0.1:3277 ] - [ INFO ]  FrameworkServlet 'dispatcher': initialization started
+2018-04-22 22:00:12  [ RMI TCP Connection(3)-127.0.0.1:3283 ] - [ INFO ]  Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 22:00:12 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 22:00:12  [ RMI TCP Connection(3)-127.0.0.1:3284 ] - [ INFO ]  Loading XML bean definitions from class path resource [config/dispatcher-servlet.xml]
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:3995 ] - [ INFO ]  Mapped "{[/api/admin/stand/all.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.AdminController.displayAllStandPagin(api.entity.StandEntity) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:3997 ] - [ INFO ]  Mapped "{[/api/admin/shop/all.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.AdminController.displayAllShop(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:3997 ] - [ INFO ]  Mapped "{[/api/admin/admin/info.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.updateAdminInfo(api.entity.AdminEntity) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:3997 ] - [ INFO ]  Mapped "{[/api/admin/shop/review.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.manaShop(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4004 ] - [ INFO ]  Mapped "{[/api/admin/stand/insert.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.insertStand(api.entity.StandEntity) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4005 ] - [ INFO ]  Mapped "{[/api/admin/stand/update.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.updateStand(api.entity.StandEntity) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4009 ] - [ INFO ]  Mapped "{[/api/admin/info.yht],methods=[GET]}" onto public api.tools.Result<java.lang.Object> api.controller.AdminController.getStudentInfo() throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4010 ] - [ INFO ]  Mapped "{[/api/admin/upload.yht],methods=[POST]}" onto public api.tools.Result<java.lang.String> api.controller.AdminController.uploadPicture(javax.servlet.http.HttpServletRequest,org.springframework.web.multipart.MultipartFile) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4016 ] - [ INFO ]  Mapped "{[/api/public/export],methods=[GET]}" onto public void api.controller.PublicController.export(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4017 ] - [ INFO ]  Mapped "{[/api/public/studentExist.yht],methods=[GET]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentExist(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4017 ] - [ INFO ]  Mapped "{[/api/public/studentLogin.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentLogin(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4018 ] - [ INFO ]  Mapped "{[/api/public/adminLogin.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentLogin(api.entity.AdminEntity) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4019 ] - [ INFO ]  Mapped "{[/api/public/studentRegister.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentRegister(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4046 ] - [ INFO ]  Mapped "{[/api/shop/admin/password.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.updateAdminPass(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4047 ] - [ INFO ]  Mapped "{[/api/shop/viewPicture/{page}],methods=[GET]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.viewPicture(java.lang.Integer,java.lang.Integer) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4047 ] - [ INFO ]  Mapped "{[/api/shop/admin/mibao.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.updateAdminMibao(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4048 ] - [ INFO ]  Mapped "{[/api/shop/picture/delete/{id}],methods=[DELETE]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.deletePicture(java.lang.Integer,javax.servlet.http.HttpServletRequest) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4048 ] - [ INFO ]  Mapped "{[/api/shop/shopinfo.yht],methods=[GET]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.displayShopInfo(javax.servlet.http.HttpServletRequest) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4049 ] - [ INFO ]  Mapped "{[/api/shop/admin/info.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.updateAdminInfo(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4049 ] - [ INFO ]  Mapped "{[/api/shop/shopinfo/info.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.updateShopInfo(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4050 ] - [ INFO ]  Mapped "{[/api/shop/shop/register.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.shopRegister(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4050 ] - [ INFO ]  Mapped "{[/api/shop/info.yht],methods=[GET]}" onto public api.tools.Result<api.entity.StudentEntity> api.controller.ShopController.getStudentInfo() throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4051 ] - [ INFO ]  Mapped "{[/api/shop/upload.yht],methods=[POST]}" onto public api.tools.Result<java.lang.String> api.controller.ShopController.uploadPicture(java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.multipart.MultipartFile) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4051 ] - [ INFO ]  Mapped "{[/api/shop/order/delete.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.deleteOrder(java.lang.Integer,java.lang.String,java.lang.String) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4052 ] - [ INFO ]  Mapped "{[/api/shop/goods/update.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.updateGoods(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4052 ] - [ INFO ]  Mapped "{[/api/shop/order/report.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.ShopController.orderReportPagin(api.entity.OrderReport) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4053 ] - [ INFO ]  Mapped "{[/api/shop/goods/pagin.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.ShopController.goodsPagin(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4054 ] - [ INFO ]  Mapped "{[/api/shop/goods/add.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.insertGoods(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4055 ] - [ INFO ]  Mapped "{[/api/shop/goods/delete.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.deleteGoods(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4062 ] - [ INFO ]  Mapped "{[/admin/info.html]}" onto public java.lang.String view.Admin.actionInfo()
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4062 ] - [ INFO ]  Mapped "{[/admin/reviewShop.html]}" onto public java.lang.String view.Admin.reviewShop()
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4062 ] - [ INFO ]  Mapped "{[/admin/ || /admin/index.html || /admin/home.html]}" onto public java.lang.String view.Admin.actionHome()
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4063 ] - [ INFO ]  Mapped "{[/admin/manaStand.html]}" onto public java.lang.String view.Admin.manaStand()
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4065 ] - [ INFO ]  Mapped "{[/ || /shopLogin.html]}" onto public java.lang.String view.PublicView.viewShopLogin()
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4066 ] - [ INFO ]  Mapped "{[/adminLogout.html]}" onto public java.lang.String view.PublicView.adminLogout()
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4067 ] - [ INFO ]  Mapped "{[/adminLogin.html]}" onto public java.lang.String view.PublicView.viewAdminLogin()
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4067 ] - [ INFO ]  Mapped "{[/shopLogout.html]}" onto public java.lang.String view.PublicView.shopLogout()
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4081 ] - [ INFO ]  Mapped "{[/shop/shopinfo.html]}" onto public java.lang.String view.Shop.actionViewShopInfo() throws java.lang.Exception
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4082 ] - [ INFO ]  Mapped "{[/shop/pictureMana.html]}" onto public java.lang.String view.Shop.actionPicturnMana()
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4083 ] - [ INFO ]  Mapped "{[/shop/deleteGoods.html]}" onto public java.lang.String view.Shop.deleteGoods()
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4084 ] - [ INFO ]  Mapped "{[/shop/addGoods.html]}" onto public java.lang.String view.Shop.addGoods()
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4084 ] - [ INFO ]  Mapped "{[/shop/orderMana.html]}" onto public java.lang.String view.Shop.orderMana()
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4085 ] - [ INFO ]  Mapped "{[/shop/modifyGoods.html]}" onto public java.lang.String view.Shop.goodsModify()
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4085 ] - [ INFO ]  Mapped "{[/shop/orderReport.html]}" onto public java.lang.String view.Shop.orderReport()
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4086 ] - [ INFO ]  Mapped "{[/shop/ || /shop/index.html || /shop/home.html]}" onto public java.lang.String view.Shop.actionHome()
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4086 ] - [ INFO ]  Mapped "{[/shop/userInfo.html]}" onto public java.lang.String view.Shop.actionUserInfo()
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4086 ] - [ INFO ]  Mapped "{[/shop/setting.html]}" onto public java.lang.String view.Shop.actionSetting()
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4259 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 22:00:12 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4379 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 22:00:12 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4421 ] - [ INFO ]  Detected @ExceptionHandler methods in exceptionHandle
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4644 ] - [ INFO ]  Mapped URL path [/assets/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+2018-04-22 22:00:13  [ RMI TCP Connection(3)-127.0.0.1:4649 ] - [ INFO ]  Mapped URL path [/picture/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+2018-04-22 22:00:14  [ RMI TCP Connection(3)-127.0.0.1:4927 ] - [ INFO ]  FrameworkServlet 'dispatcher': initialization completed in 1649 ms
+2018-04-22 22:00:45  [ http-nio-8080-exec-10:36195 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:01:40  [ http-nio-8080-exec-4:91098 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:02:40  [ http-nio-8080-exec-9:151687 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:04:32  [ http-nio-8080-exec-7:262912 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:06:31  [ http-nio-8080-exec-10:382181 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:07:06  [ http-nio-8080-exec-7:417252 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:07:49  [ http-nio-8080-exec-4:460213 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/null] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:07:49  [ http-nio-8080-exec-8:460214 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:08:07  [ http-nio-8080-exec-1:477999 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:08:49  [ http-nio-8080-exec-10:520516 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:36:33  [ main:2184660 ] - [ INFO ]  Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 22:00:12 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 22:36:34  [ main:2184741 ] - [ INFO ]  Closing Root WebApplicationContext: startup date [Sun Apr 22 22:00:09 CST 2018]; root of context hierarchy
+2018-04-22 22:36:34  [ main:2184813 ] - [ INFO ]  {dataSource-1} closed
+2018-04-22 22:37:20  [ RMI TCP Connection(3)-127.0.0.1:1 ] - [ INFO ]  Root WebApplicationContext: initialization started
+2018-04-22 22:37:20  [ RMI TCP Connection(3)-127.0.0.1:148 ] - [ INFO ]  Refreshing Root WebApplicationContext: startup date [Sun Apr 22 22:37:20 CST 2018]; root of context hierarchy
+2018-04-22 22:37:20  [ RMI TCP Connection(3)-127.0.0.1:416 ] - [ INFO ]  Loading XML bean definitions from class path resource [config/applicationContext.xml]
+2018-04-22 22:37:21  [ RMI TCP Connection(3)-127.0.0.1:1242 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\AdminDAO.class]
+2018-04-22 22:37:21  [ RMI TCP Connection(3)-127.0.0.1:1243 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\FilesDAO.class]
+2018-04-22 22:37:21  [ RMI TCP Connection(3)-127.0.0.1:1243 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\GoodsDAO.class]
+2018-04-22 22:37:21  [ RMI TCP Connection(3)-127.0.0.1:1243 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\MessageDAO.class]
+2018-04-22 22:37:21  [ RMI TCP Connection(3)-127.0.0.1:1244 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\OrderDAO.class]
+2018-04-22 22:37:21  [ RMI TCP Connection(3)-127.0.0.1:1244 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\ShopDAO.class]
+2018-04-22 22:37:21  [ RMI TCP Connection(3)-127.0.0.1:1245 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\StandDAO.class]
+2018-04-22 22:37:21  [ RMI TCP Connection(3)-127.0.0.1:1245 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\StudentDAO.class]
+2018-04-22 22:37:21  [ RMI TCP Connection(3)-127.0.0.1:1245 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\UserDAO.class]
+2018-04-22 22:37:21  [ RMI TCP Connection(3)-127.0.0.1:1253 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'adminDAO' and 'api.dao.AdminDAO' mapperInterface
+2018-04-22 22:37:21  [ RMI TCP Connection(3)-127.0.0.1:1255 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'filesDAO' and 'api.dao.FilesDAO' mapperInterface
+2018-04-22 22:37:21  [ RMI TCP Connection(3)-127.0.0.1:1255 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'goodsDAO' and 'api.dao.GoodsDAO' mapperInterface
+2018-04-22 22:37:21  [ RMI TCP Connection(3)-127.0.0.1:1255 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'messageDAO' and 'api.dao.MessageDAO' mapperInterface
+2018-04-22 22:37:21  [ RMI TCP Connection(3)-127.0.0.1:1255 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'orderDAO' and 'api.dao.OrderDAO' mapperInterface
+2018-04-22 22:37:21  [ RMI TCP Connection(3)-127.0.0.1:1255 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'shopDAO' and 'api.dao.ShopDAO' mapperInterface
+2018-04-22 22:37:21  [ RMI TCP Connection(3)-127.0.0.1:1255 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'standDAO' and 'api.dao.StandDAO' mapperInterface
+2018-04-22 22:37:21  [ RMI TCP Connection(3)-127.0.0.1:1255 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'studentDAO' and 'api.dao.StudentDAO' mapperInterface
+2018-04-22 22:37:21  [ RMI TCP Connection(3)-127.0.0.1:1255 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'userDAO' and 'api.dao.UserDAO' mapperInterface
+2018-04-22 22:37:22  [ RMI TCP Connection(3)-127.0.0.1:2695 ] - [ INFO ]  {dataSource-1} inited
+2018-04-22 22:37:24  [ RMI TCP Connection(3)-127.0.0.1:3928 ] - [ INFO ]  Root WebApplicationContext: initialization completed in 3927 ms
+2018-04-22 22:37:24  [ RMI TCP Connection(3)-127.0.0.1:4244 ] - [ INFO ]  FrameworkServlet 'dispatcher': initialization started
+2018-04-22 22:37:24  [ RMI TCP Connection(3)-127.0.0.1:4251 ] - [ INFO ]  Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 22:37:24 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 22:37:24  [ RMI TCP Connection(3)-127.0.0.1:4251 ] - [ INFO ]  Loading XML bean definitions from class path resource [config/dispatcher-servlet.xml]
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5237 ] - [ INFO ]  Mapped "{[/api/admin/stand/all.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.AdminController.displayAllStandPagin(api.entity.StandEntity) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5240 ] - [ INFO ]  Mapped "{[/api/admin/info.yht],methods=[GET]}" onto public api.tools.Result<java.lang.Object> api.controller.AdminController.getStudentInfo() throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5241 ] - [ INFO ]  Mapped "{[/api/admin/admin/info.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.updateAdminInfo(api.entity.AdminEntity) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5242 ] - [ INFO ]  Mapped "{[/api/admin/stand/insert.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.insertStand(api.entity.StandEntity) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5242 ] - [ INFO ]  Mapped "{[/api/admin/shop/review.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.manaShop(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5242 ] - [ INFO ]  Mapped "{[/api/admin/upload.yht],methods=[POST]}" onto public api.tools.Result<java.lang.String> api.controller.AdminController.uploadPicture(javax.servlet.http.HttpServletRequest,org.springframework.web.multipart.MultipartFile) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5243 ] - [ INFO ]  Mapped "{[/api/admin/shop/all.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.AdminController.displayAllShop(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5244 ] - [ INFO ]  Mapped "{[/api/admin/stand/update.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.updateStand(api.entity.StandEntity) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5250 ] - [ INFO ]  Mapped "{[/api/public/export],methods=[GET]}" onto public void api.controller.PublicController.export(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5251 ] - [ INFO ]  Mapped "{[/api/public/studentRegister.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentRegister(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5252 ] - [ INFO ]  Mapped "{[/api/public/studentLogin.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentLogin(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5253 ] - [ INFO ]  Mapped "{[/api/public/adminLogin.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentLogin(api.entity.AdminEntity) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5254 ] - [ INFO ]  Mapped "{[/api/public/studentExist.yht],methods=[GET]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentExist(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5278 ] - [ INFO ]  Mapped "{[/api/shop/goods/delete.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.deleteGoods(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5279 ] - [ INFO ]  Mapped "{[/api/shop/shopinfo/info.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.updateShopInfo(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5280 ] - [ INFO ]  Mapped "{[/api/shop/shop/register.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.shopRegister(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5280 ] - [ INFO ]  Mapped "{[/api/shop/goods/pagin.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.ShopController.goodsPagin(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5287 ] - [ INFO ]  Mapped "{[/api/shop/goods/add.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.insertGoods(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5288 ] - [ INFO ]  Mapped "{[/api/shop/viewPicture/{page}],methods=[GET]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.viewPicture(java.lang.Integer,java.lang.Integer) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5289 ] - [ INFO ]  Mapped "{[/api/shop/shopinfo.yht],methods=[GET]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.displayShopInfo(javax.servlet.http.HttpServletRequest) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5289 ] - [ INFO ]  Mapped "{[/api/shop/goods/update.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.updateGoods(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5290 ] - [ INFO ]  Mapped "{[/api/shop/admin/password.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.updateAdminPass(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5291 ] - [ INFO ]  Mapped "{[/api/shop/order/report.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.ShopController.orderReportPagin(api.entity.OrderReport) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5291 ] - [ INFO ]  Mapped "{[/api/shop/admin/mibao.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.updateAdminMibao(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5292 ] - [ INFO ]  Mapped "{[/api/shop/picture/delete/{id}],methods=[DELETE]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.deletePicture(java.lang.Integer,javax.servlet.http.HttpServletRequest) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5292 ] - [ INFO ]  Mapped "{[/api/shop/order/delete.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.deleteOrder(java.lang.Integer,java.lang.String,java.lang.String) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5293 ] - [ INFO ]  Mapped "{[/api/shop/info.yht],methods=[GET]}" onto public api.tools.Result<api.entity.StudentEntity> api.controller.ShopController.getStudentInfo() throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5294 ] - [ INFO ]  Mapped "{[/api/shop/admin/info.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.updateAdminInfo(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5294 ] - [ INFO ]  Mapped "{[/api/shop/upload.yht],methods=[POST]}" onto public api.tools.Result<java.lang.String> api.controller.ShopController.uploadPicture(java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.multipart.MultipartFile) throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5298 ] - [ INFO ]  Mapped "{[/admin/manaStand.html]}" onto public java.lang.String view.Admin.manaStand()
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5298 ] - [ INFO ]  Mapped "{[/admin/info.html]}" onto public java.lang.String view.Admin.actionInfo()
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5298 ] - [ INFO ]  Mapped "{[/admin/reviewShop.html]}" onto public java.lang.String view.Admin.reviewShop()
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5299 ] - [ INFO ]  Mapped "{[/admin/ || /admin/index.html || /admin/home.html]}" onto public java.lang.String view.Admin.actionHome()
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5302 ] - [ INFO ]  Mapped "{[/shopLogout.html]}" onto public java.lang.String view.PublicView.shopLogout()
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5303 ] - [ INFO ]  Mapped "{[/adminLogin.html]}" onto public java.lang.String view.PublicView.viewAdminLogin()
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5303 ] - [ INFO ]  Mapped "{[/adminLogout.html]}" onto public java.lang.String view.PublicView.adminLogout()
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5304 ] - [ INFO ]  Mapped "{[/ || /shopLogin.html]}" onto public java.lang.String view.PublicView.viewShopLogin()
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5310 ] - [ INFO ]  Mapped "{[/shop/shopinfo.html]}" onto public java.lang.String view.Shop.actionViewShopInfo() throws java.lang.Exception
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5310 ] - [ INFO ]  Mapped "{[/shop/pictureMana.html]}" onto public java.lang.String view.Shop.actionPicturnMana()
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5311 ] - [ INFO ]  Mapped "{[/shop/deleteGoods.html]}" onto public java.lang.String view.Shop.deleteGoods()
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5311 ] - [ INFO ]  Mapped "{[/shop/ || /shop/index.html || /shop/home.html]}" onto public java.lang.String view.Shop.actionHome()
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5311 ] - [ INFO ]  Mapped "{[/shop/setting.html]}" onto public java.lang.String view.Shop.actionSetting()
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5312 ] - [ INFO ]  Mapped "{[/shop/orderReport.html]}" onto public java.lang.String view.Shop.orderReport()
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5312 ] - [ INFO ]  Mapped "{[/shop/addGoods.html]}" onto public java.lang.String view.Shop.addGoods()
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5312 ] - [ INFO ]  Mapped "{[/shop/userInfo.html]}" onto public java.lang.String view.Shop.actionUserInfo()
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5313 ] - [ INFO ]  Mapped "{[/shop/modifyGoods.html]}" onto public java.lang.String view.Shop.goodsModify()
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5313 ] - [ INFO ]  Mapped "{[/shop/orderMana.html]}" onto public java.lang.String view.Shop.orderMana()
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5458 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 22:37:24 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5576 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 22:37:24 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 22:37:25  [ RMI TCP Connection(3)-127.0.0.1:5621 ] - [ INFO ]  Detected @ExceptionHandler methods in exceptionHandle
+2018-04-22 22:37:26  [ RMI TCP Connection(3)-127.0.0.1:6023 ] - [ INFO ]  Mapped URL path [/assets/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+2018-04-22 22:37:26  [ RMI TCP Connection(3)-127.0.0.1:6026 ] - [ INFO ]  Mapped URL path [/picture/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+2018-04-22 22:37:26  [ RMI TCP Connection(3)-127.0.0.1:6342 ] - [ INFO ]  FrameworkServlet 'dispatcher': initialization completed in 2097 ms
+2018-04-22 22:37:51  [ http-nio-8080-exec-10:30860 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:37:54  [ http-nio-8080-exec-5:34002 ] - [ ERROR ]  [处理异常]{}
+org.springframework.beans.BeanInstantiationException: Failed to instantiate [api.entity.StandEntity]: No default constructor found; nested exception is java.lang.NoSuchMethodException: api.entity.StandEntity.<init>()
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:105)
+	at org.springframework.web.method.annotation.ModelAttributeMethodProcessor.createAttribute(ModelAttributeMethodProcessor.java:141)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletModelAttributeMethodProcessor.createAttribute(ServletModelAttributeMethodProcessor.java:81)
+	at org.springframework.web.method.annotation.ModelAttributeMethodProcessor.resolveArgument(ModelAttributeMethodProcessor.java:101)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:158)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:128)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:105)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:475)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:651)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:498)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:796)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1374)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NoSuchMethodException: api.entity.StandEntity.<init>()
+	at java.lang.Class.getConstructor0(Class.java:3082)
+	at java.lang.Class.getDeclaredConstructor(Class.java:2178)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:102)
+	... 50 more
+2018-04-22 22:39:42  [ RMI TCP Connection(7)-127.0.0.1:142418 ] - [ INFO ]  Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 22:37:24 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 22:39:42  [ RMI TCP Connection(7)-127.0.0.1:142448 ] - [ INFO ]  Closing Root WebApplicationContext: startup date [Sun Apr 22 22:37:20 CST 2018]; root of context hierarchy
+2018-04-22 22:39:42  [ RMI TCP Connection(7)-127.0.0.1:142456 ] - [ INFO ]  {dataSource-1} closed
+2018-04-22 22:39:46  [ RMI TCP Connection(7)-127.0.0.1:0 ] - [ INFO ]  Root WebApplicationContext: initialization started
+2018-04-22 22:39:46  [ RMI TCP Connection(7)-127.0.0.1:158 ] - [ INFO ]  Refreshing Root WebApplicationContext: startup date [Sun Apr 22 22:39:46 CST 2018]; root of context hierarchy
+2018-04-22 22:39:46  [ RMI TCP Connection(7)-127.0.0.1:300 ] - [ INFO ]  Loading XML bean definitions from class path resource [config/applicationContext.xml]
+2018-04-22 22:39:47  [ RMI TCP Connection(7)-127.0.0.1:957 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\AdminDAO.class]
+2018-04-22 22:39:47  [ RMI TCP Connection(7)-127.0.0.1:957 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\FilesDAO.class]
+2018-04-22 22:39:47  [ RMI TCP Connection(7)-127.0.0.1:958 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\GoodsDAO.class]
+2018-04-22 22:39:47  [ RMI TCP Connection(7)-127.0.0.1:958 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\MessageDAO.class]
+2018-04-22 22:39:47  [ RMI TCP Connection(7)-127.0.0.1:960 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\OrderDAO.class]
+2018-04-22 22:39:47  [ RMI TCP Connection(7)-127.0.0.1:960 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\ShopDAO.class]
+2018-04-22 22:39:47  [ RMI TCP Connection(7)-127.0.0.1:961 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\StandDAO.class]
+2018-04-22 22:39:47  [ RMI TCP Connection(7)-127.0.0.1:962 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\StudentDAO.class]
+2018-04-22 22:39:47  [ RMI TCP Connection(7)-127.0.0.1:964 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\UserDAO.class]
+2018-04-22 22:39:47  [ RMI TCP Connection(7)-127.0.0.1:980 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'adminDAO' and 'api.dao.AdminDAO' mapperInterface
+2018-04-22 22:39:47  [ RMI TCP Connection(7)-127.0.0.1:982 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'filesDAO' and 'api.dao.FilesDAO' mapperInterface
+2018-04-22 22:39:47  [ RMI TCP Connection(7)-127.0.0.1:982 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'goodsDAO' and 'api.dao.GoodsDAO' mapperInterface
+2018-04-22 22:39:47  [ RMI TCP Connection(7)-127.0.0.1:982 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'messageDAO' and 'api.dao.MessageDAO' mapperInterface
+2018-04-22 22:39:47  [ RMI TCP Connection(7)-127.0.0.1:982 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'orderDAO' and 'api.dao.OrderDAO' mapperInterface
+2018-04-22 22:39:47  [ RMI TCP Connection(7)-127.0.0.1:982 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'shopDAO' and 'api.dao.ShopDAO' mapperInterface
+2018-04-22 22:39:47  [ RMI TCP Connection(7)-127.0.0.1:982 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'standDAO' and 'api.dao.StandDAO' mapperInterface
+2018-04-22 22:39:47  [ RMI TCP Connection(7)-127.0.0.1:982 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'studentDAO' and 'api.dao.StudentDAO' mapperInterface
+2018-04-22 22:39:47  [ RMI TCP Connection(7)-127.0.0.1:982 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'userDAO' and 'api.dao.UserDAO' mapperInterface
+2018-04-22 22:39:49  [ RMI TCP Connection(7)-127.0.0.1:2992 ] - [ INFO ]  {dataSource-1} inited
+2018-04-22 22:39:50  [ RMI TCP Connection(7)-127.0.0.1:3752 ] - [ INFO ]  Root WebApplicationContext: initialization completed in 3752 ms
+2018-04-22 22:39:50  [ RMI TCP Connection(7)-127.0.0.1:3940 ] - [ INFO ]  FrameworkServlet 'dispatcher': initialization started
+2018-04-22 22:39:50  [ RMI TCP Connection(7)-127.0.0.1:3947 ] - [ INFO ]  Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 22:39:50 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 22:39:50  [ RMI TCP Connection(7)-127.0.0.1:3947 ] - [ INFO ]  Loading XML bean definitions from class path resource [config/dispatcher-servlet.xml]
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4594 ] - [ INFO ]  Mapped "{[/api/admin/stand/all.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.AdminController.displayAllStandPagin(api.entity.StandEntity) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4596 ] - [ INFO ]  Mapped "{[/api/admin/info.yht],methods=[GET]}" onto public api.tools.Result<java.lang.Object> api.controller.AdminController.getStudentInfo() throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4596 ] - [ INFO ]  Mapped "{[/api/admin/admin/info.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.updateAdminInfo(api.entity.AdminEntity) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4596 ] - [ INFO ]  Mapped "{[/api/admin/stand/insert.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.insertStand(api.entity.StandEntity) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4596 ] - [ INFO ]  Mapped "{[/api/admin/shop/review.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.manaShop(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4597 ] - [ INFO ]  Mapped "{[/api/admin/upload.yht],methods=[POST]}" onto public api.tools.Result<java.lang.String> api.controller.AdminController.uploadPicture(javax.servlet.http.HttpServletRequest,org.springframework.web.multipart.MultipartFile) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4597 ] - [ INFO ]  Mapped "{[/api/admin/shop/all.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.AdminController.displayAllShop(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4597 ] - [ INFO ]  Mapped "{[/api/admin/stand/update.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.updateStand(api.entity.StandEntity) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4602 ] - [ INFO ]  Mapped "{[/api/public/export],methods=[GET]}" onto public void api.controller.PublicController.export(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4603 ] - [ INFO ]  Mapped "{[/api/public/studentRegister.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentRegister(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4603 ] - [ INFO ]  Mapped "{[/api/public/studentLogin.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentLogin(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4604 ] - [ INFO ]  Mapped "{[/api/public/adminLogin.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentLogin(api.entity.AdminEntity) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4604 ] - [ INFO ]  Mapped "{[/api/public/studentExist.yht],methods=[GET]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentExist(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4624 ] - [ INFO ]  Mapped "{[/api/shop/goods/delete.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.deleteGoods(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4624 ] - [ INFO ]  Mapped "{[/api/shop/shopinfo/info.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.updateShopInfo(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4625 ] - [ INFO ]  Mapped "{[/api/shop/shop/register.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.shopRegister(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4625 ] - [ INFO ]  Mapped "{[/api/shop/goods/pagin.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.ShopController.goodsPagin(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4625 ] - [ INFO ]  Mapped "{[/api/shop/goods/add.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.insertGoods(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4625 ] - [ INFO ]  Mapped "{[/api/shop/viewPicture/{page}],methods=[GET]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.viewPicture(java.lang.Integer,java.lang.Integer) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4625 ] - [ INFO ]  Mapped "{[/api/shop/shopinfo.yht],methods=[GET]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.displayShopInfo(javax.servlet.http.HttpServletRequest) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4626 ] - [ INFO ]  Mapped "{[/api/shop/goods/update.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.updateGoods(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4626 ] - [ INFO ]  Mapped "{[/api/shop/admin/password.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.updateAdminPass(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4626 ] - [ INFO ]  Mapped "{[/api/shop/order/report.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.ShopController.orderReportPagin(api.entity.OrderReport) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4626 ] - [ INFO ]  Mapped "{[/api/shop/admin/mibao.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.updateAdminMibao(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4627 ] - [ INFO ]  Mapped "{[/api/shop/picture/delete/{id}],methods=[DELETE]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.deletePicture(java.lang.Integer,javax.servlet.http.HttpServletRequest) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4627 ] - [ INFO ]  Mapped "{[/api/shop/order/delete.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.deleteOrder(java.lang.Integer,java.lang.String,java.lang.String) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4627 ] - [ INFO ]  Mapped "{[/api/shop/info.yht],methods=[GET]}" onto public api.tools.Result<api.entity.StudentEntity> api.controller.ShopController.getStudentInfo() throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4627 ] - [ INFO ]  Mapped "{[/api/shop/admin/info.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.updateAdminInfo(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4628 ] - [ INFO ]  Mapped "{[/api/shop/upload.yht],methods=[POST]}" onto public api.tools.Result<java.lang.String> api.controller.ShopController.uploadPicture(java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.multipart.MultipartFile) throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4631 ] - [ INFO ]  Mapped "{[/admin/manaStand.html]}" onto public java.lang.String view.Admin.manaStand()
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4632 ] - [ INFO ]  Mapped "{[/admin/info.html]}" onto public java.lang.String view.Admin.actionInfo()
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4632 ] - [ INFO ]  Mapped "{[/admin/reviewShop.html]}" onto public java.lang.String view.Admin.reviewShop()
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4632 ] - [ INFO ]  Mapped "{[/admin/ || /admin/index.html || /admin/home.html]}" onto public java.lang.String view.Admin.actionHome()
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4634 ] - [ INFO ]  Mapped "{[/shopLogout.html]}" onto public java.lang.String view.PublicView.shopLogout()
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4634 ] - [ INFO ]  Mapped "{[/adminLogin.html]}" onto public java.lang.String view.PublicView.viewAdminLogin()
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4634 ] - [ INFO ]  Mapped "{[/adminLogout.html]}" onto public java.lang.String view.PublicView.adminLogout()
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4634 ] - [ INFO ]  Mapped "{[/ || /shopLogin.html]}" onto public java.lang.String view.PublicView.viewShopLogin()
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4642 ] - [ INFO ]  Mapped "{[/shop/shopinfo.html]}" onto public java.lang.String view.Shop.actionViewShopInfo() throws java.lang.Exception
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4644 ] - [ INFO ]  Mapped "{[/shop/pictureMana.html]}" onto public java.lang.String view.Shop.actionPicturnMana()
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4644 ] - [ INFO ]  Mapped "{[/shop/deleteGoods.html]}" onto public java.lang.String view.Shop.deleteGoods()
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4644 ] - [ INFO ]  Mapped "{[/shop/ || /shop/index.html || /shop/home.html]}" onto public java.lang.String view.Shop.actionHome()
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4645 ] - [ INFO ]  Mapped "{[/shop/setting.html]}" onto public java.lang.String view.Shop.actionSetting()
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4646 ] - [ INFO ]  Mapped "{[/shop/orderReport.html]}" onto public java.lang.String view.Shop.orderReport()
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4646 ] - [ INFO ]  Mapped "{[/shop/addGoods.html]}" onto public java.lang.String view.Shop.addGoods()
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4646 ] - [ INFO ]  Mapped "{[/shop/userInfo.html]}" onto public java.lang.String view.Shop.actionUserInfo()
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4646 ] - [ INFO ]  Mapped "{[/shop/modifyGoods.html]}" onto public java.lang.String view.Shop.goodsModify()
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4646 ] - [ INFO ]  Mapped "{[/shop/orderMana.html]}" onto public java.lang.String view.Shop.orderMana()
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4761 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 22:39:50 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4857 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 22:39:50 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:4889 ] - [ INFO ]  Detected @ExceptionHandler methods in exceptionHandle
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:5044 ] - [ INFO ]  Mapped URL path [/assets/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:5047 ] - [ INFO ]  Mapped URL path [/picture/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+2018-04-22 22:39:51  [ RMI TCP Connection(7)-127.0.0.1:5180 ] - [ INFO ]  FrameworkServlet 'dispatcher': initialization completed in 1240 ms
+2018-04-22 22:40:29  [ http-nio-8080-exec-8:42427 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:41:53  [ http-nio-8080-exec-13:126991 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:42:20  [ http-nio-8080-exec-10:153400 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:44:23  [ http-nio-8080-exec-16:277232 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:44:47  [ http-nio-8080-exec-19:301089 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:45:00  [ http-nio-8080-exec-15:314105 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:45:28  [ http-nio-8080-exec-11:341422 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:46:48  [ http-nio-8080-exec-16:421697 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:48:09  [ http-nio-8080-exec-19:502690 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:48:17  [ http-nio-8080-exec-18:510705 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:48:28  [ http-nio-8080-exec-15:521896 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:53:01  [ main:795175 ] - [ INFO ]  Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 22:39:50 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 22:53:02  [ main:795588 ] - [ INFO ]  Closing Root WebApplicationContext: startup date [Sun Apr 22 22:39:46 CST 2018]; root of context hierarchy
+2018-04-22 22:53:03  [ main:797108 ] - [ INFO ]  {dataSource-1} closed
+2018-04-22 22:53:58  [ RMI TCP Connection(6)-127.0.0.1:1 ] - [ INFO ]  Root WebApplicationContext: initialization started
+2018-04-22 22:53:58  [ RMI TCP Connection(6)-127.0.0.1:135 ] - [ INFO ]  Refreshing Root WebApplicationContext: startup date [Sun Apr 22 22:53:58 CST 2018]; root of context hierarchy
+2018-04-22 22:53:58  [ RMI TCP Connection(6)-127.0.0.1:418 ] - [ INFO ]  Loading XML bean definitions from class path resource [config/applicationContext.xml]
+2018-04-22 22:54:00  [ RMI TCP Connection(6)-127.0.0.1:1629 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\AdminDAO.class]
+2018-04-22 22:54:00  [ RMI TCP Connection(6)-127.0.0.1:1630 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\FilesDAO.class]
+2018-04-22 22:54:00  [ RMI TCP Connection(6)-127.0.0.1:1630 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\GoodsDAO.class]
+2018-04-22 22:54:00  [ RMI TCP Connection(6)-127.0.0.1:1631 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\MessageDAO.class]
+2018-04-22 22:54:00  [ RMI TCP Connection(6)-127.0.0.1:1632 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\OrderDAO.class]
+2018-04-22 22:54:00  [ RMI TCP Connection(6)-127.0.0.1:1632 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\ShopDAO.class]
+2018-04-22 22:54:00  [ RMI TCP Connection(6)-127.0.0.1:1633 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\StandDAO.class]
+2018-04-22 22:54:00  [ RMI TCP Connection(6)-127.0.0.1:1633 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\StudentDAO.class]
+2018-04-22 22:54:00  [ RMI TCP Connection(6)-127.0.0.1:1634 ] - [ DEBUG ]  Identified candidate component class: file [E:\project\java\school_shop\target\school_shop-1.0-SNAPSHOT\WEB-INF\classes\api\dao\UserDAO.class]
+2018-04-22 22:54:00  [ RMI TCP Connection(6)-127.0.0.1:1648 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'adminDAO' and 'api.dao.AdminDAO' mapperInterface
+2018-04-22 22:54:00  [ RMI TCP Connection(6)-127.0.0.1:1650 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'filesDAO' and 'api.dao.FilesDAO' mapperInterface
+2018-04-22 22:54:00  [ RMI TCP Connection(6)-127.0.0.1:1650 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'goodsDAO' and 'api.dao.GoodsDAO' mapperInterface
+2018-04-22 22:54:00  [ RMI TCP Connection(6)-127.0.0.1:1650 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'messageDAO' and 'api.dao.MessageDAO' mapperInterface
+2018-04-22 22:54:00  [ RMI TCP Connection(6)-127.0.0.1:1650 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'orderDAO' and 'api.dao.OrderDAO' mapperInterface
+2018-04-22 22:54:00  [ RMI TCP Connection(6)-127.0.0.1:1650 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'shopDAO' and 'api.dao.ShopDAO' mapperInterface
+2018-04-22 22:54:00  [ RMI TCP Connection(6)-127.0.0.1:1650 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'standDAO' and 'api.dao.StandDAO' mapperInterface
+2018-04-22 22:54:00  [ RMI TCP Connection(6)-127.0.0.1:1650 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'studentDAO' and 'api.dao.StudentDAO' mapperInterface
+2018-04-22 22:54:00  [ RMI TCP Connection(6)-127.0.0.1:1650 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'userDAO' and 'api.dao.UserDAO' mapperInterface
+2018-04-22 22:54:02  [ RMI TCP Connection(6)-127.0.0.1:4071 ] - [ INFO ]  {dataSource-1} inited
+2018-04-22 22:54:05  [ RMI TCP Connection(6)-127.0.0.1:7419 ] - [ INFO ]  Root WebApplicationContext: initialization completed in 7418 ms
+2018-04-22 22:54:09  [ RMI TCP Connection(6)-127.0.0.1:10694 ] - [ INFO ]  FrameworkServlet 'dispatcher': initialization started
+2018-04-22 22:54:09  [ RMI TCP Connection(6)-127.0.0.1:10700 ] - [ INFO ]  Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 22:54:09 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 22:54:09  [ RMI TCP Connection(6)-127.0.0.1:10709 ] - [ INFO ]  Loading XML bean definitions from class path resource [config/dispatcher-servlet.xml]
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12812 ] - [ INFO ]  Mapped "{[/api/admin/admin/info.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.updateAdminInfo(api.entity.AdminEntity) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12813 ] - [ INFO ]  Mapped "{[/api/admin/shop/all.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.AdminController.displayAllShop(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12813 ] - [ INFO ]  Mapped "{[/api/admin/info.yht],methods=[GET]}" onto public api.tools.Result<java.lang.Object> api.controller.AdminController.getStudentInfo() throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12814 ] - [ INFO ]  Mapped "{[/api/admin/stand/insert.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.insertStand(api.entity.StandEntity) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12814 ] - [ INFO ]  Mapped "{[/api/admin/shop/review.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.manaShop(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12815 ] - [ INFO ]  Mapped "{[/api/admin/upload.yht],methods=[POST]}" onto public api.tools.Result<java.lang.String> api.controller.AdminController.uploadPicture(javax.servlet.http.HttpServletRequest,org.springframework.web.multipart.MultipartFile) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12815 ] - [ INFO ]  Mapped "{[/api/admin/stand/update.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.AdminController.updateStand(api.entity.StandEntity) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12816 ] - [ INFO ]  Mapped "{[/api/admin/stand/all.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.AdminController.displayAllStandPagin(api.entity.StandEntity) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12822 ] - [ INFO ]  Mapped "{[/api/public/export],methods=[GET]}" onto public void api.controller.PublicController.export(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12823 ] - [ INFO ]  Mapped "{[/api/public/studentLogin.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentLogin(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12823 ] - [ INFO ]  Mapped "{[/api/public/adminLogin.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentLogin(api.entity.AdminEntity) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12824 ] - [ INFO ]  Mapped "{[/api/public/studentExist.yht],methods=[GET]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentExist(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12825 ] - [ INFO ]  Mapped "{[/api/public/studentRegister.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.PublicController.studentRegister(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12850 ] - [ INFO ]  Mapped "{[/api/shop/admin/info.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.updateAdminInfo(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12850 ] - [ INFO ]  Mapped "{[/api/shop/info.yht],methods=[GET]}" onto public api.tools.Result<api.entity.StudentEntity> api.controller.ShopController.getStudentInfo() throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12851 ] - [ INFO ]  Mapped "{[/api/shop/upload.yht],methods=[POST]}" onto public api.tools.Result<java.lang.String> api.controller.ShopController.uploadPicture(java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.multipart.MultipartFile) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12851 ] - [ INFO ]  Mapped "{[/api/shop/order/report.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.ShopController.orderReportPagin(api.entity.OrderReport) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12851 ] - [ INFO ]  Mapped "{[/api/shop/viewPicture/{page}],methods=[GET]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.viewPicture(java.lang.Integer,java.lang.Integer) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12852 ] - [ INFO ]  Mapped "{[/api/shop/admin/password.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.updateAdminPass(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12852 ] - [ INFO ]  Mapped "{[/api/shop/goods/add.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.insertGoods(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12852 ] - [ INFO ]  Mapped "{[/api/shop/admin/mibao.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.updateAdminMibao(api.entity.StudentEntity) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12852 ] - [ INFO ]  Mapped "{[/api/shop/shop/register.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Integer> api.controller.ShopController.shopRegister(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12853 ] - [ INFO ]  Mapped "{[/api/shop/order/delete.yht],methods=[POST]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.deleteOrder(java.lang.Integer,java.lang.String,java.lang.String) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12853 ] - [ INFO ]  Mapped "{[/api/shop/goods/update.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.updateGoods(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12853 ] - [ INFO ]  Mapped "{[/api/shop/picture/delete/{id}],methods=[DELETE]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.deletePicture(java.lang.Integer,javax.servlet.http.HttpServletRequest) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12853 ] - [ INFO ]  Mapped "{[/api/shop/shopinfo/info.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.updateShopInfo(api.entity.ShopEntity) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12854 ] - [ INFO ]  Mapped "{[/api/shop/shopinfo.yht],methods=[GET]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.displayShopInfo(javax.servlet.http.HttpServletRequest) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12854 ] - [ INFO ]  Mapped "{[/api/shop/goods/pagin.yht],methods=[GET]}" onto public api.tools.LayuiTable<java.util.List> api.controller.ShopController.goodsPagin(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12855 ] - [ INFO ]  Mapped "{[/api/shop/goods/delete.yht],methods=[PUT]}" onto public api.tools.Result<java.lang.Object> api.controller.ShopController.deleteGoods(api.entity.GoodsEntity) throws java.lang.Exception
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12862 ] - [ INFO ]  Mapped "{[/admin/info.html]}" onto public java.lang.String view.Admin.actionInfo()
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12862 ] - [ INFO ]  Mapped "{[/admin/reviewShop.html]}" onto public java.lang.String view.Admin.reviewShop()
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12862 ] - [ INFO ]  Mapped "{[/admin/ || /admin/index.html || /admin/home.html]}" onto public java.lang.String view.Admin.actionHome()
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12863 ] - [ INFO ]  Mapped "{[/admin/manaStand.html]}" onto public java.lang.String view.Admin.manaStand()
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12868 ] - [ INFO ]  Mapped "{[/ || /shopLogin.html]}" onto public java.lang.String view.PublicView.viewShopLogin()
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12868 ] - [ INFO ]  Mapped "{[/shopLogout.html]}" onto public java.lang.String view.PublicView.shopLogout()
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12870 ] - [ INFO ]  Mapped "{[/adminLogin.html]}" onto public java.lang.String view.PublicView.viewAdminLogin()
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12870 ] - [ INFO ]  Mapped "{[/adminLogout.html]}" onto public java.lang.String view.PublicView.adminLogout()
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12881 ] - [ INFO ]  Mapped "{[/shop/deleteGoods.html]}" onto public java.lang.String view.Shop.deleteGoods()
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12883 ] - [ INFO ]  Mapped "{[/shop/ || /shop/index.html || /shop/home.html]}" onto public java.lang.String view.Shop.actionHome()
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12884 ] - [ INFO ]  Mapped "{[/shop/userInfo.html]}" onto public java.lang.String view.Shop.actionUserInfo()
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12885 ] - [ INFO ]  Mapped "{[/shop/orderReport.html]}" onto public java.lang.String view.Shop.orderReport()
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12886 ] - [ INFO ]  Mapped "{[/shop/modifyGoods.html]}" onto public java.lang.String view.Shop.goodsModify()
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12887 ] - [ INFO ]  Mapped "{[/shop/setting.html]}" onto public java.lang.String view.Shop.actionSetting()
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12889 ] - [ INFO ]  Mapped "{[/shop/addGoods.html]}" onto public java.lang.String view.Shop.addGoods()
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12890 ] - [ INFO ]  Mapped "{[/shop/orderMana.html]}" onto public java.lang.String view.Shop.orderMana()
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12890 ] - [ INFO ]  Mapped "{[/shop/pictureMana.html]}" onto public java.lang.String view.Shop.actionPicturnMana()
+2018-04-22 22:54:11  [ RMI TCP Connection(6)-127.0.0.1:12890 ] - [ INFO ]  Mapped "{[/shop/shopinfo.html]}" onto public java.lang.String view.Shop.actionViewShopInfo() throws java.lang.Exception
+2018-04-22 22:54:12  [ RMI TCP Connection(6)-127.0.0.1:14157 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 22:54:09 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 22:54:13  [ RMI TCP Connection(6)-127.0.0.1:14574 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 22 22:54:09 CST 2018]; parent: Root WebApplicationContext
+2018-04-22 22:54:13  [ RMI TCP Connection(6)-127.0.0.1:14598 ] - [ INFO ]  Detected @ExceptionHandler methods in exceptionHandle
+2018-04-22 22:54:13  [ RMI TCP Connection(6)-127.0.0.1:14745 ] - [ INFO ]  Mapped URL path [/assets/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+2018-04-22 22:54:13  [ RMI TCP Connection(6)-127.0.0.1:14749 ] - [ INFO ]  Mapped URL path [/picture/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+2018-04-22 22:54:13  [ RMI TCP Connection(6)-127.0.0.1:15293 ] - [ INFO ]  FrameworkServlet 'dispatcher': initialization completed in 4599 ms
+2018-04-22 22:54:35  [ http-nio-8080-exec-4:37220 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'
+2018-04-22 22:56:27  [ http-nio-8080-exec-8:148805 ] - [ WARN ]  No mapping found for HTTP request with URI [/admin/main.html] in DispatcherServlet with name 'dispatcher'

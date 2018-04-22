@@ -9,6 +9,8 @@ public class StandEntity extends BaseEntity{
     private String createTime;
     private String updateTime;
 
+    private String choise;
+
     public Integer getId() {
         return id;
     }
@@ -59,5 +61,21 @@ public class StandEntity extends BaseEntity{
 
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getChoise() {
+        return choise;
+    }
+
+    public void setChoise(String choise) {
+        this.choise = choise;
+    }
+
+    public StandEntity() {
+    }
+
+    public StandEntity(Integer id, String choise) {
+        this.id = id;
+        this.choise = choise;
     }
 }

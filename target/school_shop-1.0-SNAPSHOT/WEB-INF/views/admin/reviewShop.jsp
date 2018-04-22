@@ -33,8 +33,8 @@
     </div>
 </div>
 <script type="text/javascript">
-    var layer,form,$,upload,flow,table,shopTable;
-    var startTime = '',endTime = '';
+    var layer,form,$,upload,flow,table,shopTable,standTable,alert_stand;
+    var Gdata;//全局的数据
     layui.use(['layer', 'jquery', 'form','upload','flow','table','element','laydate'], function () {
         layer = layui.layer;
         $ = layui.jquery;
@@ -109,31 +109,137 @@
                         var arr = ["正常","冻结","审核中"];
                         return arr[d.Shop.status-1];
                     }},
+                {title:'操作', field: null,align:'center',toolbar: '#barDemo',fixed:'right'}
             ]],
             done: function(res, curr, count){
                 //渲染成功后回调
             }
         });
 
+
+        //监听工具条
+        table.on('tool(demo)', function(obj){
+            var data = obj.data;
+            if(obj.event === 'edit'){
+                Gdata = data;
+                popStand();
+            }
+            if(obj.event === 'dell')
+            {
+                if(data.status == "1")
+                {
+                    //要冻结
+                    modifyData({studentId:data.id,status:2,shopId:data.Shop.shopId})
+                }
+                else
+                {
+                    //要开启
+                    modifyData({studentId:data.id,status:1,shopId:data.Shop.shopId})
+                }
+            }
+        });
+
+        table.on('tool(stand)', function(obj){
+            var data = obj.data;
+            if(obj.event === 'select'){
+                layer.close(alert_stand);//关闭窗口
+                modifyData({studentId:Gdata.id,standId:data.id,shopId:Gdata.Shop.shopId})
+            }
+        });
+
+
     });
 
-
-    //查询
-    function query(){
-        goodsTable.reload({where:{
-                startTime:startTime,
-                endTime:endTime,
-            },page:{curr: 1}});
+    //修改摊位
+    function modifyData(data) {
+        ajaxSetup();
+        $.ajax({
+            type: "PUT",
+            url: "/api/admin/shop/review.yht",
+            data: data,
+            dataType:"json",//预期服务器返回的数据类型
+            success: function (data) {
+                if (data.code == 0) {
+                    cleanQueryAll();
+                    layer.msg("操作成功");
+                }
+                else {
+                    layer.msg("操作失败");
+                }
+            },
+            error: function (data) {
+                layer.msg('处理失败');
+                return false;
+            }
+        });
     }
 
     //清空查询表单
     function cleanQueryAll(){
-        document.getElementById("query_form").reset();
-        goodsTable.reload({where:{
+        shopTable.reload({where:{
             },page:{curr: 1}});
     }
 
+    //弹出摊位选择窗口
+    function popStand(){
+        alert_stand = layer.open({
+            type: 1,
+            title: '选择摊位',
+            zIndex: layer.zIndex,
+            content: $('#select_stand').html(),
+            area: ['600px', '400px'],
+            resize:false,
+            success: function(layero, index) {
+                standTable = table.render({
+                    id: 'stand_table',
+                    elem: '#stand_table',
+                    url:"/api/admin/stand/all.yht",
+                    method:'get',
+                    loading: true,
+                    page:true,
+                    limits: [10,20,30,50],
+                    limit:10,
+                    even:true,					//行间隔背景
+                    //size:'sm',					//表格尺寸
+                    skin:'row',				//风格 line/row/nob
+                    // width: 1000,
+                    //height: 'full-119',
+                    where:{choise:"1",status:"1"},
+                    request: {
+                        pageName: 'pages', //页码的参数名称，默认：page
+                        limitName: 'rows' //每页数据量的参数名，默认：limit
+                    },
+                    cols:  [[
+                        {title:'识别号', field: 'id',align:'left',fixed:'left'},
+                        {title:'摊位名', field: 'standName',align:'left'},
+                        {title:'地址', field: 'location',align:'left'},
+                        {title:'操作', field: '',align:'center',toolbar: '#actionTpl2'}
+                    ]],
+                    done: function(res, curr, count){
+                        //渲染成功后回调
+                    }
+                });
+            }
+        });
+    }
 
+</script>
+<!--工具栏-->
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">选择摊位</a>
+    <a class="layui-btn layui-btn-xs" lay-event="dell">通过/冻结</a>
+</script>
+<!-- 单选摊位 -->
+<script type="text/template" id="select_stand">
+    <table id="stand_table" lay-filter="stand"></table>
+</script>
+<!-- 选择摊位按钮 -->
+<script type="text/html" id="actionTpl2">
+    <div class="layui-btn-group">
+        <button class="layui-btn layui-btn-sm" lay-event="select">
+            选择
+        </button>
+    </div>
 </script>
 </body>
 </html>

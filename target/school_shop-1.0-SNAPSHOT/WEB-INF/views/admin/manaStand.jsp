@@ -110,6 +110,11 @@
                         var arr = ["正常","维护中"];
                         return arr[d.status-1];
                     }},
+                {title:'是否已选', field: 'choise',align:'center',
+                    templet: function(d){
+                        var arr = ["已选","未选"];
+                        return arr[d.choise];
+                    }},
                 {title:'创建时间', field: 'createTime',align:'left'},
                 {title:'修改时间', field: 'updateTime',align:'left'},
                 {title:'操作', field: null,align:'center', toolbar: '#barDemo'}

@@ -62,4 +62,12 @@ public class MessageEntity extends BaseEntity {
 
     public MessageEntity() {
     }
+
+    public MessageEntity(Integer send, Integer receive, String title, String content, String datetime) {
+        this.send = send;
+        this.receive = receive;
+        this.title = title;
+        this.content = content;
+        this.datetime = datetime;
+    }
 }

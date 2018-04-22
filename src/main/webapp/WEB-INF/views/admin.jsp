@@ -75,11 +75,8 @@
                         <cite><%= (String) session.getAttribute("AdminName") %></cite>
                     </a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" data-url="/shop/userInfo.html"><i class="iconfont icon-zhanghu"
+                        <dd><a href="javascript:;" data-url="/admin/info.html"><i class="iconfont icon-zhanghu"
                                                                                          data-icon="icon-zhanghu"></i><cite>个人资料</cite></a>
-                        </dd>
-                        <dd><a href="javascript:;" data-url="/shop/setting.html"><i class="iconfont icon-shezhi1"
-                                                                                          data-icon="icon-shezhi1"></i><cite>修改密码</cite></a>
                         </dd>
                         <dd><a href="/adminLogout.html"><i class="iconfont icon-loginout"></i><cite>退出</cite></a></dd>
                     </dl>

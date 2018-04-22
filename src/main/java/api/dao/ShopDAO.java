@@ -22,6 +22,13 @@ public interface ShopDAO {
     public List<ShopEntity> queryShopByName(ShopEntity vo);
 
     /**
+     * 根据商户ID查询商户
+     * @param shopId
+     * @return
+     */
+    public ShopEntity queryShopByID(@Param("shopId") Integer shopId);
+
+    /**
      * 检查该学生下面是否有商户，以及商户的状态
      * @param StudendID
      * @return

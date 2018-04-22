@@ -23,6 +23,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="Wallet" type="api.entity.WalletEntity"/>
 		<typeAlias alias="Admin" type="api.entity.AdminEntity"/>
 		<typeAlias alias="Message" type="api.entity.MessageEntity"/>
+		<typeAlias alias="Mews" type="api.entity.MewsEntity"/>
 	</typeAliases>
 
 
