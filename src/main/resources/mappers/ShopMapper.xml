@@ -83,4 +83,45 @@
         delete from shop shop_id = #{shopId}
     </delete>
 
+    <!--获取所有的商铺信息-->
+    <resultMap id="ShopAll" type="Student">
+        <id column="studendid" property="id"/>
+        <result column="name" property="name"/>
+        <result column="college" property="college"/>
+        <result column="classes" property="classes"/>
+        <association property="Shop" javaType="Shop">
+            <id column="shopId" property="shopId"/>
+            <result column="shopName" property="shopName"/>
+            <result column="description" property="description"/>
+            <result column="status" property="status"/>
+            <result column="standId" property="standId"/>
+            <association property="Stand" javaType="Stand">
+                <id column="id" property="id"/>
+                <result column="standName" property="standName"/>
+                <result column="location" property="location"/>
+            </association>
+        </association>
+    </resultMap>
+
+    <!--获取所有的商铺信息-->
+    <select id="displayAll"   resultMap="ShopAll">
+            SELECT
+                e.id AS studendid,
+                e.name,
+                e.college,
+                e.classes,
+                a.shop_id AS shopId,
+                a.shop_name AS shopName,
+                a.description,
+                a.status,
+                a.stand_id AS standId,
+                b.id,
+                b.stand_name AS standName,
+                b.location
+            FROM
+                shop a
+            LEFT JOIN stand b ON a.stand_id = b.id
+            LEFT JOIN student e ON a.student_id = e.id
+    </select>
+
 </mapper> 

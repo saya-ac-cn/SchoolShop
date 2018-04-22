@@ -21,7 +21,7 @@ public class CheckUser implements HandlerInterceptor {
         httpServletRequest.setCharacterEncoding("utf-8");
         //获取当前请求url:http://localhost:8080/shopLogin.html
         String url = httpServletRequest.getRequestURL().toString();
-        if(url.contains("/api/root"))
+        if(url.contains("/api/admin"))
         {
             //进入运维人员专属的目录下
             Integer sessionAdmin= (Integer) httpServletRequest.getSession().getAttribute("Admin");//在session中取出运维管理员的信息
@@ -34,7 +34,7 @@ public class CheckUser implements HandlerInterceptor {
             {
                 //未通过验证
                 System.err.println("please admin login");
-                httpServletRequest.getRequestDispatcher("redirect:/shopLogin.html").forward(httpServletRequest, httpServletResponse);
+                httpServletRequest.getRequestDispatcher("redirect:/adminLogin.html").forward(httpServletRequest, httpServletResponse);
                 return false;
             }
         }

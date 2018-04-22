@@ -1,5 +1,6 @@
 package api.service;
 
+import api.entity.AdminEntity;
 import api.entity.StudentEntity;
 import api.tools.Result;
 
@@ -23,5 +24,22 @@ public interface IPublicService {
      * @throws Exception
      */
     public Result<Integer> studentRegister(StudentEntity vo) throws Exception;
+
+
+    /**
+     * 商户管理员登录
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> studentLogin(StudentEntity vo) throws Exception;
+
+    /**
+     * 运维管理员登录
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> adminLogin(AdminEntity vo) throws Exception;
 
 }

@@ -21,6 +21,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="User" type="api.entity.UserEntity"/>
 		<typeAlias alias="OrderReport" type="api.entity.OrderReport"/>
 		<typeAlias alias="Wallet" type="api.entity.WalletEntity"/>
+		<typeAlias alias="Admin" type="api.entity.AdminEntity"/>
+		<typeAlias alias="Message" type="api.entity.MessageEntity"/>
 	</typeAliases>
 
 

@@ -1,7 +1,9 @@
 package api.service.impl;
 
+import api.dao.AdminDAO;
 import api.dao.FilesDAO;
 import api.dao.StudentDAO;
+import api.entity.AdminEntity;
 import api.entity.FilesEntity;
 import api.entity.StudentEntity;
 import api.handle.MyException;
@@ -34,6 +36,10 @@ public class PublicServiceImpl implements IPublicService {
     @Resource
     @Qualifier("filesDAO")
     private FilesDAO filesDAO;
+
+    @Resource
+    @Qualifier("adminDAO")
+    private AdminDAO adminDAO;
 
     /**
      * 判断商户管理员是否存在
@@ -118,7 +124,7 @@ public class PublicServiceImpl implements IPublicService {
             if (list.size() == 0)
             {
                 //没有该商户管理员的信息
-                return ResultUtil.error(1,"密码错误");
+                return ResultUtil.error(1,"用户名或密码错误");
             }
             else
             {
@@ -142,4 +148,51 @@ public class PublicServiceImpl implements IPublicService {
         }
     }
 
+
+    /**
+     * 运维管理员登录
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> adminLogin(AdminEntity vo) throws Exception {
+        RequestAttributes ra = RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = ((ServletRequestAttributes)ra).getRequest();
+        Integer sessionAdminID= api.tools.Service.utilGetAdminID();//在session中取出商户管理员的信息
+        if(sessionAdminID != null)
+        {
+            //已登录
+            return ResultUtil.success();
+        }
+        else
+        {
+            //未登录
+            AdminEntity admin = adminDAO.getAdmin(vo);
+            if (admin == null)
+            {
+                //没有该管理员的信息
+                return ResultUtil.error(1,"用户名或密码错误");
+            }
+            else
+            {
+                String Password = DesUtil.encrypt(vo.getPassword());//加密后商户管理员的密码
+                if(admin.getPassword().equals(Password))
+                {
+                    request.getSession().setAttribute("AdminID", admin.getId());//为之注入用户名
+                    request.getSession().setAttribute("AdminName", admin.getUsername());//为之注入用户名
+                    List<FilesEntity> img = filesDAO.getFiles(new FilesEntity("2",admin.getId()),new RowBounds());
+                    if(img.size()>0)
+                    {
+                        request.getSession().setAttribute("Adminimg", img.get(0).getUrl());//为之注入头像
+                    }
+                    return ResultUtil.success();//返回登录成功
+                }
+                else{
+                    //密码错误
+                    return ResultUtil.error(1,"用户名或密码错误");
+                }
+            }
+        }
+    }
 }

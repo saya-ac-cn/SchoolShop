@@ -35,4 +35,15 @@ public class Service {
         return (Integer) request.getSession().getAttribute("ShopID");
     }
 
+    /**
+     * session中取出管理员的信息
+     * @return
+     */
+    public static Integer utilGetAdminID()
+    {
+        RequestAttributes ra = RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = ((ServletRequestAttributes)ra).getRequest();
+        return (Integer) request.getSession().getAttribute("AdminID");
+    }
+
 }

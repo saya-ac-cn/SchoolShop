@@ -3,6 +3,7 @@ package api.dao;
 import api.entity.ShopEntity;
 import api.entity.StudentEntity;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -40,5 +41,11 @@ public interface ShopDAO {
      * @return
      */
     public int update(ShopEntity vo);
+
+    /**
+     * 获取所有的商户信息
+     * @return
+     */
+    public List<ShopEntity> displayAll(RowBounds rowBounds);
 
 }

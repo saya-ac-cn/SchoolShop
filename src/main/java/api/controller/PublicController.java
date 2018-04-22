@@ -1,5 +1,6 @@
 package api.controller;
 
+import api.entity.AdminEntity;
 import api.entity.StudentEntity;
 import api.service.impl.PublicServiceImpl;
 import api.tools.Result;
@@ -60,6 +61,18 @@ public class PublicController {
     public Result<Integer> studentLogin(StudentEntity vo) throws Exception
     {
         return publicService.studentLogin(vo);
+    }
+
+    /**
+     * 管理员登录
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/adminLogin.yht")
+    public Result<Integer> studentLogin(AdminEntity vo) throws Exception
+    {
+        return publicService.adminLogin(vo);
     }
 
     @GetMapping(value = "/export")
