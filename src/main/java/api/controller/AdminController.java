@@ -1,9 +1,6 @@
 package api.controller;
 
-import api.entity.AdminEntity;
-import api.entity.NewsEntity;
-import api.entity.ShopEntity;
-import api.entity.StandEntity;
+import api.entity.*;
 import api.service.impl.AdminServiceImpl;
 import api.tools.LayuiTable;
 import api.tools.Result;
@@ -161,14 +158,38 @@ public class AdminController {
 
     /**
      * 删除动态
-     * @param id
+     * @param newsid
      * @return
      * @throws Exception
      */
-    @DeleteMapping(value = "/news/delete.yht")
-    public Result<Integer> getNews(@RequestParam(value = "id") Integer id) throws Exception
+    @DeleteMapping(value = "/news/delete/{newsid}")
+    public Result<Integer> deleteNews(@PathVariable("newsid") int newsid) throws Exception
     {
-        return adminServiceImpl.deleteNews(id);
+        return adminServiceImpl.deleteNews(newsid);
+    }
+
+    /**
+     * 获取所有的用户
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/user/all.yht")
+    public  LayuiTable<List> getAllUser(UserEntity vo) throws Exception
+    {
+        return adminServiceImpl.getAllUser(vo);
+    }
+
+    /**
+     * 修改用户
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    @PutMapping(value = "/user/update.yht")
+    public Result<Integer> updateUser(UserEntity vo) throws Exception
+    {
+        return adminServiceImpl.updateUser(vo);
     }
 
 }

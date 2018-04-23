@@ -3,7 +3,7 @@ package api.entity;
 /**
  * 用户实体模型
  */
-public class UserEntity {
+public class UserEntity extends BaseEntity {
 
     private Integer id;
     private String username;

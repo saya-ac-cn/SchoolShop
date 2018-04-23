@@ -125,5 +125,21 @@ public interface IAdminService {
      */
     public LayuiTable<List> getNews(NewsEntity vo) throws Exception;
 
+    /**
+     * 获取所有的用户
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public LayuiTable<List> getAllUser(UserEntity vo) throws Exception;
+
+    /**
+     * 审核用户的信息
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> updateUser(UserEntity vo) throws  Exception;
+
 
 }

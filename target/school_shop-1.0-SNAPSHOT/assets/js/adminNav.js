@@ -19,24 +19,10 @@ var navs = [{
     "href" : "/admin/manaStand.html",
     "spread" : false
 },{
-    "title" : "管理用户",
+    "title" : "管理会员",
     "icon" : "&#xe61c;",
-    "href" : "",
+    "href" : "/admin/manaUser.html",
     "spread" : false,
-    "children" : [
-        {
-            "title" : "管理会员",
-            "icon" : "&#xe631;",
-            "href" : "/shop/shopinfo.html",
-            "spread" : false
-        },
-        {
-            "title" : "管理商家",
-            "icon" : "&#xe631;",
-            "href" : "/shop/pictureMana.html",
-            "spread" : false
-        }
-    ]
 },{
     "title" : "综合管理",
     "icon" : "&#xe61c;",
@@ -46,13 +32,13 @@ var navs = [{
         {
             "title" : "发布动态",
             "icon" : "&#xe631;",
-            "href" : "/shop/addGoods.html",
+            "href" : "/admin/addNews.html",
             "spread" : false
         },
         {
             "title" : "管理动态",
             "icon" : "&#xe631;",
-            "href" : "/shop/modifyGoods.html",
+            "href" : "/admin/manaNews.html",
             "spread" : false
         }
     ]

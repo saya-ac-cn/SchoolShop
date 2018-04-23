@@ -2,6 +2,7 @@ package view;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 /**
@@ -52,6 +53,50 @@ public class Admin {
     public String manaStand()
     {
         String Viewname = "admin/manaStand";
+        return Viewname;
+    }
+
+    /**
+     * 发布动态
+     * @return
+     */
+    @RequestMapping(value = "/addNews.html")
+    public String addNews()
+    {
+        String Viewname = "admin/addNews";
+        return Viewname;
+    }
+
+    /**
+     * 管理动态
+     * @return
+     */
+    @RequestMapping(value = "/manaNews.html")
+    public String manaNews()
+    {
+        String Viewname = "admin/manaNews";
+        return Viewname;
+    }
+
+    /**
+     * 管理动态
+     * @return
+     */
+    @RequestMapping(value = "/modifyNews.html")
+    public String modifyNews(@RequestParam(value = "newsid") Integer newsid)
+    {
+        String Viewname = "admin/modifyNews";
+        return Viewname;
+    }
+
+    /**
+     * 管理会员
+     * @return
+     */
+    @RequestMapping(value = "/manaUser.html")
+    public String manaUser()
+    {
+        String Viewname = "admin/manaUser";
         return Viewname;
     }
 

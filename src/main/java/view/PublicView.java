@@ -30,6 +30,17 @@ public class PublicView {
     }
 
     /**
+     * 商户入住
+     * @return
+     */
+    @RequestMapping(value = "register.html")
+    public String register()
+    {
+        String view = "register";
+        return view;
+    }
+
+    /**
      * 商户注销
      * @return
      */

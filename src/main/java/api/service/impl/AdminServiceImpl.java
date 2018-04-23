@@ -44,6 +44,10 @@ public class AdminServiceImpl implements IAdminService {
     @Qualifier("newsDAO")
     private NewsDAO newsDAO;
 
+    @Resource
+    @Qualifier("userDAO")
+    private UserDAO userDAO;
+
     /**
      * 获取管理员的详情
      *
@@ -446,5 +450,62 @@ public class AdminServiceImpl implements IAdminService {
         {
             throw new MyException(ResultEnum.NOT_EXIST);
         }
+    }
+
+
+    /**
+     * 获取所有的用户
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public LayuiTable<List> getAllUser(UserEntity vo) throws Exception {
+        RowBounds rowBounds = new RowBounds();
+        List<UserEntity> list = userDAO.getAllUser(vo,rowBounds);
+        if(list.size() > 0)
+        {
+            LayuiTable<List> out = new LayuiTable();
+            out.setCount(list.size());
+            Paging paging =new Paging();
+            //每页显示的记录数量
+            if(vo.getRows() == null || vo.getRows() == 0)
+            {
+                vo.setRows(10);
+            }
+            paging.setPageSize(vo.getRows());//每页显示记录的数量
+            paging.setDateSum(list.size());//总记录数
+            paging.setTotalPage();
+            paging.setPageNow(vo.getPages());//设置当前的页码
+            rowBounds = new RowBounds((paging.getPageNow()-1)*paging.getPageSize(),paging.getPageSize());
+            list =userDAO.getAllUser(vo,rowBounds);//获取满足条件的记录集合
+            paging.setGrid(list);
+            out.setCode(0);
+            out.setMsg("查询成功");
+            out.setData(list);
+            return out;
+        }else
+        {
+            throw new MyException(ResultEnum.NOT_EXIST);
+        }
+    }
+
+    /**
+     * 审核用户的信息
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> updateUser(UserEntity vo) throws Exception {
+       vo.setUpdateTime(api.tools.Service.utilsTime());
+       if(userDAO.update(vo) > 0)
+       {
+           return  ResultUtil.success();
+       }
+       else
+       {
+           throw new MyException(ResultEnum.ERROP);
+       }
     }
 }
