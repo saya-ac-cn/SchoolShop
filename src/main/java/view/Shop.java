@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
-@RequestMapping(value = "/shop")
+@RequestMapping(value = "/view/shop")
 public class Shop {
 
     @Autowired
@@ -139,5 +139,15 @@ public class Shop {
         return Viewname;
     }
 
+    /**
+     * 站内消息
+     * @return
+     */
+    @RequestMapping(value = "/message.html")
+    public String message()
+    {
+        String Viewname = "shop/message";
+        return Viewname;
+    }
 
 }

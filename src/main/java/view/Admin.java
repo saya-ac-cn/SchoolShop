@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * 管理员视图
  */
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = "/view/admin")
 public class Admin {
 
     /**

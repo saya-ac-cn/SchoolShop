@@ -1,9 +1,6 @@
 package api.service;
 
-import api.entity.GoodsEntity;
-import api.entity.OrderReport;
-import api.entity.ShopEntity;
-import api.entity.StudentEntity;
+import api.entity.*;
 import api.tools.LayuiTable;
 import api.tools.Result;
 import org.springframework.web.multipart.MultipartFile;
@@ -177,5 +174,13 @@ public interface IShopService {
      * @throws Exception
      */
     public Result<Object> deleteOrder(Integer itermOrderId,String ststus,String user) throws Exception;
+
+    /**
+     * 获取相关的站内消息
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public LayuiTable<List> getMessage(MessageEntity vo) throws Exception;
 
 }

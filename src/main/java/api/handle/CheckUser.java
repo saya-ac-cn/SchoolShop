@@ -21,7 +21,7 @@ public class CheckUser implements HandlerInterceptor {
         httpServletRequest.setCharacterEncoding("utf-8");
         //获取当前请求url:http://localhost:8080/shopLogin.html
         String url = httpServletRequest.getRequestURL().toString();
-        if(url.contains("/api/admin"))
+        if(url.contains("/api/admin") || url.contains("/view/admin"))
         {
             //进入运维人员专属的目录下
             Integer sessionAdmin= (Integer) httpServletRequest.getSession().getAttribute("Admin");//在session中取出运维管理员的信息
@@ -34,53 +34,46 @@ public class CheckUser implements HandlerInterceptor {
             {
                 //未通过验证
                 System.err.println("please admin login");
-                httpServletRequest.getRequestDispatcher("redirect:/adminLogin.html").forward(httpServletRequest, httpServletResponse);
+                this.redirectAjax(httpServletRequest, httpServletResponse,"/adminLogin.html");
                 return false;
             }
         }
-        else
+        else if(url.contains("/api/user") || url.contains("/view/user"))
+        {
+            //进入普通用户专属的目录下
+            Integer sessionUser= (Integer) httpServletRequest.getSession().getAttribute("UserID");//在session中取出运维管理员的信息
+            if (sessionUser != null) {
+                //通过验证
+                System.out.println("pass the /api/user/");
+                return true;
+            }
+            else
+            {
+                //未通过验证
+                System.err.println("please user login");
+                this.redirectAjax(httpServletRequest, httpServletResponse,"/userLogin.html");
+                return false;
+            }
+        }
+        else if (url.contains("/api/shop") || url.contains("/view/shop"))
         {
             //进入商户目录
             //检查是否登录
             Integer sessionShop= (Integer) httpServletRequest.getSession().getAttribute("ShopID");//在session中取出商户管理员的信息
             if (sessionShop != null) {
-                if(url.contains("/api/shop/core"))
-                {
-                    //进入核心业务
-                    StudentEntity user = new StudentEntity();
-                    user.setId(sessionShop);
-                    user = (studentDAO.queryBasicById(user)).get(0);//获取用户的信息
-                    if(user.getStatus().trim().equals("1"))
-                    {
-                        //进入核心业务
-                        System.out.println("pass the core busi");
-                        return true;
-                    }
-                    else
-                    {
-                        //未通过验证
-                        System.err.println("please write info login");
-                        httpServletRequest.getRequestDispatcher("redirect:/shopLogin.html").forward(httpServletRequest, httpServletResponse);
-                        return false;
-                    }
-                }
-                else
-                {
-                    //通过验证
-                    System.out.println("pass the /api/shop");
-                    return true;
-                }
+                //通过验证
+                System.out.println("pass the /api/shop");
+                return true;
             }
             else
             {
                 //未通过验证
                 System.err.println("please shop login");
                 this.redirectAjax(httpServletRequest, httpServletResponse,"/shopLogin.html");
-               // httpServletResponse.sendRedirect("/shopLogin.html");
-                //httpServletRequest.getRequestDispatcher("/shopLogin.html").forward(httpServletRequest, httpServletResponse);
                 return false;
             }
         }
+        return false;
     }
 
     //对于请求是ajax请求重定向问题的处理方法

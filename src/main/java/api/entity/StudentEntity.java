@@ -186,14 +186,6 @@ public class StudentEntity extends  BaseEntity{
         {
             return false;
         }
-        if(this.getQuestion() == null || this.getQuestion().trim().equals("") == true || this.getQuestion().trim().length() >= 30)
-        {
-            return false;
-        }
-        if(this.getAnswer() == null || this.getAnswer().trim().equals("") == true || this.getAnswer().trim().length() >= 50)
-        {
-            return false;
-        }
         return true;
     }
 

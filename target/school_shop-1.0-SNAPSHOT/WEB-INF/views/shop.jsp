@@ -70,7 +70,7 @@
             <!-- 顶部右侧菜单 -->
             <ul class="layui-nav top_menu">
                 <li class="layui-nav-item diy" pc>
-                    <a href="javascript:;" data-url="/shop/userInfo.html"><i class="iconfont icon-gonggao"></i><cite>系统公告</cite></a>
+                    <a href="/shop/message.html"><i class="iconfont icon-gonggao"></i><cite>系统公告</cite></a>
                 </li>
                 <li class="layui-nav-item" pc>
                     <a href="javascript:;">

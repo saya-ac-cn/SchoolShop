@@ -1,10 +1,7 @@
 package api.controller;
 
 
-import api.entity.GoodsEntity;
-import api.entity.OrderReport;
-import api.entity.ShopEntity;
-import api.entity.StudentEntity;
+import api.entity.*;
 import api.service.impl.ShopServiceImpl;
 import api.tools.LayuiTable;
 import api.tools.Result;
@@ -156,6 +153,12 @@ public class ShopController {
                                       @RequestParam("user") String user) throws Exception
     {
         return shopServiceImpl.deleteOrder(itermOrderId,ststus,user);
+    }
+
+    @GetMapping("/message.yht")
+    public LayuiTable<List> getMessage(MessageEntity vo) throws Exception
+    {
+        return shopServiceImpl.getMessage(vo);
     }
 
 }

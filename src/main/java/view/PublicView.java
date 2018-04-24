@@ -24,7 +24,7 @@ public class PublicView {
         String view = "shoplogin";
         if(shopAdmin != null)
         {
-            view = "redirect:/shop/";
+            view = "redirect:/view/shop/";
         }
         return view;
     }
@@ -67,7 +67,7 @@ public class PublicView {
         String view = "adminlogin";
         if(shopAdmin != null)
         {
-            view = "redirect:/admin/";
+            view = "redirect:/view/admin/";
         }
         return view;
     }
@@ -89,6 +89,47 @@ public class PublicView {
     }
 
 
+    /**
+     * 会员注销
+     * @return
+     */
+    @RequestMapping(value = {"/userLogout.html"})
+    public String userLogout()
+    {
+        RequestAttributes ra = RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = ((ServletRequestAttributes)ra).getRequest();
+        request.getSession().removeAttribute("UserID");
+        request.getSession().removeAttribute("UserName");
+        String view = "redirect:/userLogin.html";
+        return view;
+    }
+
+    /**
+     * 会员注册
+     * @return
+     */
+    @RequestMapping(value = "userRegister.html")
+    public String userRegister()
+    {
+        String view = "/user/register";
+        return view;
+    }
+
+    /**
+     * 会员登录
+     * @return
+     */
+    @RequestMapping(value = "/userLogin.html")
+    public String viewUserLogin()
+    {
+        Integer Shop= Service.utilGetShopID();//在session中取出会员的信息
+        String view = "/user/login";
+        if(Shop != null)
+        {
+            view = "redirect:/view/user/";
+        }
+        return view;
+    }
 
 
 }

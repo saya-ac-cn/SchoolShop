@@ -24,6 +24,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="Admin" type="api.entity.AdminEntity"/>
 		<typeAlias alias="Message" type="api.entity.MessageEntity"/>
 		<typeAlias alias="News" type="api.entity.NewsEntity"/>
+		<typeAlias alias="CollectGoods" type="api.entity.CollectGoodsEntity"/>
+		<typeAlias alias="Pay" type="api.entity.PayEntity"/>
+		<typeAlias alias="Cart" type="api.entity.CartEntity"/>
+		<typeAlias alias="Address" type="api.entity.AddressEntity"/>
 	</typeAliases>
 
 

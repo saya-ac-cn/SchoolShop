@@ -20,6 +20,7 @@
     <title>商户入住</title>
     <link type="text/css" rel="stylesheet" href="../../assets/register/css/login.css">
     <script type="text/javascript" src="../../assets/register/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../assets/tools/layui-v2.2.6/layui.js"></script>
 </head>
 <body class="login_bj" >
 
@@ -28,16 +29,16 @@
         <div class="zc">
             <div class="bj_bai">
                 <h3>欢迎注册</h3>
-                <form action="" method="get">
-                    <input name="" type="text" class="kuang_txt phone" placeholder="用户名">
-                    <input name="" type="text" class="kuang_txt email" placeholder="邮箱">
-                    <input name="" type="text" class="kuang_txt yanzm" placeholder="Phone">
-                    <input name="" type="text" class="kuang_txt yanzm" placeholder="二级学院">
-                    <input name="" type="text" class="kuang_txt yanzm" placeholder="班级">
-                    <input name="" type="text" class="kuang_txt yanzm" placeholder="所在宿舍">
-                    <input name="" type="text" class="kuang_txt possword" placeholder="密码">
+                <form action="" id="form_1" method="get">
+                    <input id="id" type="text" class="kuang_txt phone" placeholder="学号">
+                    <input id="name" type="text" class="kuang_txt phone" placeholder="姓名">
+                    <input id="email" type="text" class="kuang_txt email" placeholder="邮箱">
+                    <input id="mobile" type="text" class="kuang_txt yanzm" placeholder="Phone">
+                    <input id="college" type="text" class="kuang_txt yanzm" placeholder="二级学院">
+                    <input id="classes" type="text" class="kuang_txt yanzm" placeholder="班级">
+                    <input id="apartment" type="text" class="kuang_txt yanzm" placeholder="所在宿舍">
+                    <input id="password" type="password" class="kuang_txt possword" placeholder="密码">
                     <input name="注册" type="button" class="btn_zhuce" value="注册">
-
                 </form>
             </div>
             <div class="bj_right">
@@ -46,11 +47,142 @@
                 <a href="#" class="zhuce_wb">微博注册</a>
                 <a href="#" class="zhuce_wx">微信注册</a>
                 <p>已有账号？<a href="shopLogin.html">立即登录</a></p>
-
             </div>
         </div>
     </div>
 
 </div>
+<script type="text/javascript">
+    var layer;//定义layui模块
+
+    var checkUser = false;//核验是否通过标志位，默认不通过
+
+    layui.use(['layer'], function(){
+        layer = layui.layer;
+    });
+
+    $(function (){
+
+        $(".btn_zhuce").click(function () {
+            var id = $("#id").val().trim();
+            var name = $("#name").val().trim();
+            var email = $("#email").val().trim();
+            var mobile = $("#mobile").val().trim();
+            var college = $("#college").val().trim();
+            var classes = $("#classes").val().trim();
+            var apartment = $("#apartment").val().trim();
+            var password = $("#password").val().trim();
+            if(id == '')
+            {
+                layer.msg("学号不可为空");
+            }
+            else if(checkUser == false)
+            {
+                layer.msg("该账号已经存在了，换个吧。");
+            }
+            else if(name == '')
+            {
+                layer.msg("姓名不可为空");
+            }
+            else if(email == '')
+            {
+                layer.msg("邮箱不可为空");
+            }
+            else if(mobile == '')
+            {
+                layer.msg("联系电话不可为空");
+            }
+            else if(college == '')
+            {
+                layer.msg("二级学院不可为空");
+            }
+            else if(classes == '')
+            {
+                layer.msg("班级不可为空");
+            }
+            else if(apartment == '')
+            {
+                layer.msg("所在宿舍不可为空");
+            }
+            else if(password == '' || password.length < 6)
+            {
+                layer.msg("密码不可为空,且长度在6位以上");
+            }
+            else
+            {
+                var sendData = {
+                    id :id,
+                    name: name,
+                    email :email,
+                    mobile :mobile,
+                    college :college,
+                    classes :classes,
+                    apartment:apartment,
+                    password:password
+                };
+                go(sendData);
+            }
+        });
+
+
+        $("#id").blur(function () {
+            var id = $(this).val().trim();
+            if(id != '')
+            {
+                //执行异步查询
+                $.ajax({
+                    type: "GET",
+                    url: "/api/public/studentExist.yht",
+                    data:{id:id},
+                    dataType:"json",
+                    success: function(data){
+                        if(data.code == 2){
+                           //没有注册过
+                            checkUser = true;
+                            return false;
+                        }
+                        else
+                        {
+                            //注册过
+                            checkUser = false
+                            layer.msg("该账号已经存在了，换个吧。");
+                        }
+                    },
+                    error:function(data){
+                        checkUser = false
+                        layer.msg('查询失败');
+                        return false;
+                    }
+                });
+            }
+        })
+    })
+
+    //注册
+    function go(data) {
+        $.ajax({
+            type: "POST",
+            url: "/api/public/studentRegister.yht",
+            data:data,
+            dataType:"json",
+            success: function(data){
+                if(data.code == 0){
+                    document.getElementById("form_1").reset();
+                    layer.msg("注册成功，赶紧登录吧");
+                    return false;
+                }
+                else
+                {
+                    layer.msg(data.msg);
+                }
+            },
+            error:function(data){
+                layer.msg('注册失败');
+                return false;
+            }
+        });
+    }
+
+</script>
 </body>
 </html>

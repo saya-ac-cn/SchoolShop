@@ -26,6 +26,10 @@
             <!-- 进行拦截-->
             <mvc:mapping path="/api/shop/**" />
             <mvc:mapping path="/api/root/**" />
+            <mvc:mapping path="/api/user/**" />
+            <mvc:mapping path="/view/admin/**" />
+            <mvc:mapping path="/view/shop/**" />
+            <mvc:mapping path="/view/user/**" />
             <bean class="api.handle.CheckUser"/>
         </mvc:interceptor>
     </mvc:interceptors>

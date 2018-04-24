@@ -2,6 +2,7 @@ package api.controller;
 
 import api.entity.AdminEntity;
 import api.entity.StudentEntity;
+import api.entity.UserEntity;
 import api.service.impl.PublicServiceImpl;
 import api.tools.Result;
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -74,6 +75,43 @@ public class PublicController {
     {
         return publicService.adminLogin(vo);
     }
+
+    /**
+     * 判断会员用户是否存在
+     * @param username
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/userExist.yht")
+    public Result<Integer>  userExist(@RequestParam("username")String username) throws Exception
+    {
+        return publicService.userExist(username);
+    }
+
+    /**
+     * 会员用户登录
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/userLogin.yht")
+    public Result<Integer> userLogin(UserEntity vo) throws Exception
+    {
+        return publicService.userLogin(vo);
+    }
+
+    /**
+     * 用户注册
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "userRegister.yht")
+    public Result<Integer> userRegister(UserEntity vo)throws Exception
+    {
+        return publicService.userRegister(vo);
+    }
+
 
     @GetMapping(value = "/export")
     public void export(HttpServletRequest request, HttpServletResponse response) throws Exception

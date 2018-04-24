@@ -75,7 +75,7 @@ function login()
         dataType:"json",
         success: function(data){
             if(data.code == 0){
-                window.location.href = "/shop/";
+                window.location.href = "/view/shop/";
             }
             else
             {

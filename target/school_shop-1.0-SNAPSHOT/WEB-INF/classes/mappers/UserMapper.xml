@@ -14,6 +14,8 @@
         INSERT INTO `user` (
             `username`,
             `password`,
+            `email`,
+            `phone`,
             `status`,
             `create_time`
         )
@@ -21,6 +23,8 @@
             (
                 #{username},
                 #{password},
+                #{email},
+                #{phone},
                 #{status},
                #{createTime}
             );

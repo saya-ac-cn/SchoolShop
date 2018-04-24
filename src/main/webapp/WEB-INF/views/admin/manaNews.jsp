@@ -92,7 +92,7 @@
         table.on('tool(demo)', function(obj){
             var data = obj.data;
             if(obj.event === 'edit'){
-                window.location.href = "/admin/modifyNews.html?newsid="+data.id;
+                window.location.href = "/view/admin/modifyNews.html?newsid="+data.id;
             }
             if(obj.event === 'dell')
             {

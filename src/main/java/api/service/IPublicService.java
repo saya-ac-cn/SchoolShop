@@ -2,7 +2,9 @@ package api.service;
 
 import api.entity.AdminEntity;
 import api.entity.StudentEntity;
+import api.entity.UserEntity;
 import api.tools.Result;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 公共业务层-用于处理不需要登录的业务
@@ -10,7 +12,7 @@ import api.tools.Result;
 public interface IPublicService {
 
     /**
-     * 判断用户是否存在
+     * 判断用户(商户)是否存在
      * @param vo
      * @return
      * @throws Exception
@@ -18,7 +20,7 @@ public interface IPublicService {
     public Result<Integer> studentExist(StudentEntity vo) throws Exception;
 
     /**
-     * 用户注册
+     * 用户（商户）注册
      * @param vo
      * @return
      * @throws Exception
@@ -41,5 +43,30 @@ public interface IPublicService {
      * @throws Exception
      */
     public Result<Integer> adminLogin(AdminEntity vo) throws Exception;
+
+    /**
+     * 判断会员用户是否存在
+     * @param username
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> userExist(String username) throws Exception;
+
+    /**
+     * 会员登录
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> userLogin(UserEntity vo) throws Exception;
+
+    /**
+     * 会员登录
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> userRegister(UserEntity vo)throws Exception;
+
 
 }

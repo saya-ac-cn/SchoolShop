@@ -12,13 +12,13 @@ var navs = [{
 		{
 			"title" : "修改资料",
 			"icon" : "&#xe631;",
-			"href" : "/shop/userInfo.html",
+			"href" : "/view/shop/userInfo.html",
 			"spread" : false
 		},
 		{
 			"title" : "安全设置",
 			"icon" : "&#xe631;",
-			"href" : "/shop/setting.html",
+			"href" : "/view/shop/setting.html",
 			"spread" : false
 		}
 	]
@@ -31,13 +31,13 @@ var navs = [{
         {
             "title" : "修改资料",
             "icon" : "&#xe631;",
-            "href" : "/shop/shopinfo.html",
+            "href" : "/view/shop/shopinfo.html",
             "spread" : false
         },
         {
             "title" : "管理图片",
             "icon" : "&#xe631;",
-            "href" : "/shop/pictureMana.html",
+            "href" : "/view/shop/pictureMana.html",
             "spread" : false
         }
     ]
@@ -50,19 +50,19 @@ var navs = [{
         {
             "title" : "上架新品",
             "icon" : "&#xe631;",
-            "href" : "/shop/addGoods.html",
+            "href" : "/view/shop/addGoods.html",
             "spread" : false
         },
         {
             "title" : "修改商品",
             "icon" : "&#xe631;",
-            "href" : "/shop/modifyGoods.html",
+            "href" : "/view/shop/modifyGoods.html",
             "spread" : false
         } ,
         {
             "title" : "下架商品",
             "icon" : "&#xe631;",
-            "href" : "/shop/deleteGoods.html",
+            "href" : "/view/shop/deleteGoods.html",
             "spread" : false
         }
     ]
@@ -75,13 +75,13 @@ var navs = [{
         {
             "title" : "订单统计",
             "icon" : "&#xe631;",
-            "href" : "/shop/orderReport.html",
+            "href" : "/view/shop/orderReport.html",
             "spread" : false
         },
         {
             "title" : "管理订单",
             "icon" : "&#xe631;",
-            "href" : "/shop/orderMana.html",
+            "href" : "/view/shop/orderMana.html",
             "spread" : false
         }
     ]

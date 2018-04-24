@@ -3,9 +3,11 @@ package api.service.impl;
 import api.dao.AdminDAO;
 import api.dao.FilesDAO;
 import api.dao.StudentDAO;
+import api.dao.UserDAO;
 import api.entity.AdminEntity;
 import api.entity.FilesEntity;
 import api.entity.StudentEntity;
+import api.entity.UserEntity;
 import api.handle.MyException;
 import api.service.IPublicService;
 import api.tools.DesUtil;
@@ -40,6 +42,10 @@ public class PublicServiceImpl implements IPublicService {
     @Resource
     @Qualifier("adminDAO")
     private AdminDAO adminDAO;
+
+    @Resource
+    @Qualifier("userDAO")
+    private UserDAO userDAO;
 
     /**
      * 判断商户管理员是否存在
@@ -191,6 +197,100 @@ public class PublicServiceImpl implements IPublicService {
                 else{
                     //密码错误
                     return ResultUtil.error(1,"用户名或密码错误");
+                }
+            }
+        }
+    }
+
+    /**
+     * 判断会员用户是否存在
+     *
+     * @param username
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> userExist(String username) throws Exception {
+        UserEntity user = userDAO.getUser(username);
+        if(user != null)
+        {
+            //用户存在
+            return ResultUtil.success(1);
+        }
+        else
+        {
+            throw new MyException(ResultEnum.NOT_EXIST);//未找到该用户资料
+        }
+    }
+
+    /**
+     * 会员注册
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> userRegister(UserEntity vo) throws Exception {
+        List<UserEntity> list = userDAO.getAllUser(vo,new RowBounds());
+        if (list.size() == 0)
+        {
+            //用户不存在，可以注册
+            vo.setPassword(DesUtil.encrypt(vo.getPassword()));//加密密码
+            vo.setStatus("1");//置为正常可用
+            vo.setCreateTime(api.tools.Service.utilsTime());
+            if(userDAO.insert(vo) > 0)
+            {
+                return ResultUtil.success();
+            }
+            else
+            {
+                return ResultUtil.error(1,"注册失败");
+            }
+        }
+        else
+        {
+            return ResultUtil.error(-1,"该用户已经存在");
+        }
+
+    }
+
+    /**
+     * 会员登录
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> userLogin(UserEntity vo) throws Exception {
+
+        Integer sessionUserID= api.tools.Service.utilGetUserID();//在session中取出会员的信息
+        if(sessionUserID != null)
+        {
+            //已登录
+            return ResultUtil.success();
+        }
+        else
+        {
+            //未登录
+            UserEntity user = userDAO.getUser(vo.getUsername());
+            if (user == null)
+            {
+                //没有该会员的信息
+                return ResultUtil.error(1,"用户名或密码错误");
+            }
+            else
+            {
+                String Password = DesUtil.encrypt(vo.getPassword());//加密后会员的密码
+                if(user.getPassword().equals(Password))
+                {
+                    RequestAttributes ra = RequestContextHolder.getRequestAttributes();
+                    HttpServletRequest request = ((ServletRequestAttributes)ra).getRequest();
+                    request.getSession().setAttribute("UserID", user.getId());//为之注入用户名
+                    request.getSession().setAttribute("UserName", user.getUsername());//为之注入用户名
+                    return ResultUtil.success();//返回登录成功
+                }
+                else{
+                    //密码错误
+                    return ResultUtil.error(1,"密码错误");
                 }
             }
         }

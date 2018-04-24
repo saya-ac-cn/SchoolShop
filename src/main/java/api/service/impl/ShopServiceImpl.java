@@ -49,6 +49,9 @@ public class ShopServiceImpl implements IShopService {
     @Qualifier("userDAO")
     private UserDAO userDAO;
 
+    @Resource
+    @Qualifier("messageDAO")
+    private MessageDAO messageDAO;
 
     /**
      * 获取用户的基本信息
@@ -812,6 +815,58 @@ public class ShopServiceImpl implements IShopService {
         } else {
             //该账户下，没有商户
             return ResultUtil.error(-1, "没有找到该商户");
+        }
+    }
+
+
+    /**
+     * 获取相关的站内消息
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public LayuiTable<List> getMessage(MessageEntity vo) throws Exception {
+        List<StudentEntity> shoplist = shopDAO.queryShopIsexistByStudent(api.tools.Service.utilGetShopID());
+        if (shoplist.size() > 0) {
+            if (StringUtils.isNotBlank(vo.getStartTime())) {
+                vo.setStartTime(vo.getStartTime());
+            }
+            if (StringUtils.isNotBlank(vo.getEndTime())) {
+                vo.setEndTime(vo.getEndTime());
+            }
+            vo.setReceive(api.tools.Service.utilGetShopID());
+            RowBounds rowBounds = new RowBounds();
+            List<MessageEntity> list = messageDAO.getAllMessage(vo,rowBounds);
+            if(list.size() > 0)
+            {
+                LayuiTable<List> out = new LayuiTable();
+                out.setCount(list.size());
+                Paging paging =new Paging();
+                //每页显示的记录数量
+                if(vo.getRows() == null || vo.getRows() == 0)
+                {
+                    vo.setRows(10);
+                }
+                paging.setPageSize(vo.getRows());//每页显示记录的数量
+                paging.setDateSum(list.size());//总记录数
+                paging.setTotalPage();
+                paging.setPageNow(vo.getPages());//设置当前的页码
+                rowBounds = new RowBounds((paging.getPageNow()-1)*paging.getPageSize(),paging.getPageSize());
+                list = messageDAO.getAllMessage(vo,rowBounds);//获取满足条件的记录集合
+                paging.setGrid(list);
+                out.setCode(0);
+                out.setMsg("查询成功");
+                out.setData(list);
+                return out;
+            }else
+            {
+                throw new MyException(ResultEnum.NOT_EXIST);
+            }
+        }
+        else
+        {
+            throw new MyException(ResultEnum.NOT_EXIST);
         }
     }
 }

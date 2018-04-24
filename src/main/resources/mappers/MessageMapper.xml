@@ -5,7 +5,7 @@
 <mapper namespace="api.dao.MessageDAO">
 
     <!--根据用户编号或者用户名查询用户-->
-    <select id="getAdmin"  parameterType="Message"  resultType="Message">
+    <select id="getAllMessage"  parameterType="Message"  resultType="Message">
        SELECT
         *
       from message

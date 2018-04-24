@@ -46,4 +46,27 @@ public class Service {
         return (Integer) request.getSession().getAttribute("AdminID");
     }
 
+    /**
+     * 获取会员id
+     * @return
+     */
+    public static Integer utilGetUserID()
+    {
+        RequestAttributes ra = RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = ((ServletRequestAttributes)ra).getRequest();
+        return (Integer) request.getSession().getAttribute("UserID");
+    }
+
+
+    /**
+     * 获取会员账号
+     * @return
+     */
+    public static String utilGetUserName()
+    {
+        RequestAttributes ra = RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = ((ServletRequestAttributes)ra).getRequest();
+        return (String) request.getSession().getAttribute("UserName");
+    }
+
 }

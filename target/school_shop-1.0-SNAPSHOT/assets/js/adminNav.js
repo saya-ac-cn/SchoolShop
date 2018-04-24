@@ -6,22 +6,22 @@ var navs = [{
 },{
 	"title" : "个人信息",
 	"icon" : "&#xe61c;",
-	"href" : "/admin/info.html",
+	"href" : "/view/admin/info.html",
 	"spread" : false
 },{
     "title" : "审核商户",
     "icon" : "&#xe631;",
-    "href" : "/admin/reviewShop.html",
+    "href" : "/view/admin/reviewShop.html",
     "spread" : false
 },{
     "title" : "管理摊位",
     "icon" : "&#xe61c;",
-    "href" : "/admin/manaStand.html",
+    "href" : "/view/admin/manaStand.html",
     "spread" : false
 },{
     "title" : "管理会员",
     "icon" : "&#xe61c;",
-    "href" : "/admin/manaUser.html",
+    "href" : "/view/admin/manaUser.html",
     "spread" : false,
 },{
     "title" : "综合管理",
@@ -32,13 +32,13 @@ var navs = [{
         {
             "title" : "发布动态",
             "icon" : "&#xe631;",
-            "href" : "/admin/addNews.html",
+            "href" : "/view/admin/addNews.html",
             "spread" : false
         },
         {
             "title" : "管理动态",
             "icon" : "&#xe631;",
-            "href" : "/admin/manaNews.html",
+            "href" : "/view/admin/manaNews.html",
             "spread" : false
         }
     ]
