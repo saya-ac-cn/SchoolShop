@@ -28,6 +28,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="Pay" type="api.entity.PayEntity"/>
 		<typeAlias alias="Cart" type="api.entity.CartEntity"/>
 		<typeAlias alias="Address" type="api.entity.AddressEntity"/>
+		<typeAlias alias="OrderQuery" type="api.entity.OrderQueryEntity"/>
 	</typeAliases>
 
 

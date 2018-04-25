@@ -1,6 +1,7 @@
 package api.controller;
 
 import api.entity.AdminEntity;
+import api.entity.NewsEntity;
 import api.entity.StudentEntity;
 import api.entity.UserEntity;
 import api.service.impl.PublicServiceImpl;
@@ -112,6 +113,18 @@ public class PublicController {
         return publicService.userRegister(vo);
     }
 
+
+    /**
+     * 取得相关资讯
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/news/query.yht")
+    public Result<Object> getNews(NewsEntity vo) throws Exception
+    {
+        return publicService.getNews(vo);
+    }
 
     @GetMapping(value = "/export")
     public void export(HttpServletRequest request, HttpServletResponse response) throws Exception

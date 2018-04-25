@@ -3,6 +3,7 @@ package view;
 import api.tools.Service;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -108,7 +109,7 @@ public class PublicView {
      * 会员注册
      * @return
      */
-    @RequestMapping(value = "userRegister.html")
+    @RequestMapping(value = "/userRegister.html")
     public String userRegister()
     {
         String view = "/user/register";
@@ -131,5 +132,28 @@ public class PublicView {
         return view;
     }
 
+
+    /**
+     * 查看相关资讯
+     * @return
+     */
+    @RequestMapping(value = "/news.html")
+    public String news()
+    {
+        String view = "/user/news";
+        return view;
+    }
+
+    /**
+     * 查看动态详情
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/newsDetail.html")
+    public String newsDetail(@RequestParam("id") Integer id)
+    {
+        String view = "/user/newsDetail";
+        return view;
+    }
 
 }

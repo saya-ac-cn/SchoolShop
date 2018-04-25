@@ -80,13 +80,63 @@
         select a.id,a.wallet,a.update_time as updateTime  from wallet a where a.id = #{userID}
     </select>
 
+    <!--创建用户资金表-->
+    <insert id="insertWallet" useGeneratedKeys="true" keyProperty="id" parameterType="Wallet">
+        INSERT INTO `wallet` (
+            `id`,
+            `wallet`,
+            `update_time`
+        )
+        VALUES
+            (
+                #{id},
+                #{wallet},
+                #{updateTime}
+            );
+    </insert>
+
     <!--变更账户资金-->
     <update id="updateWallet" useGeneratedKeys="true" keyProperty="id" parameterType="Wallet">
          update wallet set wallet = #{wallet} ,update_time = #{updateTime} where id = #{id}
     </update>
-    
-    <delete id="deleteOrderItem" parameterType="OrderDetail">
-         delete from `order_detail`  where id = #{id} and  shop_id = #{shopId}
+
+    <!--删除订单及子订单-->
+    <delete id="deleteOrderItem" parameterType="java.lang.Integer">
+         delete from `order`  where id = #{id}
     </delete>
+
+    <!--统计用户所有的订单-->
+    <select id="totalMyOrder" parameterType="OrderQuery" resultType="OrderQuery">
+        SELECT
+            d.main_images as imgUrl,
+            d.`name` as goodsName,
+            a.id as orderId,
+            a.payment as payment,
+            a.`status`,
+            e.shop_name as shopName,
+            b.current_price as currentPrice,
+            b.quantity as quantity,
+            b.total_price as totalPrice,
+            c.address as address,
+            a.end_time AS createTime,
+            b.create_time as payTime,
+            a.user_id as userId
+        FROM
+            `order` a
+        LEFT JOIN order_detail b ON a.id = b.order_id
+        LEFT JOIN address c ON a.user_addres = c.id
+        LEFT JOIN goods d ON b.goods_id = d.id
+        LEFT JOIN shop e ON b.shop_id = e.shop_id
+        <where>
+            <if test = "userId != null and userId != ''">
+                a.user_id  = #{userId}
+            </if>
+            <if test = "orderId != null and orderId != ''">
+                and a.id  = #{orderId}
+            </if>
+        </where>
+        order BY a.id DESC
+
+    </select>
 
 </mapper> 

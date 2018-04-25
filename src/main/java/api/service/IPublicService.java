@@ -1,6 +1,7 @@
 package api.service;
 
 import api.entity.AdminEntity;
+import api.entity.NewsEntity;
 import api.entity.StudentEntity;
 import api.entity.UserEntity;
 import api.tools.Result;
@@ -68,5 +69,12 @@ public interface IPublicService {
      */
     public Result<Integer> userRegister(UserEntity vo)throws Exception;
 
+    /**
+     * 获取一条或者多条资讯
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> getNews(NewsEntity vo) throws Exception;
 
 }

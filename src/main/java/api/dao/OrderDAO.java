@@ -1,9 +1,6 @@
 package api.dao;
 
-import api.entity.OrderDetailEntity;
-import api.entity.OrderEntity;
-import api.entity.OrderReport;
-import api.entity.WalletEntity;
+import api.entity.*;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
@@ -45,6 +42,13 @@ public interface OrderDAO {
     public WalletEntity getWallet(@Param("userID") Integer userID);
 
     /**
+     * 插入用户资金账户
+     * @param vo
+     * @return
+     */
+    public Integer insertWallet(WalletEntity vo);
+
+    /**
      * 变更账户资金
      * @param vo
      * @return
@@ -53,9 +57,17 @@ public interface OrderDAO {
 
     /**
      * 删除订单
-     * @param vo
+     * @param id
      * @return
      */
-    public Integer deleteOrderItem(OrderDetailEntity vo);
+    public Integer deleteOrderItem(@Param("id") Integer id);
+
+    /**
+     * 查看用户所有的订单
+     * @param vo
+     * @param rowBounds
+     * @return
+     */
+    public List<OrderQueryEntity> totalMyOrder(OrderQueryEntity vo,RowBounds rowBounds);
 
 }

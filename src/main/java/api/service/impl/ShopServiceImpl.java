@@ -792,7 +792,7 @@ public class ShopServiceImpl implements IShopService {
                         }
                     }
                     //无需退款直接删除记录
-                    if(orderDAO.deleteOrderItem(orderDetail)>0)
+                    if(orderDAO.deleteOrderItem(orderDetail.getOrderId())>0)
                     {
                         return ResultUtil.success();
                     }

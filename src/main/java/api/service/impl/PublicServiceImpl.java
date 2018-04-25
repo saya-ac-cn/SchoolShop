@@ -1,13 +1,7 @@
 package api.service.impl;
 
-import api.dao.AdminDAO;
-import api.dao.FilesDAO;
-import api.dao.StudentDAO;
-import api.dao.UserDAO;
-import api.entity.AdminEntity;
-import api.entity.FilesEntity;
-import api.entity.StudentEntity;
-import api.entity.UserEntity;
+import api.dao.*;
+import api.entity.*;
 import api.handle.MyException;
 import api.service.IPublicService;
 import api.tools.DesUtil;
@@ -46,6 +40,15 @@ public class PublicServiceImpl implements IPublicService {
     @Resource
     @Qualifier("userDAO")
     private UserDAO userDAO;
+
+    @Resource
+    @Qualifier("orderDAO")
+    private OrderDAO orderDAO;
+
+
+    @Resource
+    @Qualifier("newsDAO")
+    private NewsDAO newsDAO;
 
     /**
      * 判断商户管理员是否存在
@@ -97,6 +100,12 @@ public class PublicServiceImpl implements IPublicService {
                 vo.setCreateTime(datetime);
                 if(studentDAO.insert(vo) > 0)
                 {
+                    list = studentDAO.queryBasicById(vo);//查询刚刚添加成功的记录，Mybatis主键回填有问题，手动弥补
+                    WalletEntity walletEntity = new WalletEntity();
+                    walletEntity.setId(list.get(0).getId());
+                    walletEntity.setWallet(0);
+                    walletEntity.setUpdateTime(api.tools.Service.utilsTime());
+                    orderDAO.insertWallet(walletEntity);
                     return ResultUtil.success();//注册成功
                 }
                 else
@@ -237,8 +246,14 @@ public class PublicServiceImpl implements IPublicService {
             vo.setPassword(DesUtil.encrypt(vo.getPassword()));//加密密码
             vo.setStatus("1");//置为正常可用
             vo.setCreateTime(api.tools.Service.utilsTime());
-            if(userDAO.insert(vo) > 0)
+            if(userDAO.insert(vo)> 0)
             {
+                list = userDAO.getAllUser(vo,new RowBounds());//查询刚刚添加成功的记录，Mybatis主键回填有问题，手动弥补
+                WalletEntity walletEntity = new WalletEntity();
+                walletEntity.setId(list.get(0).getId());
+                walletEntity.setWallet(0);
+                walletEntity.setUpdateTime(api.tools.Service.utilsTime());
+                orderDAO.insertWallet(walletEntity);
                 return ResultUtil.success();
             }
             else
@@ -295,4 +310,24 @@ public class PublicServiceImpl implements IPublicService {
             }
         }
     }
+
+    /**
+     * 获取一条或者多条资讯
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> getNews(NewsEntity vo) throws Exception {
+        List<NewsEntity> list = newsDAO.getAll(vo,new RowBounds());
+        if(list.size() > 0)
+        {
+            return ResultUtil.success(list);
+        }
+        else
+        {
+            throw new MyException(ResultEnum.NOT_EXIST);
+        }
+    }
+
 }

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+    
+<mapper namespace="api.dao.AddressDAO">
+
+    <!--获取所有的用户地址-->
+    <select id="getAll"  parameterType="Address"  resultType="Address">
+        SELECT
+        id,
+        user_id as userId,
+        name,
+        phone,
+        mobil,
+        address,
+        create_time as createTime,
+        update_time as updateTime
+        FROM `address`
+        <where>
+            <if test = "id != null and id != ''">
+                id  = #{id}
+            </if>
+            <if test = "userId != null and userId != ''">
+                and user_id  = #{userId}
+            </if>
+        </where>
+        ORDER BY id DESC
+    </select>
+
+    <!-- 添加收货地址 -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Address">
+        INSERT INTO `address` (
+            `user_id`,
+            `name`,
+            <if test="phone != null and phone !=''">
+                `phone`,
+            </if>
+            `mobil`,
+            `address`,
+            `create_time`
+        )
+        VALUES
+            (
+                #{userId},
+                #{name},
+                <if test="phone != null and phone !=''">
+                    #{phone},
+                </if>
+                #{mobil},
+                #{address},
+               #{createTime}
+            );
+    </insert>
+
+    <!--修改收货地址-->
+    <update id="update" useGeneratedKeys="true" keyProperty="id" parameterType="Address">
+        UPDATE `address`
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone},
+            </if>
+            <if test="mobil != null and mobil != ''">
+                mobil = #{mobil},
+            </if>
+            <if test="address != null and address != ''">
+                address = #{address},
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                update_time = #{updateTime}
+            </if>
+        </set>
+        WHERE
+        `id` = #{id} and `user_id` = #{userId}
+    </update>
+
+    <delete id="delete" parameterType="Address">
+        DELETE FROM `address`   WHERE  `id` = #{id} and `user_id` = #{userId}
+    </delete>
+
+</mapper> 
