@@ -39,7 +39,7 @@
     </header>
     <div class="uchome-info">
         <div class="uchome-info-uimg">
-            <img src="../../../assets/user/default/img1.jpg" />
+            <img src="<%= (String) session.getAttribute("userImg") %>" />
         </div>
     </div>
     <div class="cart-panel" style="padding-top: 4em;padding-bottom: 2em">

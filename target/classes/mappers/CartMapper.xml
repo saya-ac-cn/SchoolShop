@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+    
+<mapper namespace="api.dao.CartDAO">
+
+    <!--获取购物车完整信息-->
+    <resultMap id="CartBasic" type="Cart">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="goods_id" property="goodsId"/>
+        <result column="quantity" property="quantity"/>
+        <association property="Goods" javaType="Goods">
+            <id column="id1" property="id"/>
+            <result column="name" property="name"/>
+            <result column="subtitle" property="subtitle"/>
+            <result column="main_images" property="mainImages"/>
+            <result column="detail" property="detail"/>
+            <result column="stock" property="stock"/>
+            <result column="price" property="price"/>
+        </association>
+    </resultMap>
+
+    <!--获取所有的购物车信息-->
+    <select id="getAll"  parameterType="Cart"  resultMap="CartBasic">
+        select * from cart a left join goods b on a.goods_id = b.id
+        <where>
+            <if test = "id != null and id != ''">
+                a.id  = #{id}
+            </if>
+            <if test = "userId != null and userId != ''">
+                and a.user_id  = #{userId}
+            </if>
+        </where>
+        ORDER BY a.id DESC
+    </select>
+
+    <!-- 添加到购物车 -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Cart">
+        INSERT INTO `cart` (
+            `user_id`,
+            `goods_id`,
+            `quantity`,
+            `create_time`
+        )
+        VALUES
+            (
+                 #{userId},
+                 #{goodsId},
+                 #{quantity},
+                 #{createTime}
+            );
+    </insert>
+
+    <!--修改购物车-->
+    <update id="update" useGeneratedKeys="true" keyProperty="id" parameterType="Cart">
+        UPDATE `cart`
+        SET
+        `quantity` = #{quantity}
+        WHERE
+            `id` = #{id}
+    </update>
+
+    <delete id="delete" parameterType="Cart">
+        DELETE FROM `cart`   WHERE  `id` = #{id}
+    </delete>
+
+</mapper> 

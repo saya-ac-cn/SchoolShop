@@ -37,15 +37,19 @@
     </header>
     <div class="uchome-info">
         <div class="uchome-info-uimg">
-            <img src="../../../assets/user/default/img1.jpg" />
+            <img src="<%= (String) session.getAttribute("userImg") %>" />
         </div>
     </div>
 
     <div class="am-cf uchome-apps">
         <ul class="am-avg-sm-3 uchome-apps-ul">
-            <li><a href="#"><p class="imgp"><img src="../../../assets/user/default/uhomeapp1.png" class="am-img-responsive" /></p><p class="namep">我的订单</p><p class="lastp">0笔</p></a></li>
-            <li><a href="#"><p class="imgp"><img src="../../../assets/user/default/uhomeapp4.png" class="am-img-responsive" /></p><p class="namep">购物车</p><p class="lastp">0件</p></a></li>
-            <li><a href="#"><p class="imgp"><img src="../../../assets/user/default/uhomeapp7.png" class="am-img-responsive" /></p><p class="namep">收藏商品</p><p class="lastp">0件</p></a></li>
+            <li><a href="#"><p class="imgp"><img src="../../../assets/user/default/uhomeapp1.png" class="am-img-responsive" /></p><p class="namep">我的订单</p><p class="lastp"  id="order"></p></a></li>
+            <li><a href="#"><p class="imgp"><img src="../../../assets/user/default/uhomeapp4.png" class="am-img-responsive" /></p><p class="namep">购物车</p><p class="lastp" id="cart"></p></a></li>
+            <li><a href="#"><p class="imgp"><img src="../../../assets/user/default/uhomeapp7.png" class="am-img-responsive" /></p><p class="namep" >收藏商品</p><p class="lastp" id="collect"></p></a></li>
+            <li><a href="#"><p class="imgp"><img src="../../../assets/user/default/uhomeapp2.png" class="am-img-responsive" /></p><p class="namep" >收货地址</p><p class="lastp" id="address"></p></a></li>
+            <li><a href="#"><p class="imgp"><img src="../../../assets/user/default/uhomeapp6.png" class="am-img-responsive" /></p><p class="namep" >我的钱包</p><p class="lastp" id="money"></p></a></li>
+            <li><a href="#"><p class="imgp"><img src="../../../assets/user/default/uhomeapp11.png" class="am-img-responsive" /></p><p class="namep">个人信息</p><p class="lastp">管理</p></a></li>
+            <li><a href="#"><p class="imgp"><img src="../../../assets/user/default/uhomeapp12.png" class="am-img-responsive" /></p><p class="namep">系统消息</p><p class="lastp"></p></a></li>
         </ul>
 
     </div>
@@ -97,5 +101,45 @@
         </script>
     </div>
 </div>
+<script type="text/javascript">
+    var layer;//定义layui模块
+
+    layui.use(['layer'], function(){
+        layer = layui.layer;
+    });
+
+    $(function (){
+        getTotal();
+    });
+
+
+    //获取数据总览
+    function getTotal() {
+        $.ajax({
+            type: "Get",
+            url: "/api/user/index/total.yht",
+            dataType:"json",
+            success: function(data){
+                if(data.code == 0){
+                    $("#address").text(data.data.address+"条");
+                    $("#money").text("￥"+data.data.money);
+                    $("#collect").text(data.data.collect+"条");
+                    $("#cart").text(data.data.cart+"件");
+                    $("#order").text(data.data.order+"笔");
+                    return false;
+                }
+                else
+                {
+                    layer.msg("没有找到数据信息");
+                }
+            },
+            error:function(data){
+                layer.msg('获取数据失败');
+                return false;
+            }
+        });
+    }
+
+</script>
 </body>
 </html>

@@ -1,15 +1,15 @@
 package api.controller;
 
 
-import api.entity.AddressEntity;
-import api.entity.NewsEntity;
-import api.entity.OrderQueryEntity;
-import api.entity.UserEntity;
+import api.entity.*;
 import api.service.impl.UserServiceImpl;
 import api.tools.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 会员控制器
@@ -99,6 +99,91 @@ public class UserController {
     public Result<Object> cancelOrder(@PathVariable("orderId") int orderId) throws Exception{
         return userServiceImpl.cancelOrder(orderId);
     }
+
+    /**
+     * 获取个人的数据总览
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/index/total.yht")
+    public Result<Object> indexData() throws Exception{
+        return userServiceImpl.indexData();
+    }
+
+    /**
+     * 取出个人信息
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/index/info.yht")
+    public Result<Object> getMyinfo() throws Exception
+    {
+        return userServiceImpl.getMyinfo();
+    }
+
+    /**
+     * 上传用户logo
+     * @param request
+     * @param file
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/logo/upload.yht")
+    public Result<String> uploadLogo(HttpServletRequest request, MultipartFile file) throws Exception
+    {
+        return userServiceImpl.uploadLogo(request,file);
+    }
+
+    /**
+     * 添加到收藏夹
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/collect/add.yht")
+    public Result<Integer> addCollect(CollectGoodsEntity vo) throws Exception
+    {
+        return userServiceImpl.addCollect(vo);
+    }
+
+    /**
+     * 取消收藏
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/collect/delete.yht")
+    public Result<Integer> deleteCollect(CollectGoodsEntity vo) throws Exception
+    {
+        return userServiceImpl.deleteCollect(vo);
+    }
+
+    /**
+     * 取出所有的收藏
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/collect/get.yht")
+    public Result<Object> getAllCollect(CollectGoodsEntity vo) throws Exception
+    {
+        return userServiceImpl.getAllCollect(vo);
+    }
+
+    /**
+     * 添加到购物车
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/cart/add.yht")
+    public Result<Integer> addCart(CartEntity vo) throws Exception
+    {
+        return userServiceImpl.addCart(vo);
+    }
+
+
+
 
 
 }

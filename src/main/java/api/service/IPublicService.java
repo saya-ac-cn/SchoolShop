@@ -1,9 +1,6 @@
 package api.service;
 
-import api.entity.AdminEntity;
-import api.entity.NewsEntity;
-import api.entity.StudentEntity;
-import api.entity.UserEntity;
+import api.entity.*;
 import api.tools.Result;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -76,5 +73,13 @@ public interface IPublicService {
      * @throws Exception
      */
     public Result<Object> getNews(NewsEntity vo) throws Exception;
+
+    /**
+     * 取出一条或者多条商品
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> getAllGoods(GoodsEntity vo) throws Exception;
 
 }

@@ -1,9 +1,6 @@
 package api.controller;
 
-import api.entity.AdminEntity;
-import api.entity.NewsEntity;
-import api.entity.StudentEntity;
-import api.entity.UserEntity;
+import api.entity.*;
 import api.service.impl.PublicServiceImpl;
 import api.tools.Result;
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -124,6 +121,18 @@ public class PublicController {
     public Result<Object> getNews(NewsEntity vo) throws Exception
     {
         return publicService.getNews(vo);
+    }
+
+    /**
+     * 显示一条或者多条商品信息
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/goods/show.yht")
+    public Result<Object> getAllGoods(GoodsEntity vo) throws Exception
+    {
+        return publicService.getAllGoods(vo);
     }
 
     @GetMapping(value = "/export")

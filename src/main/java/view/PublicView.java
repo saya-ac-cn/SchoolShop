@@ -14,11 +14,18 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class PublicView {
 
+    @RequestMapping(value = "/")
+    public String home()
+    {
+        String view = "user/index";
+        return view;
+    }
+
     /**
      * 商户登录
      * @return
      */
-    @RequestMapping(value = {"/","/shopLogin.html"})
+    @RequestMapping(value = "/shopLogin.html")
     public String viewShopLogin()
     {
         Integer shopAdmin = Service.utilGetShopID();//在session中取出商户管理员的信息
@@ -101,6 +108,7 @@ public class PublicView {
         HttpServletRequest request = ((ServletRequestAttributes)ra).getRequest();
         request.getSession().removeAttribute("UserID");
         request.getSession().removeAttribute("UserName");
+        request.getSession().removeAttribute("userImg");
         String view = "redirect:/userLogin.html";
         return view;
     }

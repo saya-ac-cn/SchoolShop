@@ -29,6 +29,9 @@
             <if test = "name != null and name != ''">
                 and a.name like concat("%",#{name},"%")
             </if>
+            <if test = "status != null and status != ''">
+                and a.status = #{status}
+            </if>
             <if test="startTime != null and startTime != ''and endTime != null and endTime != ''">
                 and date_format(a.create_time,'%Y-%m-%d') between date_format(#{startTime},'%Y-%m-%d')  and date_format(#{endTime},'%Y-%m-%d')
             </if>

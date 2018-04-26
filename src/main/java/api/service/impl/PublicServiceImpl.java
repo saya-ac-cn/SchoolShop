@@ -50,6 +50,10 @@ public class PublicServiceImpl implements IPublicService {
     @Qualifier("newsDAO")
     private NewsDAO newsDAO;
 
+    @Resource
+    @Qualifier("goodsDAO")
+    private GoodsDAO goodsDAO;
+
     /**
      * 判断商户管理员是否存在
      *
@@ -299,8 +303,13 @@ public class PublicServiceImpl implements IPublicService {
                 {
                     RequestAttributes ra = RequestContextHolder.getRequestAttributes();
                     HttpServletRequest request = ((ServletRequestAttributes)ra).getRequest();
-                    request.getSession().setAttribute("UserID", user.getId());//为之注入用户名
+                    request.getSession().setAttribute("UserID", user.getId());//为之注入用户ID
                     request.getSession().setAttribute("UserName", user.getUsername());//为之注入用户名
+                    List<FilesEntity> img = filesDAO.getFiles(new FilesEntity("2",user.getId()),new RowBounds());
+                    if(img.size()>0)
+                    {
+                        request.getSession().setAttribute("userImg", img.get(0).getUrl());//为之注入头像
+                    }
                     return ResultUtil.success();//返回登录成功
                 }
                 else{
@@ -330,4 +339,23 @@ public class PublicServiceImpl implements IPublicService {
         }
     }
 
+    /**
+     * 取出一条或者多条商品
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> getAllGoods(GoodsEntity vo) throws Exception {
+        vo.setStatus("1");//找出在架的商品
+        List<GoodsEntity> list = goodsDAO.queryToPaging(vo,new RowBounds());
+        if(list.size() > 0)
+        {
+            return ResultUtil.success(list);
+        }
+        else
+        {
+            throw new MyException(ResultEnum.NOT_EXIST);//没有找到相关的数据信息
+        }
+    }
 }

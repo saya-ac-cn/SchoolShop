@@ -9,6 +9,8 @@ public class CollectGoodsEntity extends BaseEntity {
     private Integer goodsId;
     private String createTime;
 
+    private GoodsEntity Goods;
+
     public Integer getId() {
         return id;
     }
@@ -39,6 +41,14 @@ public class CollectGoodsEntity extends BaseEntity {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
+    }
+
+    public GoodsEntity getGoods() {
+        return Goods;
+    }
+
+    public void setGoods(GoodsEntity goods) {
+        Goods = goods;
     }
 
     public CollectGoodsEntity() {

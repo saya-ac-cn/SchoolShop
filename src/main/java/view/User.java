@@ -18,7 +18,7 @@ public class User {
      * @return
      */
     @RequestMapping(value = {"/user.html","/"})
-    public String actionUserInfo()
+    public String actionHome()
     {
         String Viewname = "user/user";
         return Viewname;
@@ -87,6 +87,39 @@ public class User {
     public String actionOrderDetail(@RequestParam(value = "id") Integer id)
     {
         String Viewname = "user/orderDetail";
+        return Viewname;
+    }
+
+    /**
+     * 收藏主页
+     * @return
+     */
+    @RequestMapping(value = "/collect.html")
+    public String actionCollect()
+    {
+        String Viewname = "user/collect";
+        return Viewname;
+    }
+
+    /**
+     * 修改个人信息
+     * @return
+     */
+    @RequestMapping(value = "/userInfo.html")
+    public String actionUserInfo()
+    {
+        String Viewname = "user/userInfo";
+        return Viewname;
+    }
+
+    /**
+     * 查看购物车
+     * @return
+     */
+    @RequestMapping(value = "/cart.html")
+    public String actionCart()
+    {
+        String Viewname = "user/cart";
         return Viewname;
     }
 

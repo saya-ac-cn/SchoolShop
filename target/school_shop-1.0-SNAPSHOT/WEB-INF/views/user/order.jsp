@@ -39,7 +39,7 @@
     </header>
     <div class="uchome-info">
         <div class="uchome-info-uimg">
-            <img src="../../../assets/user/default/img1.jpg" />
+            <img src="<%= (String) session.getAttribute("userImg") %>" />
         </div>
         <div class="uchome-info-uinfo">
 
@@ -52,18 +52,7 @@
         </ol>
     </div>
     <div class="am-cf cart-panel" id="orderList">
-        <div class="withdrawals-panel">
-            <p class="groupby-t-p"><span class="am-fr">2015-06-07 18:27</span>订单号：123456789</p>
-            <hr  class="am-divider am-divider-default am-cf"/>
-            <div class="groupby-img-panle"><a href="#"><img src="../default/img3.jpg" class="am-img-responsive" /></a></div>
-            <div class="groupby-info-panle">
-                <h3><a href="#">8店通用7天连锁酒店</a></h3>
-                <p>总额：<span class="red2 bold">78.00</span> 元 &nbsp; &nbsp;&nbsp;  数量：<span class="am-text-success">20</span></p>
-                <p>商家：</p>
-                <p>状态：<span class="am-text-success">已付款</span></p>
-                <p><a href="#" class="am-btn am-btn-primary am-btn-xs am-btn-success am-radius">取消订单</a> <a href="#" class="am-btn am-btn-primary am-btn-xs am-btn-danger am-radius">订单详情</a></p>
-            </div>
-        </div>
+
     </div>
 
     <footer data-am-widget="footer" class="am-footer am-footer-default" data-am-footer="{  }">
