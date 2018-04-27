@@ -70,4 +70,18 @@ public interface OrderDAO {
      */
     public List<OrderQueryEntity> totalMyOrder(OrderQueryEntity vo,RowBounds rowBounds);
 
+    /**
+     * 添加一条订单
+     * @param vo
+     * @return
+     */
+    public Integer insertOrder(OrderEntity vo);
+
+    /**
+     * 添加一条订单子项
+     * @param vo
+     * @return
+     */
+    public Integer insertOrderDetail(OrderDetailEntity vo);
+
 }

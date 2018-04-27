@@ -5,6 +5,7 @@ import api.tools.Result;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 public interface IUserService {
 
@@ -129,11 +130,25 @@ public interface IUserService {
      * @throws Exception
      */
     public Result<Integer> addCart(CartEntity vo) throws Exception;
-//
+
+    /**
+     * 取出用户的购物车
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> getAllCart(CartEntity vo) throws Exception;
+
+    /**
+     * 删除购物车中的数据，并添加到订单中
+     * @param cartList
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> addOrder(List<CartEntity> cartList) throws Exception;
+
+//    public Result<Integer> deleteCart(CartEntity vo) throws Exception;
 //    public Result<Integer> updateCart(CartEntity vo) throws Exception;
 //
-//    public Result<Integer> deleteCart(CartEntity vo) throws Exception;
-//
-//    public Result<Object> getAllCart() throws Exception;
+
 
 }

@@ -16,9 +16,9 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="stylesheet" href="../../../assets/user/amazeui/css/amazeui.min.css"/>
     <link rel="stylesheet" href="../../../assets/user/default/style.css"/>
+    <link type="text/css" rel="stylesheet" href="../../../assets/cart/css/base.css" />
+    <link type="text/css" rel="stylesheet" href="../../../assets/cart/css/module.css"  />
     <script src="../../../assets/user/amazeui/js/jquery.min.js"></script>
-    <script src="../../../assets/user/amazeui/js/amazeui.min.js"></script>
-    <script type="text/javascript" src="../../../assets/tools/layui-v2.2.6/layui.js"></script>
 </head>
 <body>
 <div class="container">
@@ -53,41 +53,27 @@
         </ol>
     </div>
     <div class="am-cf cart-panel">
-        <div class="cart-list-panel">
-            <ul class="am-avg-sm-1 cart-panel-ul">
-                <li>
-                    <div class="imgpanel"><a href="#"><img src="../../../assets/user/default/img3.jpg" class="am-img-responsive" /></a></div>
-                    <div class="infopanel">
-                        <h3><a href="#">450ml柔顺丰盈护发素正品</a></h3>
-                        <p>品牌：乔治卡罗尔</p>
-                        <p>价格：<span class="red2 bold">78.00</span> 元</p>
-                        <p>总数：<input class="am-input-sm txt-qty" type="number"  min="1" max="10" value="1" /></p>
-                        <p><span class="am-fr"><a class="am-badge am-badge-danger am-round">删除</a></span>库存：<span class="red2 bold">100</span> 件</p>
-                    </div>
-                </li>
-                <li>
-                    <div class="imgpanel"><a href="#"><img src="../../../assets/user/default/img3.jpg" class="am-img-responsive" /></a></div>
-                    <div class="infopanel">
-                        <h3><a href="#">450ml柔顺丰盈护发素正品</a></h3>
-                        <p>品牌：乔治卡罗尔</p>
-                        <p>价格：<span class="red2 bold">78.00</span> 元  X <input class="am-input-sm txt-qty" type="number" value="1" /></p>
-                        <p>积分：<span class="red2 bold">78.00</span></p>
-                        <p><span class="am-fr"><a class="am-badge am-badge-danger am-round">删除</a></span>库存：<span class="red2 bold">100</span> 件</p>
-                    </div>
-                </li>
-            </ul>
+        <div class="shopping">
+            <div class="shop-group-item" >
+                <div class="shop-name">
+                    <input type="checkbox" class="check goods-check shopCheck">
+                    <h4><a href="#">购物车</a></h4>
+                    <div class="coupons"><span>编辑</span><!--<span class="shop-total-amount ShopTotal">0</span>--></div>
+                </div>
+                <ul id="cartList">
+
+                </ul>
+                <div class="shopPrice">合计：￥<span class="shop-total-amount ShopTotal">0.00</span></div>
+            </div>
         </div>
-    </div>
-    <div class="cart_foot">共选中<span class="red2 bold" id="total_good">{$total}</span>种商品；总价：<span class="red2 bold" id="total_amount">{$price}</span>元；总积分：<span class="red2 bold" id="total_jifen">{$jifen}</span></div>
-    <div class="cart-tool">
-        <a class="am-btn am-btn-sm am-btn-success" href="#">
-            <i class="am-icon-chevron-left"></i>
-            返回
-        </a>
-        <a class="am-btn am-btn-sm am-btn-warning" href="#">
-            <i class="am-icon-shopping-cart"></i>
-            结账
-        </a>
+
+        <div class="payment-bar" style="position: absolute">
+            <div class="all-checkbox"><input type="checkbox" class="check goods-check" id="AllCheck">全选</div>
+            <div class="shop-total">
+                <strong>总价：<i class="total" id="AllTotal">0.00</i></strong>
+            </div>
+            <a href="javascript:goBuy()" class="settlement">结算</a>
+        </div>
     </div>
 
 
@@ -138,4 +124,9 @@
     </div>
 </div>
 </body>
+<script type="text/javascript" src ="../../../assets/tools/vue/vue.min.js"></script>
+<script type="text/javascript" src ="../../../assets/tools/vue/vue-resource.min.js"></script>
+<script src="../../../assets/user/amazeui/js/amazeui.min.js"></script>
+<script type="text/javascript" src="../../../assets/tools/layui-v2.2.6/layui.js"></script>
+<script type="text/javascript" src="../../../assets/cart/js/shopping.js"></script>
 </html>

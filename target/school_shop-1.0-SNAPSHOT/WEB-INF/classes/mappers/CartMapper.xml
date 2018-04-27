@@ -12,6 +12,7 @@
         <result column="quantity" property="quantity"/>
         <association property="Goods" javaType="Goods">
             <id column="id1" property="id"/>
+            <result column="shop_id" property="shopId"/>
             <result column="name" property="name"/>
             <result column="subtitle" property="subtitle"/>
             <result column="main_images" property="mainImages"/>
@@ -30,6 +31,9 @@
             </if>
             <if test = "userId != null and userId != ''">
                 and a.user_id  = #{userId}
+            </if>
+            <if test = "goodsId != null and goodsId != ''">
+                and a.goods_id  = #{goodsId}
             </if>
         </where>
         ORDER BY a.id DESC

@@ -135,6 +135,18 @@ public class PublicController {
         return publicService.getAllGoods(vo);
     }
 
+    /**
+     * 获取商品的详情
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/goods/info.yht")
+    public Result<Object> getGoodsInfo(GoodsInfoEntity vo) throws Exception
+    {
+        return publicService.getGoodsInfo(vo);
+    }
+
     @GetMapping(value = "/export")
     public void export(HttpServletRequest request, HttpServletResponse response) throws Exception
     {

@@ -97,6 +97,23 @@
         where id = #{id} and shop_id  = #{shopId}
     </update>
 
+    <!--查询商品详情-->
+    <select id="queryGoodsInfo"  parameterType="GoodsInfo"  resultType="GoodsInfo">
+        select
+        a.id,
+        a.shop_id as shopId,
+        a.name,
+        a.subtitle,
+        a.main_images as mainImages,
+        a.detail,
+        a.price,
+        a.stock,
+        b.shop_name as shopName,
+        c.stand_name as standName,
+        c.location
+         from goods a left join shop b on a.shop_id=b.shop_id left join stand c on b.stand_id = c.id
+         where a.id = #{id}
+    </select>
 
 
 </mapper> 

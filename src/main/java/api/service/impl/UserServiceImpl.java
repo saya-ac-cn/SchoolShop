@@ -435,14 +435,93 @@ public class UserServiceImpl implements IUserService {
      * @throws Exception
      */
     public Result<Integer> addCart(CartEntity vo) throws Exception {
-        vo.setUserId(api.tools.Service.utilGetUserID());
-        vo.setCreateTime(api.tools.Service.utilsTime());
-        if(cartDAO.insert(vo) > 0)
+
+        vo.setUserId(api.tools.Service.utilGetUserID());//注明添加者信息
+        List<CartEntity> list = cartDAO.getAll(vo,new RowBounds());
+        if(list.size() > 0)
         {
-            return ResultUtil.success();
+            //找到该收藏的商品，改变收藏的数量
+            CartEntity old = list.get(0);
+            old.setQuantity(vo.getQuantity()+old.getQuantity());//把原来收藏数量加上现在的数量。
+            if(cartDAO.update(old) > 0)
+            {
+                return ResultUtil.success();
+            }
+            else
+            {
+                throw new MyException(ResultEnum.ERROP);
+            }
         }
         else
         {
+            vo.setCreateTime(api.tools.Service.utilsTime());
+            if(cartDAO.insert(vo) > 0)
+            {
+                return ResultUtil.success();
+            }
+            else
+            {
+                throw new MyException(ResultEnum.ERROP);
+            }
+        }
+    }
+
+
+    /**
+     * 取出用户的购物车
+     *
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> getAllCart(CartEntity vo) throws Exception {
+        vo.setUserId(api.tools.Service.utilGetUserID());//注入会员用户的id
+        List<CartEntity> list = cartDAO.getAll(vo,new RowBounds());//查询该用户下的所有购物车信息
+        if(list.size() > 0)
+        {
+            return ResultUtil.success(list);
+        }
+        else
+        {
+            throw new MyException(ResultEnum.NOT_EXIST);
+        }
+    }
+
+    /**
+     * 删除购物车中的数据，并添加到订单中
+     *
+     * @param cartList
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> addOrder(List<CartEntity> cartList) throws Exception {
+        OrderEntity orderEntity;
+        OrderDetailEntity orderDetailEntity;
+
+        CartEntity queryResult;
+
+        orderEntity = new OrderEntity(api.tools.Service.utilGetUserID(),0.0,"2", api.tools.Service.utilsTime());
+        if( orderDAO.insertOrder(orderEntity)> 0)
+        {
+            //遍历用户提交的购物车信息
+            for(CartEntity cart : cartList)
+            {
+                queryResult = cartDAO.getAll(cart,new RowBounds()).get(0);//反查这条信息
+                orderDetailEntity = new OrderDetailEntity();
+                orderDetailEntity.setOrderId(orderEntity.getId());
+                orderDetailEntity.setShopId(queryResult.getGoods().getShopId());
+                orderDetailEntity.setGoodsId(queryResult.getGoodsId());
+                orderDetailEntity.setCurrentPrice(queryResult.getGoods().getPrice());
+                orderDetailEntity.setQuantity(cart.getQuantity());
+                orderDetailEntity.setTotalPrice(queryResult.getGoods().getPrice()*cart.getQuantity());
+                orderDetailEntity.setCreateTime(api.tools.Service.utilsTime());
+                orderDAO.insertOrderDetail(orderDetailEntity);//添加到订单子项
+                cartDAO.delete(cart);//删除之前的购物车
+            }
+            return ResultUtil.success(orderEntity.getId());
+        }
+        else
+        {
+            //插入子订单失败
             throw new MyException(ResultEnum.ERROP);
         }
     }

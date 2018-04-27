@@ -4,12 +4,18 @@ package api.controller;
 import api.entity.*;
 import api.service.impl.UserServiceImpl;
 import api.tools.Result;
+import api.tools.ResultUtil;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 会员控制器
@@ -180,6 +186,30 @@ public class UserController {
     public Result<Integer> addCart(CartEntity vo) throws Exception
     {
         return userServiceImpl.addCart(vo);
+    }
+
+    /**
+     * 取出用户的购物车信息
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/cart/get.yht")
+    public Result<Object> getAllCart(CartEntity vo) throws Exception
+    {
+        return userServiceImpl.getAllCart(vo);
+    }
+
+    /**
+     * 添加到订单中
+     * @param cart
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/order/add.yht")
+    public Result<Object> addOrder(@RequestBody List<CartEntity> cart) throws Exception
+    {
+        return userServiceImpl.addOrder(cart);
     }
 
 

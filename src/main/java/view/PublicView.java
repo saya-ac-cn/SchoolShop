@@ -164,4 +164,16 @@ public class PublicView {
         return view;
     }
 
+    /**
+     * 商品详情
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/goodsInfo.html")
+    public String actionGoodsInfo(@RequestParam(value = "id") Integer id)
+    {
+        String Viewname = "user/goodsInfo";
+        return Viewname;
+    }
+
 }

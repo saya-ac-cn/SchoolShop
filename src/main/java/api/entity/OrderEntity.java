@@ -100,4 +100,11 @@ public class OrderEntity {
 
     public OrderEntity() {
     }
+
+    public OrderEntity(Integer userId, Double payment, String status, String createTime) {
+        this.userId = userId;
+        this.payment = payment;
+        this.status = status;
+        this.createTime = createTime;
+    }
 }

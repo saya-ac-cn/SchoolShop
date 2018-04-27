@@ -2,6 +2,7 @@ package api.dao;
 
 
 import api.entity.GoodsEntity;
+import api.entity.GoodsInfoEntity;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +20,15 @@ public interface GoodsDAO {
      * @return
      */
     public List<GoodsEntity> queryToPaging(GoodsEntity vo, RowBounds rowBounds);
+
+
+    /**
+     * 查询商品详情
+     * @param vo
+     * @param rowBounds
+     * @return
+     */
+    public List<GoodsInfoEntity> queryGoodsInfo(GoodsInfoEntity vo, RowBounds rowBounds);
 
 
     /**

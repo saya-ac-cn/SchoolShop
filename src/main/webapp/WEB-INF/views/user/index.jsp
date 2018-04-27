@@ -57,23 +57,7 @@
     </div>
     <div class="am-cf am-g">
         <ul id="goodsList" class="am-avg-sm-2 my-shop-product-list">
-            <li>
-                <div class="am-panel am-panel-default">
-                    <div class="am-panel-bd">
-                        <img class="am-img-responsive" src="../../../assets/user/default/img2.jpg" />
-                        <h3><a href="#">电蟒原装智能遥控器</a></h3>
-                        <div>
-                            <span class="list-product-price-span">￥89.00</span>
-                            <span class="list-product-commission-span">库存<br/>2</span>
-                        </div>
-                        <hr data-am-widget="divider" style="" class="am-divider am-divider-default am-cf"/>
-                        <ol class="am-avg-sm-3 product-list-share">
-                            <li><a href="#" title="购买"><img src="../../../assets/user/default/icon1.png" class="am-img-responsive" /></a></li>
-                            <li><a href="#" title="收藏"><img src="../../../assets/user/default/icon3.png" class="am-img-responsive" /></a></li>
-                        </ol>
-                    </div>
-                </div>
-            </li>
+
         </ul>
     </div>
 
@@ -165,48 +149,17 @@
         for(var i = 0; i < data.length;i++)
         {
             var item = data[i];
-            htmlText += "<li><div class=\"am-panel am-panel-default\"><div class=\"am-panel-bd\">";
+            htmlText += "<li onclick='window.location.href=\"/goodsInfo.html?id="+item.id+"\"'><div class=\"am-panel am-panel-default\"><div class=\"am-panel-bd\">";
             htmlText += "<img class=\"am-img-responsive\" src=\""+item.mainImages+"\" />";
             htmlText += "<h3><a href=\"#\">"+item.name+"</a></h3><div>"
             htmlText += " <span class=\"list-product-price-span\">￥"+item.price+"</span>";
             htmlText += "<span class=\"list-product-commission-span\">库存<br/>"+item.stock+"</span> </div>";
             htmlText += "<hr data-am-widget=\"divider\" style=\"\" class=\"am-divider am-divider-default am-cf\"/><ol class=\"am-avg-sm-3 product-list-share\">";
-            htmlText += " <li><a href=\"#\" title=\"购买\"><img src=\"../../../assets/user/default/icon1.png\" class=\"am-img-responsive\" /></a></li>";
+            htmlText += " <li><a href=\"javascript:buy("+item.id+",1)\" title=\"购买\"><img src=\"../../../assets/user/default/icon1.png\" class=\"am-img-responsive\" /></a></li>";
             htmlText += " <li><a href=\"javascript:collect("+item.id+")\" title=\"收藏\"><img src=\"../../../assets/user/default/icon3.png\" class=\"am-img-responsive\" /></a></li>";
             htmlText += "</ol></div></div></li>";
         }
         $("#goodsList").html(htmlText);
-    }
-
-    function deleteOrder(id) {
-        layer.confirm('您确定取消？', {
-            btn: ['确定','取消'] //按钮
-        }, function(index){
-            goDelete(id);
-            layer.close(index);
-        });
-    }
-
-    //删除动态
-    function goDelete(id) {
-        $.ajax({
-            type: "POST",
-            url: "/api/user/order/delete/"+id,
-            dataType:"json",//预期服务器返回的数据类型
-            success: function (data) {
-                if (data.code == 0) {
-                    getOrder();
-                    layer.msg("删除成功");
-                }
-                else {
-                    layer.msg("删除失败");
-                }
-            },
-            error: function (data) {
-                layer.msg('处理失败');
-                return false;
-            }
-        });
     }
 
     //添加到收藏夹
@@ -220,6 +173,30 @@
             success: function (data) {
                 if (data.code == 0) {
                     alert("收藏成功");
+                }
+                else {
+                    layer.msg(data.msg);
+                }
+            },
+            error: function (data) {
+                alert('处理失败,请登录');
+                return false;
+            }
+        });
+    }
+
+    //确定购买，实质上是添加到商品到购物车而已，只是件数为1
+    function buy(goodsId,quantity) {
+        ajaxSetup();
+        $.ajax({
+            type: "POST",
+            url: "/api/user/cart/add.yht",
+            data: {goodsId:goodsId,quantity:quantity},
+            dataType:"json",//预期服务器返回的数据类型
+            success: function (data) {
+                if (data.code == 0) {
+                    alert("已添加到购物车");
+                    //还要做一个页面的跳转
                 }
                 else {
                     layer.msg(data.msg);

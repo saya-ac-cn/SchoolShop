@@ -358,4 +358,23 @@ public class PublicServiceImpl implements IPublicService {
             throw new MyException(ResultEnum.NOT_EXIST);//没有找到相关的数据信息
         }
     }
+
+    /**
+     * 获取商品的详情
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> getGoodsInfo(GoodsInfoEntity vo) throws Exception {
+        List<GoodsInfoEntity> list = goodsDAO.queryGoodsInfo(vo,new RowBounds());
+        if(list.size() > 0)
+        {
+            return ResultUtil.success(list);
+        }
+        else
+        {
+            throw new MyException(ResultEnum.NOT_EXIST);//没有找到相关的数据信息
+        }
+    }
 }

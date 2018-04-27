@@ -82,4 +82,12 @@ public interface IPublicService {
      */
     public Result<Object> getAllGoods(GoodsEntity vo) throws Exception;
 
+    /**
+     * 获取商品的详情
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> getGoodsInfo(GoodsInfoEntity vo) throws Exception;
+
 }
