@@ -146,7 +146,29 @@ public interface IUserService {
      */
     public Result<Object> addOrder(List<CartEntity> cartList) throws Exception;
 
-//    public Result<Integer> deleteCart(CartEntity vo) throws Exception;
+    /**
+     * 获取用户的余额
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> getMoney() throws Exception;
+
+    /**
+     * 用户支付
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> buy(OrderEntity vo) throws Exception;
+
+
+    /**
+     * 删除购物车
+     * @param cartId
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> deleteCart(List<Integer> cartId) throws Exception;
 //    public Result<Integer> updateCart(CartEntity vo) throws Exception;
 //
 

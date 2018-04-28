@@ -126,13 +126,13 @@
     });
 
 
-    //获取所有订单
+    //获取相关的子订单
     function getOrder() {
         $.ajax({
             type: "Get",
             url: "/api/user/order/total.yht",
             dataType:"json",
-            data:{orderId:id},
+            data:{orderDetail:id},
             success: function(data){
                 if(data.code == 0){
                     var item = data.data[0];

@@ -58,7 +58,7 @@
                 <div class="shop-name">
                     <input type="checkbox" class="check goods-check shopCheck">
                     <h4><a href="#">购物车</a></h4>
-                    <div class="coupons"><span>编辑</span><!--<span class="shop-total-amount ShopTotal">0</span>--></div>
+                    <div class="coupons"><span onclick="deleteCart()">删除所选</span><!--<span class="shop-total-amount ShopTotal">0</span>--></div>
                 </div>
                 <ul id="cartList">
 

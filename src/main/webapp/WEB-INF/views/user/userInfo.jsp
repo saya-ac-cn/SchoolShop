@@ -268,7 +268,7 @@
        var phone= $("#phone").val();
        var question= $("#question").val();
        var answer= $("#answer").val();
-       var sex = $('input[name="sex"]:checked').val()
+       var sex = $('input[name="sex"]:checked').val();
        var sendData = {
            email:email,
            phone:phone,

@@ -123,5 +123,16 @@ public class User {
         return Viewname;
     }
 
+    /**
+     * 支付页面
+     * @return
+     */
+    @RequestMapping(value = "/pay.html")
+    public String actionPay(@RequestParam(value = "id") Integer id)
+    {
+        String Viewname = "user/pay";
+        return Viewname;
+    }
+
 
 }

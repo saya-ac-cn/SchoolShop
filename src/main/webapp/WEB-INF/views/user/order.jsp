@@ -153,7 +153,7 @@
             if(item.status == "1")
             {
                 htmlText += "<p>状态：<span class=\"am-text-success\">已付款</span></p>";
-                htmlText += " <p> <a href=\"/view/user/orderDetail.html?id="+item.orderId+"\" class=\"am-btn am-btn-primary am-btn-xs am-btn-danger am-radius\">订单快照</a></p>"
+                htmlText += " <p> <a href=\"/view/user/orderDetail.html?id="+item.orderDetail+"\" class=\"am-btn am-btn-primary am-btn-xs am-btn-danger am-radius\">订单快照</a></p>"
             }
             else
             {

@@ -525,4 +525,103 @@ public class UserServiceImpl implements IUserService {
             throw new MyException(ResultEnum.ERROP);
         }
     }
+
+
+    /**
+     * 获取用户的余额
+     *
+     * @return
+     * @throws Exception
+     */
+    public Result<Object> getMoney() throws Exception {
+        WalletEntity vo = orderDAO.getWallet(api.tools.Service.utilGetUserID());//取出用户账户信息
+        Double money = vo.getWallet();//获取账户金额
+        return ResultUtil.success(money);//返回用户的余额
+    }
+
+    /**
+     * 用户支付
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> buy(OrderEntity vo) throws Exception {
+
+        /*************************求该订单及子订单总额*************************************/
+        OrderQueryEntity oldOrder = new OrderQueryEntity();
+        oldOrder.setOrderId(vo.getId());
+        List<OrderQueryEntity> list = orderDAO.totalMyOrder(oldOrder,new RowBounds());//取出原来的订单信息
+        Double payment = 0.0;//支付金额
+        //遍历该订单下的子订单，以便统计支付金额。
+        for (OrderQueryEntity item : list)
+        {
+            payment += item.getTotalPrice();//累加每个子订单的价格
+        }
+
+        /**********************************获取用户的账户资金*************************************************/
+        WalletEntity vo1 = orderDAO.getWallet(api.tools.Service.utilGetUserID());//取出用户账户信息
+        Double money = vo1.getWallet();//获取账户金额
+
+        System.err.println(money);
+        System.err.println(payment);
+        /**************************************判断资金是否充足*********************************************/
+        if(money >= payment)
+        {
+            //钱够
+            //准备模型
+            vo.setPayment(payment);//设置用户支付的金额
+            vo.setStatus("1");//设置支付状态 1 已支付
+            vo.setUpdateTime(api.tools.Service.utilsTime());//设置修改时间
+            orderDAO.updateOrder(vo);//执行扣款
+
+            //开始扣款
+            WalletEntity userWallet = orderDAO.getWallet(api.tools.Service.utilGetUserID());//找出用户的钱包对象
+            userWallet.setWallet(userWallet.getWallet()-payment);//扣款
+            userWallet.setUpdateTime(api.tools.Service.utilsTime());//操作修改时间
+            orderDAO.updateWallet(userWallet);//执行扣款
+
+            //向子订单的商户划款
+            //遍历该订单下的子订单，以便划款。
+            WalletEntity shopWallet;
+            for (OrderQueryEntity item : list)
+            {
+                shopWallet = orderDAO.getWallet(item.getShopId());//得到商户的钱包
+                shopWallet.setWallet(shopWallet.getWallet()+item.getTotalPrice());//划款金额
+                shopWallet.setUpdateTime(api.tools.Service.utilsTime());//操作修改时间
+                orderDAO.updateWallet(shopWallet);//执行划款
+            }
+            return ResultUtil.success();//执行成功
+        }
+        else
+        {
+            //钱不够
+            return ResultUtil.error(9999,"亲，你的钱不够啦");
+        }
+    }
+
+
+    /**
+     * 删除购物车
+     *
+     * @param cartId
+     * @return
+     * @throws Exception
+     */
+    public Result<Integer> deleteCart(List<Integer> cartId) throws Exception {
+        if(cartId.size() > 0 )
+        {
+            //传输了数据，可以删
+            for(Integer item : cartId)
+            {
+                cartDAO.delete(new CartEntity(item));//执行删除
+            }
+            return ResultUtil.success();
+        }
+        else
+        {
+            //空数据
+            throw new MyException(ResultEnum.NOT_EXIST);
+        }
+    }
 }

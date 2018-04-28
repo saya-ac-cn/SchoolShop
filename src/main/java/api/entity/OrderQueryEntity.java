@@ -18,6 +18,9 @@ public class OrderQueryEntity extends BaseEntity {
     private String createTime;//创建时间,
     private String payTime;//支付时间
     private Integer userId;//用户编号
+    private Integer orderDetail;//子订单号
+    private Integer shopId;//商户Id
+
 
     public String getImgUrl() {
         return imgUrl;
@@ -121,6 +124,22 @@ public class OrderQueryEntity extends BaseEntity {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Integer getOrderDetail() {
+        return orderDetail;
+    }
+
+    public void setOrderDetail(Integer orderDetail) {
+        this.orderDetail = orderDetail;
+    }
+
+    public Integer getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(Integer shopId) {
+        this.shopId = shopId;
     }
 
     public OrderQueryEntity() {

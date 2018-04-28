@@ -84,4 +84,12 @@ public interface OrderDAO {
      */
     public Integer insertOrderDetail(OrderDetailEntity vo);
 
+    /**
+     * 修改订单
+     * @param vo
+     * @return
+     */
+    public Integer updateOrder(OrderEntity vo);
+
+
 }

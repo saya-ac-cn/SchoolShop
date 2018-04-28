@@ -186,8 +186,9 @@ function goBuy() {
             dataType:"json",//预期服务器返回的数据类型
             contentType:"application/json",
             success:function(datas){//收到后台的响应
-                if(datas.code > 0)
+                if(datas.code = 0)
                 {
+                    //最后是data
                     layer.alert('分派成功。', {
                         title:'页面提示',
                         icon: 1,
@@ -197,6 +198,58 @@ function goBuy() {
                 }else
                 {
                     layer.msg('分派失败', {
+                        time: 5000, //5s后自动关闭
+                        btn: ['知道了']
+                    });
+                }
+            },
+            error: function () {//没有收到请求
+                layer.msg('操作失败', {
+                    time: 5000, //5s后自动关闭
+                    btn: ['知道了']
+                });
+                return false;
+            }
+        })
+    }
+    return false;
+}
+
+//情况购物车
+function deleteCart(){
+    var checkedNum = 0;//用户选择的总数
+    var sendData = Array();
+    $(".shop-group-item").each(function() { //循环每个店铺
+        $(this).find(".goodsCheck").each(function() { //循环店铺里面的商品
+            if ($(this).is(":checked")) { //如果该商品被选中
+                checkedNum = checkedNum + 1;//统计计数
+                var cartId =parseInt($(this).parents(".shop-info").find(".cartId").val()); //得到购物车单号
+                sendData.push(cartId);
+            }
+        });
+    });
+    if(checkedNum != 0)
+    {
+        //用户选择了商铺
+        $.ajax({
+            type: "POST",//规定请求的类型
+            url: "/api/user/cart/delete.yht",//请求地址
+            data: JSON.stringify(sendData), //发送到服务器的数据
+            dataType:"json",//预期服务器返回的数据类型
+            contentType:"application/json",
+            success:function(datas){//收到后台的响应
+                if(datas.code = 0)
+                {
+                    //最后是data
+                    layer.alert('删除成功。', {
+                        title:'页面提示',
+                        icon: 1,
+                        skin: 'layer-ext-moon',
+                    });
+                    console.log(datas);
+                }else
+                {
+                    layer.msg('删除失败', {
                         time: 5000, //5s后自动关闭
                         btn: ['知道了']
                     });

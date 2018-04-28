@@ -63,4 +63,8 @@ public class CartEntity extends BaseEntity {
 
     public CartEntity() {
     }
+
+    public CartEntity(Integer id) {
+        this.id = id;
+    }
 }

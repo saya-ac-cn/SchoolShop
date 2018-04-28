@@ -212,6 +212,40 @@ public class UserController {
         return userServiceImpl.addOrder(cart);
     }
 
+    /**
+     * 获取用户的钱包
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/getMoney.yht")
+    public Result<Object> getMoney() throws Exception
+    {
+        return userServiceImpl.getMoney();
+    }
+
+    /**
+     * 购买
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/buy.yht")
+    public Result<Integer> buy(OrderEntity vo) throws Exception
+    {
+        return userServiceImpl.buy(vo);
+    }
+
+    /**
+     * 删除购物车
+     * @param cartId
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/cart/delete.yht")
+    public Result<Integer> deleteCart(List<Integer> cartId) throws Exception
+    {
+        return userServiceImpl.deleteCart(cartId);
+    }
 
 
 

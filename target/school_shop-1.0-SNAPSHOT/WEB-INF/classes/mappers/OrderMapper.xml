@@ -120,7 +120,9 @@
             c.address as address,
             a.end_time AS createTime,
             b.create_time as payTime,
-            a.user_id as userId
+            a.user_id as userId,
+            b.id as orderDetail,
+            e.shop_id as shopId
         FROM
             `order` a
         LEFT JOIN order_detail b ON a.id = b.order_id
@@ -133,6 +135,12 @@
             </if>
             <if test = "orderId != null and orderId != ''">
                 and a.id  = #{orderId}
+            </if>
+            <if test = "status != null and status != ''">
+                and a.`status`  = #{status}
+            </if>
+            <if test = "orderDetail != null and orderDetail != ''">
+                and  b.id  = #{orderDetail}
             </if>
         </where>
         order BY a.id DESC
@@ -178,5 +186,35 @@
             #{createTime}
             );
     </insert>
+
+    <!--修改订单-->
+    <update id="updateOrder" useGeneratedKeys="true" keyProperty="id" parameterType="Order">
+        UPDATE `order`
+        <set>
+            <if test="payment != null and payment != ''">
+                `payment` = #{payment},
+            </if>
+            <if test="status != null and status != ''">
+                `status` = #{status},
+            </if>
+            <if test="userAddres != null and userAddres != ''">
+                `user_addres` = #{userAddres}
+            </if>
+            <if test="sendTime != null and sendTime != ''">
+                `send_time` = #{sendTime},
+            </if>
+            <if test="endTime != null and endTime != ''">
+                `end_time` = #{endTime},
+            </if>
+            <if test="closeTime != null and closeTime != ''">
+                `close_time` = #{closeTime}
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                `update_time` = #{updateTime}
+            </if>
+        </set>
+        WHERE
+            `id` = #{id};
+    </update>
 
 </mapper> 
