@@ -95,7 +95,7 @@
             limit:10,
             even:true,					//行间隔背景
             skin:'row',				//风格 line/row/nob
-            height: 'full-119',
+            //height: 'full-119',
             //where:{type:1},
             request: {
                 pageName: 'pages', //页码的参数名称，默认：page
@@ -134,7 +134,7 @@
                 }
                 else
                 {
-                    alert("不能修改成空字段");
+                    layer.alert("不能修改成空字段");
                 }
             }
             if(obj.event === 'dell')
@@ -175,15 +175,15 @@
             dataType:"json",//预期服务器返回的数据类型
             success: function (data) {
                 if (data.code == 0) {
-                    cleanQueryAll();
-                    alert("修改成功");
+                    cleanQueryAll();//相当于重新渲染页面
+                    layer.alert("修改成功");
                 }
                 else {
-                    alert("修改失败");
+                    layer.alert("修改失败");
                 }
             },
             error: function (data) {
-                alert('处理失败');
+                layer.alert('处理失败');
                 return false;
             }
         });
@@ -199,15 +199,15 @@
             dataType:"json",//预期服务器返回的数据类型
             success: function (data) {
                 if (data.code == 0) {
-                    cleanQueryAll();
-                    alert("添加成功");
+                    cleanQueryAll();//相当于重新渲染页面
+                    layer.alert("添加成功");
                 }
                 else {
-                    alert("添加失败");
+                    layer.alert("添加失败");
                 }
             },
             error: function (data) {
-                alert('处理失败');
+                layer.alert('处理失败，请重新登录');
                 return false;
             }
         });

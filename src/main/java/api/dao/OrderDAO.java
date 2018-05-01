@@ -92,4 +92,12 @@ public interface OrderDAO {
     public Integer updateOrder(OrderEntity vo);
 
 
+    /**
+     * 删除子订单
+     * @param id
+     * @return
+     */
+    public Integer deleteOrderDetail(@Param("id") Integer id);
+
+
 }

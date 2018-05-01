@@ -69,7 +69,7 @@ public class PublicController {
      * @throws Exception
      */
     @PostMapping(value = "/adminLogin.yht")
-    public Result<Integer> studentLogin(AdminEntity vo) throws Exception
+    public Result<Integer> adminLogin(AdminEntity vo) throws Exception
     {
         return publicService.adminLogin(vo);
     }

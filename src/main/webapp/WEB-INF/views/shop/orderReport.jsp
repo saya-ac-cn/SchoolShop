@@ -93,14 +93,14 @@
             limit:10,
             even:true,					//行间隔背景
             skin:'row',				//风格 line/row/nob
-            height: 'full-119',
+            //height: 'full-119',
             //where:{type:1},
             request: {
                 pageName: 'pages', //页码的参数名称，默认：page
                 limitName: 'rows' //每页数据量的参数名，默认：limit
             },
             cols:  [[
-                {title:'子订单号', field: 'orderId',align:'left',fixed:'left'},
+                {title:'订单号', field: 'parentId',align:'left',fixed:'left'},
                 {title:'商品名', field: 'name',align:'left'},
                 {title:'用户', field: 'username',align:'left'},
                 {title:'收货地址', field: 'address',align:'left'},

@@ -148,11 +148,9 @@ public class ShopController {
     }
 
     @PostMapping("/order/delete.yht")
-    public Result<Object> deleteOrder(@RequestParam("itermOrderId") Integer itermOrderId,
-                                      @RequestParam("ststus") String ststus,
-                                      @RequestParam("user") String user) throws Exception
+    public Result<Object> deleteOrder(@RequestParam("orderDetail") int orderDetail) throws Exception
     {
-        return shopServiceImpl.deleteOrder(itermOrderId,ststus,user);
+        return shopServiceImpl.deleteOrder(orderDetail);
     }
 
     @GetMapping("/message.yht")

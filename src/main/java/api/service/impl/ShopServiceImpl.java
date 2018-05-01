@@ -71,6 +71,7 @@ public class ShopServiceImpl implements IShopService {
         }
         else
         {
+            //throw new MyException(ResultEnum.NOT_EXIST)
             return ResultUtil.error(-1,"没有找到数据呢");
         }
     }
@@ -278,7 +279,7 @@ public class ShopServiceImpl implements IShopService {
         List<FilesEntity> list = filesDAO.getFiles(new FilesEntity(null,(Integer) request.getSession().getAttribute("ShopID"),""),rowBounds);
         if(list.size() > 0)
         {
-            Paging paging =new Paging();
+            Paging paging = new Paging();
             //每页显示的图片数量
             if(rows == null || rows == 0)
             {
@@ -753,57 +754,53 @@ public class ShopServiceImpl implements IShopService {
 
     /**
      * 撤销订单
-     * @param itermOrderId 子订单号
-     * @param ststus 该订单的状态
-     * param user 用户的账号
+     * param uorderDetail（子订单号）
      * @return
      * @throws Exception
      */
-    public Result<Object> deleteOrder(Integer itermOrderId, String ststus,String user) throws Exception {
+    public Result<Object> deleteOrder(Integer orderDetail) throws Exception {
         List<StudentEntity> list = shopDAO.queryShopIsexistByStudent(api.tools.Service.utilGetShopID());
         if (list.size() > 0) {
             ShopEntity shop = list.get(0).getShop();
             if (shop.getStatus().equals("1")) {
-                //账户信息正常，可以修改
-                OrderDetailEntity orderDetail = orderDAO.getOrderDetail(new OrderDetailEntity(itermOrderId,null,null,shop.getShopId()));
-                if(orderDetail != null)
+                //账户信息正常，可以撤销
+                //第一步,根据子订单号，找出相关实体数据
+                OrderDetailEntity model = orderDAO.getOrderDetail(new OrderDetailEntity(orderDetail));
+
+                Integer orderId = model.getOrderId();//取出订单父类编号
+                //然后通过父类繁荣编号 反查子订单数
+
+                List<OrderQueryEntity> qurylist =  orderDAO.totalMyOrder(new OrderQueryEntity(orderId),new RowBounds());
+                if(qurylist.size() > 1)
                 {
-                    if(ststus.trim().equals("1"))
+                    orderDAO.deleteOrderDetail(orderDetail);
+                    return ResultUtil.success();
+                }
+                if(qurylist.size() == 1)
+                {
+                    //执行级联删除
+                    OrderQueryEntity vo = new OrderQueryEntity();
+                    vo.setUserId(api.tools.Service.utilGetUserID());
+                    vo.setOrderId(orderId);
+                    vo = orderDAO.totalMyOrder(vo,new RowBounds()).get(0);
+                    if(vo.getStatus().trim().equals("1"))
                     {
-                        //已支付，需要退款
-                        //商户的钱包
-                        WalletEntity shopWallet = orderDAO.getWallet(api.tools.Service.utilGetShopID());
-                        //用户的钱包
-                        Integer userId = userDAO.getUser(user.trim()).getId();
-                        WalletEntity userWallet = orderDAO.getWallet(userId);
-                        if(shopWallet.getWallet() > orderDetail.getTotalPrice())
-                        {
-                            //执行扣减
-                            shopWallet.setWallet(shopWallet.getWallet()-orderDetail.getTotalPrice());
-                            shopWallet.setUpdateTime(api.tools.Service.utilsTime());
-                            userWallet.setWallet(userWallet.getWallet()+orderDetail.getTotalPrice());
-                            userWallet.setUpdateTime(api.tools.Service.utilsTime());
-                            orderDAO.updateWallet(shopWallet);
-                            orderDAO.updateWallet(userWallet);
-                        }
-                        else
-                        {
-                            return ResultUtil.error(6, "账户金额不足，无法撤销");
-                        }
-                    }
-                    //无需退款直接删除记录
-                    if(orderDAO.deleteOrderItem(orderDetail.getOrderId())>0)
-                    {
-                        return ResultUtil.success();
+                        return ResultUtil.error(-1,"删除失败");
                     }
                     else
                     {
-                        return ResultUtil.error(5, "删除订单失败");
+                        if(orderDAO.deleteOrderItem(vo.getOrderId()) > 0)
+                        {
+                            return ResultUtil.success();
+                        }
+                        else
+                        {
+                            return ResultUtil.error(-1,"删除失败");
+                        }
                     }
-                }else
-                {
-                    return ResultUtil.error(4, "没有找到该订单");
+
                 }
+                throw new MyException(ResultEnum.ERROP);
             }
             if (shop.getStatus().equals("2")) {
                 //审核中

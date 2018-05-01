@@ -167,13 +167,11 @@ public interface IShopService {
 
     /**
      * 撤销订单
-     * @param itermOrderId 子订单号
-     * @param ststus 该订单的状态
-     * param user 用户的账号
+     * param orderDetail （用户撤销的子订单号）
      * @return
      * @throws Exception
      */
-    public Result<Object> deleteOrder(Integer itermOrderId,String ststus,String user) throws Exception;
+    public Result<Object> deleteOrder(Integer orderDetail) throws Exception;
 
     /**
      * 获取相关的站内消息

@@ -68,7 +68,7 @@
             limit:10,
             even:true,					//行间隔背景
             skin:'row',				//风格 line/row/nob
-            height: 'full-119',
+            //height: 'full-119',
             //where:{type:1},
             request: {
                 pageName: 'pages', //页码的参数名称，默认：page

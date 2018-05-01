@@ -58,11 +58,11 @@ public interface IUserService {
 
     /**
      * 删除订单
-     * @param orderId
+     * @param orderDetail
      * @return
      * @throws Exception
      */
-    public Result<Object> cancelOrder(Integer orderId) throws Exception;
+    public Result<Object> cancelOrder(Integer orderDetail) throws Exception;
 
 
     /**

@@ -7,6 +7,12 @@ layui.use(['layer'], function(){
 $(function(){
 
     id = decodeURI(geturldata("id"));
+    checkGetCart();
+});
+
+//根据参数判断传递条件，然后执行查询
+function checkGetCart()
+{
     if(id == null || id == "null")
     {
         getCart("");
@@ -17,8 +23,7 @@ $(function(){
         console.log(id);
         getCart(id);//加载购物车数据
     }
-});
-
+}
 
 //获取所有购物车信息
 function getCart(id) {
@@ -186,18 +191,19 @@ function goBuy() {
             dataType:"json",//预期服务器返回的数据类型
             contentType:"application/json",
             success:function(datas){//收到后台的响应
-                if(datas.code = 0)
+                if(datas.code == 0)
                 {
                     //最后是data
-                    layer.alert('分派成功。', {
+                    layer.alert('购买成功。', {
                         title:'页面提示',
                         icon: 1,
                         skin: 'layer-ext-moon',
                     });
+                    window.location.href = "/view/user/pay.html?id="+datas.data;//跳转到支付页面
                     console.log(datas);
                 }else
                 {
-                    layer.msg('分派失败', {
+                    layer.msg('购买失败', {
                         time: 5000, //5s后自动关闭
                         btn: ['知道了']
                     });
@@ -215,7 +221,7 @@ function goBuy() {
     return false;
 }
 
-//情况购物车
+//清空购物车
 function deleteCart(){
     var checkedNum = 0;//用户选择的总数
     var sendData = Array();
@@ -234,11 +240,11 @@ function deleteCart(){
         $.ajax({
             type: "POST",//规定请求的类型
             url: "/api/user/cart/delete.yht",//请求地址
-            data: JSON.stringify(sendData), //发送到服务器的数据
+            data: {carts:JSON.stringify(sendData)}, //发送到服务器的数据
             dataType:"json",//预期服务器返回的数据类型
-            contentType:"application/json",
+            //contentType:"application/json",
             success:function(datas){//收到后台的响应
-                if(datas.code = 0)
+                if(datas.code == 0)
                 {
                     //最后是data
                     layer.alert('删除成功。', {
@@ -246,6 +252,7 @@ function deleteCart(){
                         icon: 1,
                         skin: 'layer-ext-moon',
                     });
+                    checkGetCart();
                     console.log(datas);
                 }else
                 {

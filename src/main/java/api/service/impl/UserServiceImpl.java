@@ -8,6 +8,7 @@ import api.tools.*;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -45,6 +46,10 @@ public class UserServiceImpl implements IUserService {
     @Resource
     @Qualifier("filesDAO")
     private FilesDAO filesDAO;
+
+    @Resource
+    @Qualifier("goodsDAO")
+    private GoodsDAO goodsDAO;
 
     /**
      * 修改用户资料+密码
@@ -185,30 +190,48 @@ public class UserServiceImpl implements IUserService {
     /**
      * 删除未支付订单
      *
-     * @param orderId
+     * @param orderDetail
      * @return
      * @throws Exception
      */
-    public Result<Object> cancelOrder(Integer orderId) throws Exception {
-        OrderQueryEntity vo = new OrderQueryEntity();
-        vo.setUserId(api.tools.Service.utilGetUserID());
-        vo.setOrderId(orderId);
-        vo = orderDAO.totalMyOrder(vo,new RowBounds()).get(0);
-        if(vo.getStatus().trim().equals("1"))
+    public Result<Object> cancelOrder(Integer orderDetail) throws Exception {
+        //第一步,根据子订单号，找出相关实体数据
+        OrderDetailEntity model = orderDAO.getOrderDetail(new OrderDetailEntity(orderDetail));
+
+        Integer orderId = model.getOrderId();//取出订单父类编号
+        //然后通过父类繁荣编号 反查子订单数
+
+        List<OrderQueryEntity> list =  orderDAO.totalMyOrder(new OrderQueryEntity(orderId),new RowBounds());
+        if(list.size() > 1)
         {
-            return ResultUtil.error(-1,"删除失败");
+            orderDAO.deleteOrderDetail(orderDetail);
+            return ResultUtil.success();
         }
-        else
+        if(list.size() == 1)
         {
-            if(orderDAO.deleteOrderItem(vo.getOrderId()) > 0)
-            {
-                return ResultUtil.success();
-            }
-            else
+            //执行级联删除
+            OrderQueryEntity vo = new OrderQueryEntity();
+            vo.setUserId(api.tools.Service.utilGetUserID());
+            vo.setOrderId(orderId);
+            vo = orderDAO.totalMyOrder(vo,new RowBounds()).get(0);
+            if(vo.getStatus().trim().equals("1"))
             {
                 return ResultUtil.error(-1,"删除失败");
             }
+            else
+            {
+                if(orderDAO.deleteOrderItem(vo.getOrderId()) > 0)
+                {
+                    return ResultUtil.success();
+                }
+                else
+                {
+                    return ResultUtil.error(-1,"删除失败");
+                }
+            }
+
         }
+        throw new MyException(ResultEnum.ERROP);
     }
 
     /**
@@ -546,13 +569,14 @@ public class UserServiceImpl implements IUserService {
      * @return
      * @throws Exception
      */
+    @Transactional//注意MySQL表中的数据库引擎必须是InnoDB,否则不会生效
     public Result<Integer> buy(OrderEntity vo) throws Exception {
 
         /*************************求该订单及子订单总额*************************************/
         OrderQueryEntity oldOrder = new OrderQueryEntity();
         oldOrder.setOrderId(vo.getId());
         List<OrderQueryEntity> list = orderDAO.totalMyOrder(oldOrder,new RowBounds());//取出原来的订单信息
-        Double payment = 0.0;//支付金额
+        Double payment = 0.0;//应支付金额
         //遍历该订单下的子订单，以便统计支付金额。
         for (OrderQueryEntity item : list)
         {
@@ -573,7 +597,7 @@ public class UserServiceImpl implements IUserService {
             vo.setPayment(payment);//设置用户支付的金额
             vo.setStatus("1");//设置支付状态 1 已支付
             vo.setUpdateTime(api.tools.Service.utilsTime());//设置修改时间
-            orderDAO.updateOrder(vo);//执行扣款
+            orderDAO.updateOrder(vo);//执行订单为已支付
 
             //开始扣款
             WalletEntity userWallet = orderDAO.getWallet(api.tools.Service.utilGetUserID());//找出用户的钱包对象
@@ -584,12 +608,22 @@ public class UserServiceImpl implements IUserService {
             //向子订单的商户划款
             //遍历该订单下的子订单，以便划款。
             WalletEntity shopWallet;
+            GoodsEntity goods;
             for (OrderQueryEntity item : list)
             {
-                shopWallet = orderDAO.getWallet(item.getShopId());//得到商户的钱包
+                //执行划款
+                shopWallet = orderDAO.getWallet(item.getStudentId());//得到商户的钱包
                 shopWallet.setWallet(shopWallet.getWallet()+item.getTotalPrice());//划款金额
                 shopWallet.setUpdateTime(api.tools.Service.utilsTime());//操作修改时间
                 orderDAO.updateWallet(shopWallet);//执行划款
+
+                //库存扣减
+                //找出原来的商品模型
+                goods = goodsDAO.queryToPaging(new GoodsEntity(item.getGoodsId(),item.getShopId()),new RowBounds()).get(0);
+                goods.setStock(goods.getStock()-item.getQuantity());
+                goods.setUpdateTime(api.tools.Service.utilsTime());
+                goodsDAO.update(goods);//执行修改
+
             }
             return ResultUtil.success();//执行成功
         }

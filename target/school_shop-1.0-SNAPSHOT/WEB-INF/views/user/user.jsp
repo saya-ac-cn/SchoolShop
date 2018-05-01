@@ -43,13 +43,13 @@
 
     <div class="am-cf uchome-apps">
         <ul class="am-avg-sm-3 uchome-apps-ul">
-            <li><a href="#"><p class="imgp"><img src="../../../assets/user/default/uhomeapp1.png" class="am-img-responsive" /></p><p class="namep">我的订单</p><p class="lastp"  id="order"></p></a></li>
-            <li><a href="#"><p class="imgp"><img src="../../../assets/user/default/uhomeapp4.png" class="am-img-responsive" /></p><p class="namep">购物车</p><p class="lastp" id="cart"></p></a></li>
-            <li><a href="#"><p class="imgp"><img src="../../../assets/user/default/uhomeapp7.png" class="am-img-responsive" /></p><p class="namep" >收藏商品</p><p class="lastp" id="collect"></p></a></li>
-            <li><a href="#"><p class="imgp"><img src="../../../assets/user/default/uhomeapp2.png" class="am-img-responsive" /></p><p class="namep" >收货地址</p><p class="lastp" id="address"></p></a></li>
+            <li><a href="/view/user/order.html"><p class="imgp"><img src="../../../assets/user/default/uhomeapp1.png" class="am-img-responsive" /></p><p class="namep">我的订单</p><p class="lastp"  id="order"></p></a></li>
+            <li><a href="/view/user/cart.html"><p class="imgp"><img src="../../../assets/user/default/uhomeapp4.png" class="am-img-responsive" /></p><p class="namep">购物车</p><p class="lastp" id="cart"></p></a></li>
+            <li><a href="/view/user/collect.html"><p class="imgp"><img src="../../../assets/user/default/uhomeapp7.png" class="am-img-responsive" /></p><p class="namep" >收藏商品</p><p class="lastp" id="collect"></p></a></li>
+            <li><a href="/view/user/address.html"><p class="imgp"><img src="../../../assets/user/default/uhomeapp2.png" class="am-img-responsive" /></p><p class="namep" >收货地址</p><p class="lastp" id="address"></p></a></li>
             <li><a href="#"><p class="imgp"><img src="../../../assets/user/default/uhomeapp6.png" class="am-img-responsive" /></p><p class="namep" >我的钱包</p><p class="lastp" id="money"></p></a></li>
-            <li><a href="#"><p class="imgp"><img src="../../../assets/user/default/uhomeapp11.png" class="am-img-responsive" /></p><p class="namep">个人信息</p><p class="lastp">管理</p></a></li>
-            <li><a href="#"><p class="imgp"><img src="../../../assets/user/default/uhomeapp12.png" class="am-img-responsive" /></p><p class="namep">系统消息</p><p class="lastp"></p></a></li>
+            <li><a href="/view/user/userInfo.html"><p class="imgp"><img src="../../../assets/user/default/uhomeapp11.png" class="am-img-responsive" /></p><p class="namep">个人信息</p><p class="lastp">管理</p></a></li>
+            <li><a href="/news.html"><p class="imgp"><img src="../../../assets/user/default/uhomeapp12.png" class="am-img-responsive" /></p><p class="namep">系统消息</p><p class="lastp"></p></a></li>
         </ul>
 
     </div>
@@ -66,13 +66,13 @@
     <div data-am-widget="navbar" class="am-navbar am-cf my-nav-footer " id="">
         <ul class="am-navbar-nav am-cf am-avg-sm-4 my-footer-ul">
             <li>
-                <a href="/wap/" class="">
+                <a href="/" class="">
                     <span class="am-icon-home"></span>
                     <span class="am-navbar-label">首页</span>
                 </a>
             </li>
             <li>
-                <a href="###" class="">
+                <a href="/news.html" class="">
                     <span class="am-icon-th-list"></span>
                     <span class="am-navbar-label">资讯</span>
                 </a>
@@ -84,12 +84,12 @@
                     <span class="am-navbar-label">我的</span>
                 </a>
                 <div class="footer-nav" id="footNav">
-                    <span class="am-icon-user"><a href="#">个人资料</a></span>
-                    <span class="am-icon-th-list"><a href="#">已选商品</a></span>
-                    <span class="am-icon-suitcase"><a href="#">我的订单</a></span>
-                    <span class=" am-icon-bank"><a href="#">收货地址</a></span>
-                    <span class="am-icon-cog"><a href="#">修改密码</a></span>
-                    <span class="am-icon-power-off"><a href="#">退出平台</a></span>
+                    <span class="am-icon-user"><a href="/view/user/userInfo.html">个人资料</a></span>
+                    <span class="am-icon-th-list"><a href="/view/user/cart.html">已选商品</a></span>
+                    <span class="am-icon-suitcase"><a href="/view/user/order.html">我的订单</a></span>
+                    <span class=" am-icon-bank"><a href="/view/user/address.html">收货地址</a></span>
+                    <span class="am-icon-cog"><a href="/view/user/userInfo.html">修改密码</a></span>
+                    <span class="am-icon-power-off"><a href="userLogout.html">退出平台</a></span>
                 </div>
             </li>
         </ul>
@@ -97,7 +97,6 @@
             function showFooterNav(){
                 $("#footNav").toggle();
             }
-
         </script>
     </div>
 </div>

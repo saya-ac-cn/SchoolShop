@@ -211,4 +211,9 @@ public class GoodsEntity extends BaseEntity{
 
     public GoodsEntity() {
     }
+
+    public GoodsEntity(Integer id, Integer shopId) {
+        this.id = id;
+        this.shopId = shopId;
+    }
 }

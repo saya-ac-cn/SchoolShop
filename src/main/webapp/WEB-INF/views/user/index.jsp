@@ -73,13 +73,13 @@
     <div data-am-widget="navbar" class="am-navbar am-cf my-nav-footer " id="">
         <ul class="am-navbar-nav am-cf am-avg-sm-4 my-footer-ul">
             <li>
-                <a href="/wap/" class="">
+                <a href="/" class="">
                     <span class="am-icon-home"></span>
                     <span class="am-navbar-label">首页</span>
                 </a>
             </li>
             <li>
-                <a href="###" class="">
+                <a href="/news.html" class="">
                     <span class="am-icon-th-list"></span>
                     <span class="am-navbar-label">资讯</span>
                 </a>
@@ -91,12 +91,12 @@
                     <span class="am-navbar-label">我的</span>
                 </a>
                 <div class="footer-nav" id="footNav">
-                    <span class="am-icon-user"><a href="#">个人资料</a></span>
-                    <span class="am-icon-th-list"><a href="#">已选商品</a></span>
-                    <span class="am-icon-suitcase"><a href="#">我的订单</a></span>
-                    <span class=" am-icon-bank"><a href="#">收货地址</a></span>
-                    <span class="am-icon-cog"><a href="#">修改密码</a></span>
-                    <span class="am-icon-power-off"><a href="#">退出平台</a></span>
+                    <span class="am-icon-user"><a href="/view/user/userInfo.html">个人资料</a></span>
+                    <span class="am-icon-th-list"><a href="/view/user/cart.html">已选商品</a></span>
+                    <span class="am-icon-suitcase"><a href="/view/user/order.html">我的订单</a></span>
+                    <span class=" am-icon-bank"><a href="/view/user/address.html">收货地址</a></span>
+                    <span class="am-icon-cog"><a href="/view/user/userInfo.html">修改密码</a></span>
+                    <span class="am-icon-power-off"><a href="userLogout.html">退出平台</a></span>
                 </div>
             </li>
         </ul>
@@ -149,13 +149,20 @@
         for(var i = 0; i < data.length;i++)
         {
             var item = data[i];
-            htmlText += "<li onclick='window.location.href=\"/goodsInfo.html?id="+item.id+"\"'><div class=\"am-panel am-panel-default\"><div class=\"am-panel-bd\">";
-            htmlText += "<img class=\"am-img-responsive\" src=\""+item.mainImages+"\" />";
+            htmlText += "<li><div class=\"am-panel am-panel-default\"><div class=\"am-panel-bd\">";
+            htmlText += "<img onclick='window.location.href=\"/goodsInfo.html?id="+item.id+"\"' class=\"am-img-responsive\" src=\""+item.mainImages+"\" />";
             htmlText += "<h3><a href=\"#\">"+item.name+"</a></h3><div>"
             htmlText += " <span class=\"list-product-price-span\">￥"+item.price+"</span>";
             htmlText += "<span class=\"list-product-commission-span\">库存<br/>"+item.stock+"</span> </div>";
             htmlText += "<hr data-am-widget=\"divider\" style=\"\" class=\"am-divider am-divider-default am-cf\"/><ol class=\"am-avg-sm-3 product-list-share\">";
-            htmlText += " <li><a href=\"javascript:buy("+item.id+",1)\" title=\"购买\"><img src=\"../../../assets/user/default/icon1.png\" class=\"am-img-responsive\" /></a></li>";
+            if(item.stock > 0)
+            {
+                htmlText += " <li><a href=\"javascript:buy("+item.id+",1)\" title=\"购买\"><img src=\"../../../assets/user/default/icon1.png\" class=\"am-img-responsive\" /></a></li>";
+            }
+            else
+            {
+                htmlText += " <li><a href=\"#\" title=\"购买\"><img src=\"../../../assets/user/default/icon1.png\" class=\"am-img-responsive\" /></a></li>";
+            }
             htmlText += " <li><a href=\"javascript:collect("+item.id+")\" title=\"收藏\"><img src=\"../../../assets/user/default/icon3.png\" class=\"am-img-responsive\" /></a></li>";
             htmlText += "</ol></div></div></li>";
         }

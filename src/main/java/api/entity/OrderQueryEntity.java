@@ -5,6 +5,7 @@ package api.entity;
  */
 public class OrderQueryEntity extends BaseEntity {
 
+    private Integer goodsId;//商品编号
     private String imgUrl;// 图片地址,
     private String goodsName;// 商品名,
     private Integer orderId;// 订单号,
@@ -20,7 +21,15 @@ public class OrderQueryEntity extends BaseEntity {
     private Integer userId;//用户编号
     private Integer orderDetail;//子订单号
     private Integer shopId;//商户Id
+    private Integer studentId;//商户所属管理员账号
 
+    public Integer getGoodsId() {
+        return goodsId;
+    }
+
+    public void setGoodsId(Integer goodsId) {
+        this.goodsId = goodsId;
+    }
 
     public String getImgUrl() {
         return imgUrl;
@@ -142,6 +151,18 @@ public class OrderQueryEntity extends BaseEntity {
         this.shopId = shopId;
     }
 
+    public Integer getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
+    }
+
     public OrderQueryEntity() {
+    }
+
+    public OrderQueryEntity(Integer orderId) {
+        this.orderId = orderId;
     }
 }

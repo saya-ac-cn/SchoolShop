@@ -216,7 +216,7 @@
             limit:10,
             even:true,					//行间隔背景
             skin:'row',				//风格 line/row/nob
-            height: 'full-119',
+            //height: 'full-119',
             //where:{type:1},
             request: {
                 pageName: 'pages', //页码的参数名称，默认：page
@@ -371,15 +371,15 @@
                     console.log(data);
                     closeDiv();
                     cleanQueryAll()
-                    alert("修改成功");
+                    layer.alert("修改成功");
                     getShopInfo();
                 }
                 else {
-                    alert(data.msg);
+                    layer.alert(data.msg);
                 }
             },
             error: function (data) {
-                alert('处理失败');
+                layer.alert('处理失败');
                 return false;
             }
         });

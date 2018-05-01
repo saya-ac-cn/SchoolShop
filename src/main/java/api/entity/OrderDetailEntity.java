@@ -98,4 +98,8 @@ public class OrderDetailEntity {
         this.goodsId = goodsId;
         this.shopId = shopId;
     }
+
+    public OrderDetailEntity(Integer id) {
+        this.id = id;
+    }
 }

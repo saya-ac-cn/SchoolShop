@@ -62,13 +62,13 @@
     <div data-am-widget="navbar" class="am-navbar am-cf my-nav-footer " id="">
         <ul class="am-navbar-nav am-cf am-avg-sm-4 my-footer-ul">
             <li>
-                <a href="/wap/" class="">
+                <a href="/" class="">
                     <span class="am-icon-home"></span>
                     <span class="am-navbar-label">首页</span>
                 </a>
             </li>
             <li>
-                <a href="###" class="">
+                <a href="/news.html" class="">
                     <span class="am-icon-th-list"></span>
                     <span class="am-navbar-label">资讯</span>
                 </a>
@@ -80,12 +80,12 @@
                     <span class="am-navbar-label">我的</span>
                 </a>
                 <div class="footer-nav" id="footNav">
-                    <span class="am-icon-user"><a href="#">个人资料</a></span>
-                    <span class="am-icon-th-list"><a href="#">已选商品</a></span>
-                    <span class="am-icon-suitcase"><a href="#">我的订单</a></span>
-                    <span class=" am-icon-bank"><a href="#">收货地址</a></span>
-                    <span class="am-icon-cog"><a href="#">修改密码</a></span>
-                    <span class="am-icon-power-off"><a href="#">退出平台</a></span>
+                    <span class="am-icon-user"><a href="/view/user/userInfo.html">个人资料</a></span>
+                    <span class="am-icon-th-list"><a href="/view/user/cart.html">已选商品</a></span>
+                    <span class="am-icon-suitcase"><a href="/view/user/order.html">我的订单</a></span>
+                    <span class=" am-icon-bank"><a href="/view/user/address.html">收货地址</a></span>
+                    <span class="am-icon-cog"><a href="/view/user/userInfo.html">修改密码</a></span>
+                    <span class="am-icon-power-off"><a href="userLogout.html">退出平台</a></span>
                 </div>
             </li>
         </ul>
@@ -93,7 +93,6 @@
             function showFooterNav(){
                 $("#footNav").toggle();
             }
-
         </script>
     </div>
 </div>

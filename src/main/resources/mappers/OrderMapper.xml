@@ -58,7 +58,8 @@
             e.`name`,
             b.username,
             c.address,
-            c.mobil
+            c.mobil,
+            a.id as parentId
         FROM
             `order` a
         LEFT JOIN USER b ON a.user_id = b.id
@@ -105,9 +106,15 @@
          delete from `order`  where id = #{id}
     </delete>
 
+    <!--删除子订单-->
+    <delete id="deleteOrderDetail" parameterType="java.lang.Integer">
+        delete from `order_detail`  where id = #{id}
+    </delete>
+
     <!--统计用户所有的订单-->
     <select id="totalMyOrder" parameterType="OrderQuery" resultType="OrderQuery">
         SELECT
+            d.id as goodsId,
             d.main_images as imgUrl,
             d.`name` as goodsName,
             a.id as orderId,
@@ -122,7 +129,8 @@
             b.create_time as payTime,
             a.user_id as userId,
             b.id as orderDetail,
-            e.shop_id as shopId
+            e.shop_id as shopId,
+            e.student_id as studentId
         FROM
             `order` a
         LEFT JOIN order_detail b ON a.id = b.order_id

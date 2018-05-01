@@ -35,6 +35,7 @@
             <if test="startTime != null and startTime != ''and endTime != null and endTime != ''">
                 and date_format(a.create_time,'%Y-%m-%d') between date_format(#{startTime},'%Y-%m-%d')  and date_format(#{endTime},'%Y-%m-%d')
             </if>
+
         </where>
     </select>
 

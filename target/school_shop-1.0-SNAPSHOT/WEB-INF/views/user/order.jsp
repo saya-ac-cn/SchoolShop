@@ -66,13 +66,13 @@
     <div data-am-widget="navbar" class="am-navbar am-cf my-nav-footer " id="">
         <ul class="am-navbar-nav am-cf am-avg-sm-4 my-footer-ul">
             <li>
-                <a href="/wap/" class="">
+                <a href="/" class="">
                     <span class="am-icon-home"></span>
                     <span class="am-navbar-label">首页</span>
                 </a>
             </li>
             <li>
-                <a href="###" class="">
+                <a href="/news.html" class="">
                     <span class="am-icon-th-list"></span>
                     <span class="am-navbar-label">资讯</span>
                 </a>
@@ -84,12 +84,12 @@
                     <span class="am-navbar-label">我的</span>
                 </a>
                 <div class="footer-nav" id="footNav">
-                    <span class="am-icon-user"><a href="#">个人资料</a></span>
-                    <span class="am-icon-th-list"><a href="#">已选商品</a></span>
-                    <span class="am-icon-suitcase"><a href="#">我的订单</a></span>
-                    <span class=" am-icon-bank"><a href="#">收货地址</a></span>
-                    <span class="am-icon-cog"><a href="#">修改密码</a></span>
-                    <span class="am-icon-power-off"><a href="#">退出平台</a></span>
+                    <span class="am-icon-user"><a href="/view/user/userInfo.html">个人资料</a></span>
+                    <span class="am-icon-th-list"><a href="/view/user/cart.html">已选商品</a></span>
+                    <span class="am-icon-suitcase"><a href="/view/user/order.html">我的订单</a></span>
+                    <span class=" am-icon-bank"><a href="/view/user/address.html">收货地址</a></span>
+                    <span class="am-icon-cog"><a href="/view/user/userInfo.html">修改密码</a></span>
+                    <span class="am-icon-power-off"><a href="userLogout.html">退出平台</a></span>
                 </div>
             </li>
         </ul>
@@ -124,10 +124,6 @@
                     console.log(data.dat);
                     return false;
                 }
-                else
-                {
-                    layer.msg("没有找到数据信息");
-                }
             },
             error:function(data){
                 layer.msg('获取数据失败');
@@ -143,7 +139,7 @@
         {
             var item = data[i];
             htmlText += " <div class=\"withdrawals-panel\">";
-            htmlText += "<p class=\"groupby-t-p\"><span class=\"am-fr\">"+item.createTime+"</span>订单号："+item.orderId+"</p>";
+            htmlText += "<p class=\"groupby-t-p\">订单号："+item.orderId+"</p>";
             htmlText += "<hr  class=\"am-divider am-divider-default am-cf\"/>";
             htmlText += "<div class=\"groupby-img-panle\"><a href=\"#\"><img src=\""+item.imgUrl+"\" class=\"am-img-responsive\" /></a></div>";
             htmlText += "<div class=\"groupby-info-panle\">"
@@ -158,7 +154,7 @@
             else
             {
                 htmlText += "<p>状态：<span class=\"am-text-success\">未付款</span></p>";
-                htmlText += " <p><a href=\"#\" class=\"am-btn am-btn-primary am-btn-xs am-btn-success am-radius\">去支付</a> <a href=\"javascript:deleteOrder("+item.orderId+")\" class=\"am-btn am-btn-primary am-btn-xs am-btn-danger am-radius\">取消订单</a></p>"
+                htmlText += " <p><a href=\"/view/user/pay.html?id="+item.orderId+"\" class=\"am-btn am-btn-primary am-btn-xs am-btn-success am-radius\">去支付</a> <a href=\"javascript:deleteOrder("+item.orderDetail+")\" class=\"am-btn am-btn-primary am-btn-xs am-btn-danger am-radius\">取消订单</a></p>"
             }
             htmlText += " </div> </div>";
         }
@@ -170,11 +166,11 @@
             btn: ['确定','取消'] //按钮
         }, function(index){
             goDelete(id);
-            layer.close(index);
+            layer.close(index);//关闭弹窗
         });
     }
 
-    //删除动态
+    //删除子订单
     function goDelete(id) {
         $.ajax({
             type: "POST",
@@ -182,7 +178,7 @@
             dataType:"json",//预期服务器返回的数据类型
             success: function (data) {
                 if (data.code == 0) {
-                    getOrder();
+                    getOrder();//重新渲染页面
                     layer.msg("删除成功");
                 }
                 else {

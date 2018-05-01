@@ -4,7 +4,6 @@ package api.controller;
 import api.entity.*;
 import api.service.impl.UserServiceImpl;
 import api.tools.Result;
-import api.tools.ResultUtil;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -97,13 +97,13 @@ public class UserController {
 
     /**
      * 删除未支付的订单
-     * @param orderId
+     * @param orderDetail
      * @return
      * @throws Exception
      */
-    @PostMapping(value = "/order/delete/{orderId}")
-    public Result<Object> cancelOrder(@PathVariable("orderId") int orderId) throws Exception{
-        return userServiceImpl.cancelOrder(orderId);
+    @PostMapping(value = "/order/delete/{orderDetail}")
+    public Result<Object> cancelOrder(@PathVariable("orderDetail") int orderDetail) throws Exception{
+        return userServiceImpl.cancelOrder(orderDetail);
     }
 
     /**
@@ -237,14 +237,24 @@ public class UserController {
 
     /**
      * 删除购物车
-     * @param cartId
+     * @param carts
      * @return
      * @throws Exception
      */
     @PostMapping(value = "/cart/delete.yht")
-    public Result<Integer> deleteCart(List<Integer> cartId) throws Exception
+    public Result<Integer> deleteCart( @RequestParam(value = "carts") String carts) throws Exception
     {
-        return userServiceImpl.deleteCart(cartId);
+        //Json的解析类对象
+        JsonParser parser = new JsonParser();
+        //将JSON的String 转成一个JsonArray对象
+        JsonArray jsonArray = parser.parse(carts.trim()).getAsJsonArray();
+        List<Integer> cartsList = new ArrayList<Integer>();
+        //循环遍历JsonArray
+        for (JsonElement item : jsonArray) {
+            //使用GSON，直接转成Integer对象，并放入到list中去
+            cartsList.add(item.getAsInt());
+        }
+        return userServiceImpl.deleteCart(cartsList);
     }
 
 

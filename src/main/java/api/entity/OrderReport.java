@@ -16,6 +16,7 @@ public class OrderReport extends BaseEntity {
     private String address;
     private String mobil;
     private Integer shopId;
+    private Integer parentId;
 
     public Integer getOrderId() {
         return orderId;
@@ -103,6 +104,14 @@ public class OrderReport extends BaseEntity {
 
     public void setShopId(Integer shopId) {
         this.shopId = shopId;
+    }
+
+    public Integer getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 
     public OrderReport() {

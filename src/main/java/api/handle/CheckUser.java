@@ -13,9 +13,6 @@ import java.io.IOException;
 
 public class CheckUser implements HandlerInterceptor {
 
-    @Resource
-    @Qualifier("studentDAO")
-    private StudentDAO studentDAO;
 
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         httpServletRequest.setCharacterEncoding("utf-8");
@@ -24,7 +21,7 @@ public class CheckUser implements HandlerInterceptor {
         if(url.contains("/api/admin") || url.contains("/view/admin"))
         {
             //进入运维人员专属的目录下
-            Integer sessionAdmin= (Integer) httpServletRequest.getSession().getAttribute("Admin");//在session中取出运维管理员的信息
+            Integer sessionAdmin= (Integer) httpServletRequest.getSession().getAttribute("AdminID");//在session中取出运维管理员的信息
             if (sessionAdmin != null) {
                 //通过验证
                 System.out.println("pass the /api/root/");

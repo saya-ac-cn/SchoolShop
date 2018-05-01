@@ -108,13 +108,13 @@
     <div data-am-widget="navbar" class="am-navbar am-cf my-nav-footer " id="">
         <ul class="am-navbar-nav am-cf am-avg-sm-4 my-footer-ul">
             <li>
-                <a href="/wap/" class="">
+                <a href="/" class="">
                     <span class="am-icon-home"></span>
                     <span class="am-navbar-label">首页</span>
                 </a>
             </li>
             <li>
-                <a href="###" class="">
+                <a href="/news.html" class="">
                     <span class="am-icon-th-list"></span>
                     <span class="am-navbar-label">资讯</span>
                 </a>
@@ -126,12 +126,12 @@
                     <span class="am-navbar-label">我的</span>
                 </a>
                 <div class="footer-nav" id="footNav">
-                    <span class="am-icon-user"><a href="#">个人资料</a></span>
-                    <span class="am-icon-th-list"><a href="#">已选商品</a></span>
-                    <span class="am-icon-suitcase"><a href="#">我的订单</a></span>
-                    <span class=" am-icon-bank"><a href="#">收货地址</a></span>
-                    <span class="am-icon-cog"><a href="#">修改密码</a></span>
-                    <span class="am-icon-power-off"><a href="#">退出平台</a></span>
+                    <span class="am-icon-user"><a href="/view/user/userInfo.html">个人资料</a></span>
+                    <span class="am-icon-th-list"><a href="/view/user/cart.html">已选商品</a></span>
+                    <span class="am-icon-suitcase"><a href="/view/user/order.html">我的订单</a></span>
+                    <span class=" am-icon-bank"><a href="/view/user/address.html">收货地址</a></span>
+                    <span class="am-icon-cog"><a href="/view/user/userInfo.html">修改密码</a></span>
+                    <span class="am-icon-power-off"><a href="userLogout.html">退出平台</a></span>
                 </div>
             </li>
         </ul>
@@ -144,14 +144,14 @@
 </div>
 <script type="text/javascript">
     var layer;//定义layui模块
-
+    var id;//获取传递到本页面的订单号
     layui.use(['layer'], function(){
         layer = layui.layer;
     });
 
     $(function (){
         id = decodeURI(geturldata("id"));//父订单号
-        getOrder({orderId:6,status:"2"});
+        getOrder({orderId:id,status:"2"});
         getAddress();
         getMoney()
     });
@@ -271,9 +271,10 @@
         });
     }
 
+    //用户确认支付
     function goBuy() {
-        var address = $('input[name="address"]:checked').val();
-        var sendData;//发送的数据
+        var address = $('input[name="address"]:checked').val();//获取用户选择的收获地址
+        var sendData;//发送的数据json 数组
         if(address == -1 || address == '-1')
         {
             sendData = {

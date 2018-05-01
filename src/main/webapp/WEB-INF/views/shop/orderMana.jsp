@@ -93,14 +93,14 @@
             limit:10,
             even:true,					//行间隔背景
             skin:'row',				//风格 line/row/nob
-            height: 'full-119',
+            //height: 'full-119',
             //where:{type:1},
             request: {
                 pageName: 'pages', //页码的参数名称，默认：page
                 limitName: 'rows' //每页数据量的参数名，默认：limit
             },
             cols:  [[
-                {title:'子订单号', field: 'orderId',align:'left',fixed:'left'},
+                {title:'订单号', field: 'parentId',align:'left',fixed:'left'},
                 {title:'商品名', field: 'name',align:'left'},
                 {title:'用户', field: 'username',align:'left'},
                 {title:'收货地址', field: 'address',align:'left'},
@@ -132,11 +132,18 @@
         table.on('tool(demo)', function(obj){
             var data = obj.data;
             if(obj.event === 'edit'){
-                layer.confirm('您确定撤销订单？', {
-                    btn: ['确定','取消'] //按钮
-                }, function(){
-                    goSave(data);
-                });
+                if(data.status == 2 || data.status == '2')
+                {
+                    layer.confirm('您确定撤销订单？', {
+                        btn: ['确定','取消'] //按钮
+                    }, function(){
+                        goSave(data.orderId);
+                    });
+                }
+                else
+                {
+                    layer.msg("已支付的订单不能直接在平台中取消");
+                }
             }
         });
 
@@ -148,7 +155,7 @@
         $.ajax({
             type: "POST",
             url: "/api/shop/order/delete.yht",
-            data: {itermOrderId:data.orderId,ststus:data.status,user:data.username},
+            data: {orderDetail:data},
             dataType:"json",//预期服务器返回的数据类型
             success: function (data) {
                 if (data.code == 0) {
