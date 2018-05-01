@@ -18,24 +18,22 @@
     <link rel="stylesheet" href="../../../assets/user/default/style.css"/>
     <script src="../../../assets/user/amazeui/js/jquery.min.js"></script>
     <script src="../../../assets/user/amazeui/js/amazeui.min.js"></script>
-    <script type="text/javascript" src="../../../assets/tools/layui-v2.2.6/layui.js"></script>
+    <script type="text/javascript" src="../../../assets/tools/layer_mobile/layer.js"></script>
     <script type="text/javascript" src="../../../assets/js/ajaxSetup.js"></script>
 </head>
 <body>
 <div class="container">
     <header data-am-widget="header" class="am-header am-header-default my-header">
         <div class="am-header-left am-header-nav">
-            <a href="#left-link" class="">
+            <a href="/" class="">
                 <i class="am-header-icon am-icon-chevron-left"></i>
             </a>
         </div>
         <h1 class="am-header-title">
-            <a href="#title-link" class="">校园便利购</a>
+            <a href="#title-link" class="">商品详情</a>
         </h1>
         <div class="am-header-right am-header-nav">
-            <a href="#right-link" class="">
-                <i class="am-header-icon  am-icon-home"></i>
-            </a>
+
         </div>
     </header>
     <!-- banner -->
@@ -78,8 +76,8 @@
             <hr data-am-widget="divider" style="" class="am-divider-default am-margin-bottom-sm"/>
             <div>
                 <ul class="am-avg-sm-2 am-text-center">
-                    <li class="am-text-center am-padding-sm"><button type="button" class="am-btn am-btn-success am-btn-block am-radius">加入购物车</button></li>
-                    <li class="am-text-center am-padding-sm"><button type="button" class="am-btn am-btn-danger am-btn-block am-radius">立即购买</button></li>
+                    <li class="am-text-center am-padding-sm"><button type="button" onclick="addCart()" class="am-btn am-btn-success am-btn-block am-radius">加入购物车</button></li>
+                    <li class="am-text-center am-padding-sm"><button type="button" onclick="buy()" class="am-btn am-btn-danger am-btn-block am-radius">立即购买</button></li>
                 </ul>
             </div>
         </div>
@@ -104,8 +102,8 @@
     <footer data-am-widget="footer" class="am-footer am-footer-default" data-am-footer="{  }">
         <hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
         <div class="am-footer-miscs ">
-            <p>CopyRight©2018 saya.ac.cn.</p>
-            <p>蜀ICP备xxxxx</p>
+            <p>CopyRight© <script>document.write(new Date().getFullYear())</script>saya.ac.cn.</p>
+            <p>蜀ICP备16013222-2号</p>
         </div>
     </footer>
     <!--底部-->
@@ -135,7 +133,7 @@
                     <span class="am-icon-suitcase"><a href="/view/user/order.html">我的订单</a></span>
                     <span class=" am-icon-bank"><a href="/view/user/address.html">收货地址</a></span>
                     <span class="am-icon-cog"><a href="/view/user/userInfo.html">修改密码</a></span>
-                    <span class="am-icon-power-off"><a href="userLogout.html">退出平台</a></span>
+                    <span class="am-icon-power-off"><a href="/userLogout.html">退出平台</a></span>
                 </div>
             </li>
         </ul>
@@ -210,11 +208,7 @@
         $('#txtQty').val(qty-1);
     }
 
-    var layer;//定义layui模块
     var id = '';
-    layui.use(['layer'], function(){
-        layer = layui.layer;
-    });
 
     $(function (){
         id = decodeURI(geturldata("id"));
@@ -241,11 +235,17 @@
                 }
                 else
                 {
-                    layer.msg("没有找到数据信息");
+                    layer.open({
+                        content: '没有找到商品数据信息'
+                        ,btn: '我知道了'
+                    });
                 }
             },
             error:function(data){
-                layer.msg('获取数据失败');
+                layer.open({
+                    content: '获取商品数据失败'
+                    ,btn: '我知道了'
+                });
                 return false;
             }
         });
@@ -274,14 +274,86 @@
             dataType:"json",//预期服务器返回的数据类型
             success: function (data) {
                 if (data.code == 0) {
-                    alert("收藏成功");
+                    layer.open({
+                        content: '收藏成功'
+                        ,btn: '我知道了'
+                    });
                 }
                 else {
-                    layer.msg(data.msg);
+                    layer.open({
+                        content:data.msg
+                        ,btn: '我知道了'
+                    });
                 }
             },
             error: function (data) {
-                alert('处理失败,请登录');
+                layer.open({
+                    content: '处理失败,请登录'
+                    ,btn: '我知道了'
+                });
+                return false;
+            }
+        });
+    }
+
+    //加入购物车
+    function addCart() {
+        ajaxSetup();
+        $.ajax({
+            type: "POST",
+            url: "/api/user/cart/add.yht",
+            data: {goodsId:id,quantity:$('#txtQty').val()},
+            dataType:"json",//预期服务器返回的数据类型
+            success: function (data) {
+                if (data.code == 0) {
+                    layer.open({
+                        content: '已添加到购物车'
+                        ,btn: '我知道了'
+                    });
+                }
+                else {
+                    layer.open({
+                        content:data.msg
+                        ,btn: '我知道了'
+                    });
+                }
+            },
+            error: function (data) {
+                layer.open({
+                    content:'处理失败'
+                    ,btn: '我知道了'
+                });
+                return false;
+            }
+        });
+    }
+
+    //购买
+    //购买成功后，还要跳转到购物车页面
+    function buy() {
+        ajaxSetup();
+        $.ajax({
+            type: "POST",
+            url: "/api/user/cart/add.yht",
+            data: {goodsId:id,quantity:$('#txtQty').val()},
+            dataType:"json",//预期服务器返回的数据类型
+            success: function (data) {
+                if (data.code == 0) {
+                    //还要做一个页面的跳转
+                    window.location.href = '/view/user/cart.html?id='+data.data;
+                }
+                else {
+                    layer.open({
+                        content:data.msg
+                        ,btn: '我知道了'
+                    });
+                }
+            },
+            error: function (data) {
+                layer.open({
+                    content:'处理失败'
+                    ,btn: '我知道了'
+                });
                 return false;
             }
         });

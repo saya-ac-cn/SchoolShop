@@ -19,14 +19,13 @@
     <link rel="stylesheet" href="../../../assets/user/default/style.css"/>
     <script src="../../../assets/user/amazeui/js/jquery.min.js"></script>
     <script src="../../../assets/user/amazeui/js/amazeui.min.js"></script>
-    <script type="text/javascript" src="../../../assets/tools/layui-v2.2.6/layui.js"></script>
 </head>
 
 <body>
 <div class="container">
     <header data-am-widget="header" class="am-header am-header-default my-header">
         <div class="am-header-left am-header-nav">
-            <a href="#left-link" class="">
+            <a href="/view/user/order.html" class="">
                 <i class="am-header-icon am-icon-chevron-left"></i>
             </a>
         </div>
@@ -34,9 +33,7 @@
             <a href="#title-link" class="">订单快照</a>
         </h1>
         <div class="am-header-right am-header-nav">
-            <a href="#right-link" class="">
-                <i class="am-header-icon  am-icon-home"></i>
-            </a>
+
         </div>
     </header>
     <div class="uchome-info">
@@ -51,7 +48,7 @@
     <div class="my-nav-bar">
         <ol class="am-breadcrumb">
             <li><a href="#">首页</a></li>
-            <li><a href="#">提现</a></li>
+            <li><a href="#">订单详情</a></li>
         </ol>
     </div>
 
@@ -71,8 +68,8 @@
     <footer data-am-widget="footer" class="am-footer am-footer-default" data-am-footer="{  }">
         <hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
         <div class="am-footer-miscs ">
-            <p>CopyRight©2018 saya.ac.cn.</p>
-            <p>蜀ICP备xxxxx</p>
+            <p>CopyRight© <script>document.write(new Date().getFullYear())</script>saya.ac.cn.</p>
+            <p>蜀ICP备16013222-2号</p>
         </div>
     </footer>
     <!--底部-->
@@ -102,7 +99,7 @@
                     <span class="am-icon-suitcase"><a href="/view/user/order.html">我的订单</a></span>
                     <span class=" am-icon-bank"><a href="/view/user/address.html">收货地址</a></span>
                     <span class="am-icon-cog"><a href="/view/user/userInfo.html">修改密码</a></span>
-                    <span class="am-icon-power-off"><a href="userLogout.html">退出平台</a></span>
+                    <span class="am-icon-power-off"><a href="/userLogout.html">退出平台</a></span>
                 </div>
             </li>
         </ul>
@@ -113,12 +110,9 @@
         </script>
     </div>
 </div>
+<script type="text/javascript" src="../../../assets/tools/layer_mobile/layer.js"></script>
 <script type="text/javascript">
-    var layer;//定义layui模块
     var id = '';
-    layui.use(['layer'], function(){
-        layer = layui.layer;
-    });
 
     $(function (){
         id = decodeURI(geturldata("id"));
@@ -152,11 +146,17 @@
                 }
                 else
                 {
-                    layer.msg("没有找到数据信息");
+                    layer.open({
+                        content: '没有找到数据信息'
+                        ,btn: '我知道了'
+                    });
                 }
             },
             error:function(data){
-                layer.msg('获取数据失败');
+                layer.open({
+                    content: '获取数据失败'
+                    ,btn: '我知道了'
+                });
                 return false;
             }
         });

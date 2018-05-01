@@ -1,8 +1,4 @@
-var layer;//定义layui模块
 var id = '';
-layui.use(['layer'], function(){
-    layer = layui.layer;
-});
 
 $(function(){
 
@@ -39,11 +35,18 @@ function getCart(id) {
             }
             else
             {
-                layer.msg("没有找到数据信息");
+                $("#cartList").html("");//首先清空
+                layer.open({
+                    content: '没有找到数据信息'
+                    ,btn: '我知道了'
+                });
             }
         },
         error:function(data){
-            layer.msg('获取数据失败');
+            layer.open({
+                content: '获取数据失败'
+                ,btn: '我知道了'
+            });
             return false;
         }
     });
@@ -193,26 +196,20 @@ function goBuy() {
             success:function(datas){//收到后台的响应
                 if(datas.code == 0)
                 {
-                    //最后是data
-                    layer.alert('购买成功。', {
-                        title:'页面提示',
-                        icon: 1,
-                        skin: 'layer-ext-moon',
-                    });
                     window.location.href = "/view/user/pay.html?id="+datas.data;//跳转到支付页面
                     console.log(datas);
                 }else
                 {
-                    layer.msg('购买失败', {
-                        time: 5000, //5s后自动关闭
-                        btn: ['知道了']
+                    layer.open({
+                        content: '操作发生异常'
+                        ,btn: '我知道了'
                     });
                 }
             },
             error: function () {//没有收到请求
-                layer.msg('操作失败', {
-                    time: 5000, //5s后自动关闭
-                    btn: ['知道了']
+                layer.open({
+                    content: '操作失败'
+                    ,btn: '我知道了'
                 });
                 return false;
             }
@@ -246,26 +243,24 @@ function deleteCart(){
             success:function(datas){//收到后台的响应
                 if(datas.code == 0)
                 {
-                    //最后是data
-                    layer.alert('删除成功。', {
-                        title:'页面提示',
-                        icon: 1,
-                        skin: 'layer-ext-moon',
+                    layer.open({
+                        content: '删除成功。'
+                        ,btn: '我知道了'
                     });
                     checkGetCart();
                     console.log(datas);
                 }else
                 {
-                    layer.msg('删除失败', {
-                        time: 5000, //5s后自动关闭
-                        btn: ['知道了']
+                    layer.open({
+                        content: '删除失败。'
+                        ,btn: '我知道了'
                     });
                 }
             },
             error: function () {//没有收到请求
-                layer.msg('操作失败', {
-                    time: 5000, //5s后自动关闭
-                    btn: ['知道了']
+                layer.open({
+                    content: '操作失败。'
+                    ,btn: '我知道了'
                 });
                 return false;
             }

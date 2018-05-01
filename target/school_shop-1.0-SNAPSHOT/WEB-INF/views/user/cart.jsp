@@ -24,17 +24,15 @@
 <div class="container">
     <header data-am-widget="header" class="am-header am-header-default my-header">
         <div class="am-header-left am-header-nav">
-            <a href="#left-link" class="">
+            <a href="/view/user/" class="">
                 <i class="am-header-icon am-icon-chevron-left"></i>
             </a>
         </div>
         <h1 class="am-header-title">
-            <a href="#title-link" class="">会员中心</a>
+            <a href="#title-link" class="">我的购物车</a>
         </h1>
         <div class="am-header-right am-header-nav">
-            <a href="#right-link" class="">
-                <i class="am-header-icon  am-icon-home"></i>
-            </a>
+
         </div>
     </header>
     <div class="uchome-info">
@@ -48,8 +46,7 @@
     <div class="my-nav-bar">
         <ol class="am-breadcrumb">
             <li><a href="#">首页</a></li>
-            <li><a href="#">分类</a></li>
-            <li class="am-active">内容</li>
+            <li class="am-active">我的购物车</li>
         </ol>
     </div>
     <div class="am-cf cart-panel">
@@ -80,8 +77,8 @@
     <footer data-am-widget="footer" class="am-footer am-footer-default" data-am-footer="{  }">
         <hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
         <div class="am-footer-miscs ">
-            <p>CopyRight©2018 saya.ac.cn.</p>
-            <p>蜀ICP备xxxxx</p>
+            <p>CopyRight© <script>document.write(new Date().getFullYear())</script>saya.ac.cn.</p>
+            <p>蜀ICP备16013222-2号</p>
         </div>
     </footer>
     <!--底部-->
@@ -111,7 +108,7 @@
                     <span class="am-icon-suitcase"><a href="/view/user/order.html">我的订单</a></span>
                     <span class=" am-icon-bank"><a href="/view/user/address.html">收货地址</a></span>
                     <span class="am-icon-cog"><a href="/view/user/userInfo.html">修改密码</a></span>
-                    <span class="am-icon-power-off"><a href="userLogout.html">退出平台</a></span>
+                    <span class="am-icon-power-off"><a href="/userLogout.html">退出平台</a></span>
                 </div>
             </li>
         </ul>
@@ -126,6 +123,6 @@
 <script type="text/javascript" src ="../../../assets/tools/vue/vue.min.js"></script>
 <script type="text/javascript" src ="../../../assets/tools/vue/vue-resource.min.js"></script>
 <script src="../../../assets/user/amazeui/js/amazeui.min.js"></script>
-<script type="text/javascript" src="../../../assets/tools/layui-v2.2.6/layui.js"></script>
+<script type="text/javascript" src="../../../assets/tools/layer_mobile/layer.js"></script>
 <script type="text/javascript" src="../../../assets/cart/js/shopping.js"></script>
 </html>

@@ -76,6 +76,7 @@
         `id` = #{id} and `user_id` = #{userId}
     </update>
 
+    <!-- 删除收货地址  -->
     <delete id="delete" parameterType="Address">
         DELETE FROM `address`   WHERE  `id` = #{id} and `user_id` = #{userId}
     </delete>

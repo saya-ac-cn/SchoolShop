@@ -18,23 +18,18 @@
     <link rel="stylesheet" href="../../../assets/user/default/style.css"/>
     <script src="../../../assets/user/amazeui/js/jquery.min.js"></script>
     <script src="../../../assets/user/amazeui/js/amazeui.min.js"></script>
-    <script type="text/javascript" src="../../../assets/tools/layui-v2.2.6/layui.js"></script>
 </head>
 <body>
 <div class="container">
     <header data-am-widget="header" class="am-header am-header-default my-header">
         <div class="am-header-left am-header-nav">
-            <a href="#left-link" class="">
-                <i class="am-header-icon am-icon-chevron-left"></i>
-            </a>
+
         </div>
         <h1 class="am-header-title">
-            <a href="#title-link" class="">会员中心</a>
+            <a href="#title-link" class="">我的收藏</a>
         </h1>
         <div class="am-header-right am-header-nav">
-            <a href="#right-link" class="">
-                <i class="am-header-icon  am-icon-home"></i>
-            </a>
+
         </div>
     </header>
     <div class="uchome-info">
@@ -48,7 +43,7 @@
     <div class="my-nav-bar">
         <ol class="am-breadcrumb">
             <li><a href="#">首页</a></li>
-            <li><a href="#">团购</a></li>
+            <li><a href="#">我的收藏</a></li>
         </ol>
     </div>
     <div class="am-cf cart-panel" id="orderList">
@@ -58,8 +53,8 @@
     <footer data-am-widget="footer" class="am-footer am-footer-default" data-am-footer="{  }">
         <hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
         <div class="am-footer-miscs ">
-            <p>CopyRight©2018 saya.ac.cn.</p>
-            <p>蜀ICP备xxxxx</p>
+            <p>CopyRight© <script>document.write(new Date().getFullYear())</script>saya.ac.cn.</p>
+            <p>蜀ICP备16013222-2号</p>
         </div>
     </footer>
     <!--底部-->
@@ -89,7 +84,7 @@
                     <span class="am-icon-suitcase"><a href="/view/user/order.html">我的订单</a></span>
                     <span class=" am-icon-bank"><a href="/view/user/address.html">收货地址</a></span>
                     <span class="am-icon-cog"><a href="/view/user/userInfo.html">修改密码</a></span>
-                    <span class="am-icon-power-off"><a href="userLogout.html">退出平台</a></span>
+                    <span class="am-icon-power-off"><a href="/userLogout.html">退出平台</a></span>
                 </div>
             </li>
         </ul>
@@ -100,12 +95,8 @@
         </script>
     </div>
 </div>
+<script type="text/javascript" src="../../../assets/tools/layer_mobile/layer.js"></script>
 <script type="text/javascript">
-    var layer;//定义layui模块
-
-    layui.use(['layer'], function(){
-        layer = layui.layer;
-    });
 
     $(function (){
         getCollect();
@@ -121,16 +112,21 @@
             success: function(data){
                 if(data.code == 0){
                     render(data.data);
-                    console.log(data.dat);
                     return false;
                 }
                 else
                 {
-                    layer.msg("没有找到数据信息");
+                    layer.open({
+                        content: '没有找到数据信息'
+                        ,btn: '我知道了'
+                    });
                 }
             },
             error:function(data){
-                layer.msg('获取数据失败');
+                layer.open({
+                    content: '获取数据失败'
+                    ,btn: '我知道了'
+                });
                 return false;
             }
         });
@@ -155,11 +151,14 @@
     }
 
     function deleteCollect(id) {
-        layer.confirm('您确定取消？', {
-            btn: ['确定','取消'] //按钮
-        }, function(index){
-            goDelete(id);
-            layer.close(index);
+
+        layer.open({
+            content: '您确定删除？'
+            , btn: ['确定','取消'] //按钮
+            ,yes: function(index){
+                goDelete(id);
+                layer.close(index);
+            }
         });
     }
 
@@ -172,14 +171,23 @@
             success: function (data) {
                 if (data.code == 0) {
                     getCollect();
-                    layer.msg("删除成功");
+                    layer.open({
+                        content: '删除成功'
+                        ,btn: '我知道了'
+                    });
                 }
                 else {
-                    layer.msg("删除失败");
+                    layer.open({
+                        content: '删除失败'
+                        ,btn: '我知道了'
+                    });
                 }
             },
             error: function (data) {
-                layer.msg('处理失败');
+                layer.open({
+                    content: '处理失败'
+                    ,btn: '我知道了'
+                });
                 return false;
             }
         });

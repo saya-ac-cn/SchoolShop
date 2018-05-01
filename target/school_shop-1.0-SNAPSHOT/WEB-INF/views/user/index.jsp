@@ -18,24 +18,19 @@
     <link rel="stylesheet" href="../../../assets/user/default/style.css"/>
     <script src="../../../assets/user/amazeui/js/jquery.min.js"></script>
     <script src="../../../assets/user/amazeui/js/amazeui.min.js"></script>
-    <script type="text/javascript" src="../../../assets/tools/layui-v2.2.6/layui.js"></script>
     <script type="text/javascript" src="../../../assets/js/ajaxSetup.js"></script>
 </head>
 <body>
 <div class="container">
     <header data-am-widget="header" class="am-header am-header-default my-header">
         <div class="am-header-left am-header-nav">
-            <a href="#left-link" class="">
-                <i class="am-header-icon am-icon-chevron-left"></i>
-            </a>
+
         </div>
         <h1 class="am-header-title">
             <a href="#title-link" class="">校园便利购</a>
         </h1>
         <div class="am-header-right am-header-nav">
-            <a href="#right-link" class="">
-                <i class="am-header-icon  am-icon-home"></i>
-            </a>
+
         </div>
     </header>
     <!-- banner -->
@@ -65,8 +60,8 @@
     <footer data-am-widget="footer" class="am-footer am-footer-default" data-am-footer="{  }">
         <hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
         <div class="am-footer-miscs ">
-            <p>CopyRight©2018 saya.ac.cn.</p>
-            <p>蜀ICP备xxxxx</p>
+            <p>CopyRight© <script>document.write(new Date().getFullYear())</script>saya.ac.cn.</p>
+            <p>蜀ICP备16013222-2号</p>
         </div>
     </footer>
     <!--底部-->
@@ -96,7 +91,7 @@
                     <span class="am-icon-suitcase"><a href="/view/user/order.html">我的订单</a></span>
                     <span class=" am-icon-bank"><a href="/view/user/address.html">收货地址</a></span>
                     <span class="am-icon-cog"><a href="/view/user/userInfo.html">修改密码</a></span>
-                    <span class="am-icon-power-off"><a href="userLogout.html">退出平台</a></span>
+                    <span class="am-icon-power-off"><a href="/userLogout.html">退出平台</a></span>
                 </div>
             </li>
         </ul>
@@ -107,12 +102,8 @@
         </script>
     </div>
 </div>
+<script type="text/javascript" src="../../../assets/tools/layer_mobile/layer.js"></script>
 <script type="text/javascript">
-    var layer;//定义layui模块
-
-    layui.use(['layer'], function(){
-        layer = layui.layer;
-    });
 
     $(function (){
         getGoods();
@@ -128,16 +119,21 @@
             success: function(data){
                 if(data.code == 0){
                     render(data.data);
-                    console.log(data.dat);
                     return false;
                 }
                 else
                 {
-                    layer.msg("没有找到数据信息");
+                    layer.open({
+                        content: '没有找到数据信息'
+                        ,btn: '我知道了'
+                    });
                 }
             },
             error:function(data){
-                layer.msg('获取数据失败');
+                layer.open({
+                    content: '获取数据失败'
+                    ,btn: '我知道了'
+                });
                 return false;
             }
         });
@@ -179,14 +175,23 @@
             dataType:"json",//预期服务器返回的数据类型
             success: function (data) {
                 if (data.code == 0) {
-                    alert("收藏成功");
+                    layer.open({
+                        content: '收藏成功'
+                        ,btn: '我知道了'
+                    });
                 }
                 else {
-                    layer.msg(data.msg);
+                    layer.open({
+                        content: data.msg
+                        ,btn: '我知道了'
+                    });
                 }
             },
             error: function (data) {
-                alert('处理失败,请登录');
+                layer.open({
+                    content: '处理失败,请登录'
+                    ,btn: '我知道了'
+                });
                 return false;
             }
         });
@@ -202,15 +207,25 @@
             dataType:"json",//预期服务器返回的数据类型
             success: function (data) {
                 if (data.code == 0) {
-                    alert("已添加到购物车");
+                    // layer.open({
+                    //     content: '已添加到购物车'
+                    //     ,btn: '我知道了'
+                    // });
                     //还要做一个页面的跳转
+                    window.location.href = '/view/user/cart.html?id='+data.data;
                 }
                 else {
-                    layer.msg(data.msg);
+                    layer.open({
+                        content:data.msg
+                        ,btn: '我知道了'
+                    });
                 }
             },
             error: function (data) {
-                alert('处理失败');
+                layer.open({
+                    content:'处理失败'
+                    ,btn: '我知道了'
+                });
                 return false;
             }
         });

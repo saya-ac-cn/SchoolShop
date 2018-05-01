@@ -18,23 +18,18 @@
     <link rel="stylesheet" href="../../../assets/user/default/style.css"/>
     <script src="../../../assets/user/amazeui/js/jquery.min.js"></script>
     <script src="../../../assets/user/amazeui/js/amazeui.min.js"></script>
-    <script type="text/javascript" src="../../../assets/tools/layui-v2.2.6/layui.js"></script>
 </head>
 <body>
 <div class="container">
     <header data-am-widget="header" class="am-header am-header-default my-header">
         <div class="am-header-left am-header-nav">
-            <a href="#left-link" class="">
-                <i class="am-header-icon am-icon-chevron-left"></i>
-            </a>
+
         </div>
         <h1 class="am-header-title">
-            <a href="#title-link" class="">会员中心</a>
+            <a href="#title-link" class="">确认支付</a>
         </h1>
         <div class="am-header-right am-header-nav">
-            <a href="#right-link" class="">
-                <i class="am-header-icon  am-icon-home"></i>
-            </a>
+
         </div>
     </header>
     <div class="uchome-info">
@@ -48,7 +43,7 @@
     <div class="my-nav-bar">
         <ol class="am-breadcrumb">
             <li><a href="#">首页</a></li>
-            <li><a href="#">团购</a></li>
+            <li><a href="#">支付页面</a></li>
         </ol>
     </div>
     <div class="am-cf cart-panel" id="orderList">
@@ -57,7 +52,7 @@
     <div class="am-cf cart-panel">
         <div class="cart_foot">共<span class="red2 bold" id="total_good"></span>件商品；总价：<span class="red2 bold" id="total_amount">{$price}</span>元</div>
         <div class="cart-tool">
-            <a class="am-btn am-btn-sm am-btn-success am-radius" href="../../../assets/user/shoppingcart.html">
+            <a class="am-btn am-btn-sm am-btn-success am-radius" href="/view/user/cart.html">
                 <i class="am-icon-chevron-left"></i>
                 返回购物车
             </a>
@@ -66,7 +61,6 @@
         <div class="paoduct-title-panel">
             <h2 class="checkout-h2"><span class="am-badge am-round am-badge-warning ">2</span> 确认收货地址</h2>
             <ul class="am-list am-text-sm my-pay-ul" id="addressList">
-                <li>12 <input type="radio" class="am-fr" value="" name="address"></li>
             </ul>
         </div>
         <div class="paoduct-title-panel">
@@ -91,7 +85,7 @@
             <div>
                 <ul class="am-avg-sm-2 am-text-center">
                     <li class="am-text-center am-padding-sm"><button type="button" onclick="goBuy()" class="am-btn am-btn-danger am-btn-block am-radius">提交订单</button></li>
-                    <li class="am-text-center am-padding-sm"><button type="button" class="am-btn am-btn-success am-btn-block am-radius">继续购物</button></li>
+                    <li class="am-text-center am-padding-sm"><button type="button" onclick="javascript:window.location.href='/'" class="am-btn am-btn-success am-btn-block am-radius">继续购物</button></li>
                 </ul>
             </div>
         </div>
@@ -100,8 +94,8 @@
     <footer data-am-widget="footer" class="am-footer am-footer-default" data-am-footer="{  }">
         <hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
         <div class="am-footer-miscs ">
-            <p>CopyRight©2018 saya.ac.cn.</p>
-            <p>蜀ICP备xxxxx</p>
+            <p>CopyRight© <script>document.write(new Date().getFullYear())</script>saya.ac.cn.</p>
+            <p>蜀ICP备16013222-2号</p>
         </div>
     </footer>
     <!--底部-->
@@ -131,7 +125,7 @@
                     <span class="am-icon-suitcase"><a href="/view/user/order.html">我的订单</a></span>
                     <span class=" am-icon-bank"><a href="/view/user/address.html">收货地址</a></span>
                     <span class="am-icon-cog"><a href="/view/user/userInfo.html">修改密码</a></span>
-                    <span class="am-icon-power-off"><a href="userLogout.html">退出平台</a></span>
+                    <span class="am-icon-power-off"><a href="/userLogout.html">退出平台</a></span>
                 </div>
             </li>
         </ul>
@@ -142,12 +136,9 @@
         </script>
     </div>
 </div>
+<script type="text/javascript" src="../../../assets/tools/layer_mobile/layer.js"></script>
 <script type="text/javascript">
-    var layer;//定义layui模块
     var id;//获取传递到本页面的订单号
-    layui.use(['layer'], function(){
-        layer = layui.layer;
-    });
 
     $(function (){
         id = decodeURI(geturldata("id"));//父订单号
@@ -170,11 +161,17 @@
                 }
                 else
                 {
-                    layer.msg("没有找到数据信息");
+                    layer.open({
+                        content: '没有找到用户零钱信息'
+                        ,btn: '我知道了'
+                    });
                 }
             },
             error:function(data){
-                layer.msg('获取数据失败');
+                layer.open({
+                    content: '获取数据失败'
+                    ,btn: '我知道了'
+                });
                 return false;
             }
         });
@@ -194,11 +191,17 @@
                 }
                 else
                 {
-                    layer.msg("没有找到数据信息");
+                    layer.open({
+                        content: '没有找到订单信息'
+                        ,btn: '我知道了'
+                    });
                 }
             },
             error:function(data){
-                layer.msg('获取数据失败');
+                layer.open({
+                    content: '获取数据失败'
+                    ,btn: '我知道了'
+                });
                 return false;
             }
         });
@@ -261,11 +264,18 @@
                 }
                 else
                 {
-                    layer.msg("没有找到数据信息");
+                    $("#addressList").html(" <li>摊位自取 <input type=\"radio\" class=\"am-fr\" value=\"-1\" checked=\"checked\" name=\"address\"></li>");//首先清空
+                    layer.open({
+                        content: '没有找到收货地址信息'
+                        ,btn: '我知道了'
+                    });
                 }
             },
             error:function(data){
-                layer.msg('获取数据失败');
+                layer.open({
+                    content: '获取数据失败'
+                    ,btn: '我知道了'
+                });
                 return false;
             }
         });
@@ -295,16 +305,26 @@
             data:sendData,
             success: function(data){
                 if(data.code == 0){
-                    layer.msg("支付成功");
+                    layer.open({
+                        content: '支付成功'
+                        ,btn: '我知道了'
+                    });
+                    window.location.href = "/view/user/order.html"
                     return false;
                 }
                 else
                 {
-                    layer.msg("没有找到数据信息");
+                    layer.open({
+                        content: data.msg
+                        ,btn: '我知道了'
+                    });
                 }
             },
             error:function(data){
-                layer.msg('获取数据失败');
+                layer.open({
+                    content: '支付异常'
+                    ,btn: '我知道了'
+                });
                 return false;
             }
         });

@@ -26,8 +26,8 @@
 <div class="container">
     <header data-am-widget="header" class="am-header am-header-default my-header">
         <div class="am-header-left am-header-nav">
-            <a href="#left-link" class="">
-                返回
+            <a href="/view/user/" class="">
+                <i class="am-header-icon am-icon-chevron-left"></i>
             </a>
         </div>
         <h1 class="am-header-title">
@@ -62,8 +62,8 @@
     <footer data-am-widget="footer" class="am-footer am-footer-default" data-am-footer="{  }">
         <hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
         <div class="am-footer-miscs ">
-            <p>CopyRight©2018 saya.ac.cn.</p>
-            <p>蜀ICP备xxxxx</p>
+            <p>CopyRight© <script>document.write(new Date().getFullYear())</script>saya.ac.cn.</p>
+            <p>蜀ICP备16013222-2号</p>
         </div>
     </footer>
     <!--底部-->
@@ -93,7 +93,7 @@
                     <span class="am-icon-suitcase"><a href="/view/user/order.html">我的订单</a></span>
                     <span class=" am-icon-bank"><a href="/view/user/address.html">收货地址</a></span>
                     <span class="am-icon-cog"><a href="/view/user/userInfo.html">修改密码</a></span>
-                    <span class="am-icon-power-off"><a href="userLogout.html">退出平台</a></span>
+                    <span class="am-icon-power-off"><a href="/userLogout.html">退出平台</a></span>
                 </div>
             </li>
         </ul>
@@ -104,23 +104,25 @@
         </script>
     </div>
 </div>
+<script type="text/javascript" src="../../../assets/tools/layer_mobile/layer.js"></script>
 <script type="text/javascript">
-    var layer;//定义layui模块
-
-    layui.use(['layer'], function(){
-        layer = layui.layer;
-    });
 
     function gosave() {
         var password1 = $("#password1").val().trim();
         var password2 = $("#password2").val().trim();
         if(password1 == '' || password2 == '' || password1.length < 6 || password2.length < 6)
         {
-            layer.msg("密码不可为空且长度在6位以上");
+            layer.open({
+                content: '密码不可为空且长度在6位以上'
+                ,btn: '我知道了'
+            });
         }
         else if(password1 != password2)
         {
-            layer.msg("两次输入的密码必须一致");
+            layer.open({
+                content: '两次输入的密码必须一致'
+                ,btn: '我知道了'
+            });
         }
         else
         {
@@ -131,16 +133,26 @@
                 dataType:"json",
                 success: function(data){
                     if(data.code == 0){
-                        layer.msg("修改成功");
+                        layer.open({
+                            content: '修改成功'
+                            ,btn: '我知道了'
+                        });
                         return false;
                     }
                     else
                     {
-                        layer.msg(data.msg);
+                        layer.open({
+                            content: data.msg
+                            ,btn: '我知道了'
+                        });
+                        layer.msg();
                     }
                 },
                 error:function(data){
-                    layer.msg('注册失败');
+                    layer.open({
+                        content: '修改失败'
+                        ,btn: '我知道了'
+                    });
                     return false;
                 }
             });

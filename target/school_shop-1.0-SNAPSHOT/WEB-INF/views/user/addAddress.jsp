@@ -19,24 +19,19 @@
     <link rel="stylesheet" href="../../../assets/user/default/style.css"/>
     <script src="../../../assets/user/amazeui/js/jquery.min.js"></script>
     <script src="../../../assets/user/amazeui/js/amazeui.min.js"></script>
-    <script type="text/javascript" src="../../../assets/tools/layui-v2.2.6/layui.js"></script>
 </head>
 
 <body>
 <div class="container">
     <header data-am-widget="header" class="am-header am-header-default my-header">
         <div class="am-header-left am-header-nav">
-            <a href="#left-link" class="">
-                <i class="am-header-icon am-icon-chevron-left"></i>
-            </a>
+
         </div>
         <h1 class="am-header-title">
             <a href="#title-link" class="">添加收货地址</a>
         </h1>
         <div class="am-header-right am-header-nav">
-            <a href="#right-link" class="">
-                <i class="am-header-icon  am-icon-home"></i>
-            </a>
+
         </div>
     </header>
     <div class="uchome-info">
@@ -51,7 +46,7 @@
     <div class="my-nav-bar">
         <ol class="am-breadcrumb">
             <li><a href="#">首页</a></li>
-            <li><a href="#">升级为商家</a></li>
+            <li><a href="#">添加收货地址</a></li>
         </ol>
     </div>
 
@@ -84,8 +79,8 @@
     <footer data-am-widget="footer" class="am-footer am-footer-default" data-am-footer="{  }">
         <hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
         <div class="am-footer-miscs ">
-            <p>CopyRight©2018 saya.ac.cn.</p>
-            <p>蜀ICP备xxxxx</p>
+            <p>CopyRight© <script>document.write(new Date().getFullYear())</script>saya.ac.cn.</p>
+            <p>蜀ICP备16013222-2号</p>
         </div>
     </footer>
     <!--底部-->
@@ -115,7 +110,7 @@
                     <span class="am-icon-suitcase"><a href="/view/user/order.html">我的订单</a></span>
                     <span class=" am-icon-bank"><a href="/view/user/address.html">收货地址</a></span>
                     <span class="am-icon-cog"><a href="/view/user/userInfo.html">修改密码</a></span>
-                    <span class="am-icon-power-off"><a href="userLogout.html">退出平台</a></span>
+                    <span class="am-icon-power-off"><a href="/userLogout.html">退出平台</a></span>
                 </div>
             </li>
         </ul>
@@ -126,13 +121,8 @@
         </script>
     </div>
 </div>
+<script type="text/javascript" src="../../../assets/tools/layer_mobile/layer.js"></script>
 <script type="text/javascript">
-    var layer;//定义layui模块
-    layui.use(['layer'], function(){
-        layer = layui.layer;
-    });
-
-
     function goSave() {
         var name = $("#name").val();
         var phone = $("#phone").val();
@@ -140,15 +130,24 @@
         var address= $("#address").val();
         if(name == '')
         {
-            layer.msg("收件人姓名不可为空");
+            layer.open({
+                content: '收件人姓名不可为空'
+                ,btn: '我知道了'
+            });
         }
         else if(mobil == '')
         {
-            layer.msg("联系电话不可为空");
+            layer.open({
+                content: '联系电话不可为空'
+                ,btn: '我知道了'
+            });
         }
         else if(address == '')
         {
-            layer.msg("收件人地址不可为空");
+            layer.open({
+                content: '收件人地址不可为空'
+                ,btn: '我知道了'
+            });
         }
         else
         {
@@ -171,16 +170,25 @@
             data:data,
             success: function(data){
                 if(data.code == 0){
-                    layer.msg("修改成功");
+                    layer.open({
+                        content: '修改成功'
+                        ,btn: '我知道了'
+                    });
                     return false;
                 }
                 else
                 {
-                    layer.msg("修改失败");
+                    layer.open({
+                        content: '修改失败'
+                        ,btn: '我知道了'
+                    });
                 }
             },
             error:function(data){
-                layer.msg('操作超时');
+                layer.open({
+                    content: '操作超时'
+                    ,btn: '我知道了'
+                });
                 return false;
             }
         });

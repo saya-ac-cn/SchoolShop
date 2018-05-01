@@ -468,7 +468,7 @@ public class UserServiceImpl implements IUserService {
             old.setQuantity(vo.getQuantity()+old.getQuantity());//把原来收藏数量加上现在的数量。
             if(cartDAO.update(old) > 0)
             {
-                return ResultUtil.success();
+                return ResultUtil.success(old.getId());
             }
             else
             {
@@ -480,7 +480,7 @@ public class UserServiceImpl implements IUserService {
             vo.setCreateTime(api.tools.Service.utilsTime());
             if(cartDAO.insert(vo) > 0)
             {
-                return ResultUtil.success();
+                return ResultUtil.success(vo.getId());
             }
             else
             {
