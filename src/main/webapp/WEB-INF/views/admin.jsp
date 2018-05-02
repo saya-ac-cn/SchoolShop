@@ -10,6 +10,11 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <%
+        String path = request.getContextPath();
+        String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    %>
+    <base href="<%=basePath%>">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
@@ -18,9 +23,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <title>宜宾学院网上超市·运维中心</title>
-    <link rel="stylesheet" href="../../assets/tools/layui-v2.2.6/css/layui.css" media="all"/>
-    <link rel="stylesheet" href="../../assets/css/font_eolqem241z66flxr.css" media="all"/>
-    <link rel="stylesheet" href="../../assets/css/main.css" media="all"/>
+    <link rel="stylesheet" href="assets/tools/layui-v2.2.6/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="assets/css/font_eolqem241z66flxr.css" media="all"/>
+    <link rel="stylesheet" href="assets/css/main.css" media="all"/>
 </head>
 <body class="main_body">
 <div class="layui-layout layui-layout-admin">
@@ -118,9 +123,9 @@
 <div class="site-tree-mobile layui-hide"><i class="layui-icon">&#xe602;</i></div>
 <div class="site-mobile-shade"></div>
 
-<script type="text/javascript" src="../../assets/tools/layui-v2.2.6/layui.js"></script>
-<script type="text/javascript" src="../../assets/js/adminNav.js"></script>
-<script type="text/javascript" src="../../assets/js/leftNav.js"></script>
-<script type="text/javascript" src="../../assets/js/admin.js"></script>
+<script type="text/javascript" src="assets/tools/layui-v2.2.6/layui.js"></script>
+<script type="text/javascript" src="assets/js/adminNav.js"></script>
+<script type="text/javascript" src="assets/js/leftNav.js"></script>
+<script type="text/javascript" src="assets/js/admin.js"></script>
 </body>
 </html>

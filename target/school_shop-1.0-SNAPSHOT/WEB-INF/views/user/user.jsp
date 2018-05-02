@@ -9,16 +9,21 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <%
+        String path = request.getContextPath();
+        String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    %>
+    <base href="<%=basePath%>">
     <title>会员中心</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="stylesheet" href="../../../assets/user/amazeui/css/amazeui.min.css"/>
-    <link rel="stylesheet" href="../../../assets/user/default/style.css"/>
-    <script src="../../../assets/user/amazeui/js/jquery.min.js"></script>
-    <script src="../../../assets/user/amazeui/js/amazeui.min.js"></script>
+    <link rel="stylesheet" href="assets/user/amazeui/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="assets/user/default/style.css"/>
+    <script src="assets/user/amazeui/js/jquery.min.js"></script>
+    <script src="assets/user/amazeui/js/amazeui.min.js"></script>
 </head>
 
 <body>
@@ -44,13 +49,13 @@
 
     <div class="am-cf uchome-apps">
         <ul class="am-avg-sm-3 uchome-apps-ul">
-            <li><a href="/view/user/order.html"><p class="imgp"><img src="../../../assets/user/default/uhomeapp1.png" class="am-img-responsive" /></p><p class="namep">我的订单</p><p class="lastp"  id="order"></p></a></li>
-            <li><a href="/view/user/cart.html"><p class="imgp"><img src="../../../assets/user/default/uhomeapp4.png" class="am-img-responsive" /></p><p class="namep">购物车</p><p class="lastp" id="cart"></p></a></li>
-            <li><a href="/view/user/collect.html"><p class="imgp"><img src="../../../assets/user/default/uhomeapp7.png" class="am-img-responsive" /></p><p class="namep" >收藏商品</p><p class="lastp" id="collect"></p></a></li>
-            <li><a href="/view/user/address.html"><p class="imgp"><img src="../../../assets/user/default/uhomeapp2.png" class="am-img-responsive" /></p><p class="namep" >收货地址</p><p class="lastp" id="address"></p></a></li>
-            <li><a href="#"><p class="imgp"><img src="../../../assets/user/default/uhomeapp6.png" class="am-img-responsive" /></p><p class="namep" >我的钱包</p><p class="lastp" id="money"></p></a></li>
-            <li><a href="/view/user/userInfo.html"><p class="imgp"><img src="../../../assets/user/default/uhomeapp11.png" class="am-img-responsive" /></p><p class="namep">个人信息</p><p class="lastp">管理</p></a></li>
-            <li><a href="/news.html"><p class="imgp"><img src="../../../assets/user/default/uhomeapp12.png" class="am-img-responsive" /></p><p class="namep">系统消息</p><p class="lastp"></p></a></li>
+            <li><a href="/view/user/order.html"><p class="imgp"><img src="assets/user/default/uhomeapp1.png" class="am-img-responsive" /></p><p class="namep">我的订单</p><p class="lastp"  id="order"></p></a></li>
+            <li><a href="/view/user/cart.html"><p class="imgp"><img src="assets/user/default/uhomeapp4.png" class="am-img-responsive" /></p><p class="namep">购物车</p><p class="lastp" id="cart"></p></a></li>
+            <li><a href="/view/user/collect.html"><p class="imgp"><img src="assets/user/default/uhomeapp7.png" class="am-img-responsive" /></p><p class="namep" >收藏商品</p><p class="lastp" id="collect"></p></a></li>
+            <li><a href="/view/user/address.html"><p class="imgp"><img src="assets/user/default/uhomeapp2.png" class="am-img-responsive" /></p><p class="namep" >收货地址</p><p class="lastp" id="address"></p></a></li>
+            <li><a href="#"><p class="imgp"><img src="assets/user/default/uhomeapp6.png" class="am-img-responsive" /></p><p class="namep" >我的钱包</p><p class="lastp" id="money"></p></a></li>
+            <li><a href="/view/user/userInfo.html"><p class="imgp"><img src="assets/user/default/uhomeapp11.png" class="am-img-responsive" /></p><p class="namep">个人信息</p><p class="lastp">管理</p></a></li>
+            <li><a href="/news.html"><p class="imgp"><img src="assets/user/default/uhomeapp12.png" class="am-img-responsive" /></p><p class="namep">系统消息</p><p class="lastp"></p></a></li>
         </ul>
 
     </div>
@@ -101,7 +106,7 @@
         </script>
     </div>
 </div>
-<script type="text/javascript" src="../../../assets/tools/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="assets/tools/layer_mobile/layer.js"></script>
 <script type="text/javascript">
 
     $(function (){

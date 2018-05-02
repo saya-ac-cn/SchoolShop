@@ -9,16 +9,21 @@
 <html>
 <head>
     <title>校园便利购</title>
+    <%
+        String path = request.getContextPath();
+        String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    %>
+    <base href="<%=basePath%>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="stylesheet" href="../../../assets/user/amazeui/css/amazeui.min.css"/>
-    <link rel="stylesheet" href="../../../assets/user/default/style.css"/>
-    <script src="../../../assets/user/amazeui/js/jquery.min.js"></script>
-    <script src="../../../assets/user/amazeui/js/amazeui.min.js"></script>
-    <script type="text/javascript" src="../../../assets/js/ajaxSetup.js"></script>
+    <link rel="stylesheet" href="assets/user/amazeui/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="assets/user/default/style.css"/>
+    <script src="assets/user/amazeui/js/jquery.min.js"></script>
+    <script src="assets/user/amazeui/js/amazeui.min.js"></script>
+    <script type="text/javascript" src="assets/js/ajaxSetup.js"></script>
 </head>
 <body>
 <div class="container">
@@ -102,7 +107,7 @@
         </script>
     </div>
 </div>
-<script type="text/javascript" src="../../../assets/tools/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="assets/tools/layer_mobile/layer.js"></script>
 <script type="text/javascript">
 
     $(function (){
@@ -153,13 +158,13 @@
             htmlText += "<hr data-am-widget=\"divider\" style=\"\" class=\"am-divider am-divider-default am-cf\"/><ol class=\"am-avg-sm-3 product-list-share\">";
             if(item.stock > 0)
             {
-                htmlText += " <li><a href=\"javascript:buy("+item.id+",1)\" title=\"购买\"><img src=\"../../../assets/user/default/icon1.png\" class=\"am-img-responsive\" /></a></li>";
+                htmlText += " <li><a href=\"javascript:buy("+item.id+",1)\" title=\"购买\"><img src=\"assets/user/default/icon1.png\" class=\"am-img-responsive\" /></a></li>";
             }
             else
             {
-                htmlText += " <li><a href=\"#\" title=\"购买\"><img src=\"../../../assets/user/default/icon1.png\" class=\"am-img-responsive\" /></a></li>";
+                htmlText += " <li><a href=\"#\" title=\"购买\"><img src=\"assets/user/default/icon1.png\" class=\"am-img-responsive\" /></a></li>";
             }
-            htmlText += " <li><a href=\"javascript:collect("+item.id+")\" title=\"收藏\"><img src=\"../../../assets/user/default/icon3.png\" class=\"am-img-responsive\" /></a></li>";
+            htmlText += " <li><a href=\"javascript:collect("+item.id+")\" title=\"收藏\"><img src=\"assets/user/default/icon3.png\" class=\"am-img-responsive\" /></a></li>";
             htmlText += "</ol></div></div></li>";
         }
         $("#goodsList").html(htmlText);

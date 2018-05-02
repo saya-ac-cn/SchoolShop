@@ -9,16 +9,21 @@
 <html>
 <head>
     <title>购物车</title>
+    <%
+        String path = request.getContextPath();
+        String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    %>
+    <base href="<%=basePath%>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="stylesheet" href="../../../assets/user/amazeui/css/amazeui.min.css"/>
-    <link rel="stylesheet" href="../../../assets/user/default/style.css"/>
-    <link type="text/css" rel="stylesheet" href="../../../assets/cart/css/base.css" />
-    <link type="text/css" rel="stylesheet" href="../../../assets/cart/css/module.css"  />
-    <script src="../../../assets/user/amazeui/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="assets/user/amazeui/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="assets/user/default/style.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/cart/css/base.css" />
+    <link type="text/css" rel="stylesheet" href="assets/cart/css/module.css"  />
+    <script src="assets/user/amazeui/js/jquery.min.js"></script>
 </head>
 <body>
 <div class="container">
@@ -120,9 +125,9 @@
     </div>
 </div>
 </body>
-<script type="text/javascript" src ="../../../assets/tools/vue/vue.min.js"></script>
-<script type="text/javascript" src ="../../../assets/tools/vue/vue-resource.min.js"></script>
-<script src="../../../assets/user/amazeui/js/amazeui.min.js"></script>
-<script type="text/javascript" src="../../../assets/tools/layer_mobile/layer.js"></script>
-<script type="text/javascript" src="../../../assets/cart/js/shopping.js"></script>
+<script type="text/javascript" src ="assets/tools/vue/vue.min.js"></script>
+<script type="text/javascript" src ="assets/tools/vue/vue-resource.min.js"></script>
+<script src="assets/user/amazeui/js/amazeui.min.js"></script>
+<script type="text/javascript" src="assets/tools/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="assets/cart/js/shopping.js"></script>
 </html>

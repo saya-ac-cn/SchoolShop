@@ -10,6 +10,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="renderer" content="webkit">
+    <%
+        String path = request.getContextPath();
+        String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    %>
+    <base href="<%=basePath%>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -17,9 +22,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <title>修改商户信息</title>
-    <link rel="stylesheet" href="../../../assets/tools/layui-v2.2.6/css/layui.css" media="all"/>
-    <script type="text/javascript" src="../../../assets/tools/layui-v2.2.6/layui.js"></script>
-    <script type="text/javascript" src="../../../assets/js/ajaxSetup.js"></script>
+    <link rel="stylesheet" href="assets/tools/layui-v2.2.6/css/layui.css" media="all"/>
+    <script type="text/javascript" src="assets/tools/layui-v2.2.6/layui.js"></script>
+    <script type="text/javascript" src="assets/js/ajaxSetup.js"></script>
 </head>
 <body>
 <div style="padding:15px;">

@@ -9,15 +9,20 @@
 <html>
 <head>
     <title>我的订单</title>
+    <%
+        String path = request.getContextPath();
+        String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    %>
+    <base href="<%=basePath%>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="stylesheet" href="../../../assets/user/amazeui/css/amazeui.min.css"/>
-    <link rel="stylesheet" href="../../../assets/user/default/style.css"/>
-    <script src="../../../assets/user/amazeui/js/jquery.min.js"></script>
-    <script src="../../../assets/user/amazeui/js/amazeui.min.js"></script>
+    <link rel="stylesheet" href="assets/user/amazeui/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="assets/user/default/style.css"/>
+    <script src="assets/user/amazeui/js/jquery.min.js"></script>
+    <script src="assets/user/amazeui/js/amazeui.min.js"></script>
 </head>
 <body>
 <div class="container">
@@ -97,7 +102,7 @@
         </script>
     </div>
 </div>
-<script type="text/javascript" src="../../../assets/tools/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="assets/tools/layer_mobile/layer.js"></script>
 <script type="text/javascript">
 
     $(function (){

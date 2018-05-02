@@ -10,6 +10,11 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <%
+        String path = request.getContextPath();
+        String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    %>
+    <base href="<%=basePath%>">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
@@ -18,9 +23,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <title>商户入住</title>
-    <link type="text/css" rel="stylesheet" href="../../assets/register/css/login.css">
-    <script type="text/javascript" src="../../assets/register/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../../assets/tools/layui-v2.2.6/layui.js"></script>
+    <link type="text/css" rel="stylesheet" href="assets/register/css/login.css">
+    <script type="text/javascript" src="assets/register/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/tools/layui-v2.2.6/layui.js"></script>
 </head>
 <body class="login_bj" >
 
